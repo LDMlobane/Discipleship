@@ -1,0 +1,1077 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#0f172a" />
+  <title>Sacred Ceremonies | Listener Guide</title>
+  <style>
+    :root {
+      --bg: #f8fafc;
+      --panel: #ffffff;
+      --ink: #0f172a;
+      --muted: #64748b;
+      --line: #e2e8f0;
+      --accent: #4f46e5;
+      --accent-2: #7c3aed;
+      --accent-soft: #eef2ff;
+      --green: #047857;
+      --green-soft: #ecfdf5;
+      --gold: #92400e;
+      --gold-soft: #fffbeb;
+      --shadow: 0 12px 30px rgba(15,23,42,.08);
+      --radius: 20px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: linear-gradient(180deg, #f8fafc 0%, #eef2ff 100%);
+      color: var(--ink);
+      min-height: 100vh;
+    }
+
+    button, textarea { font: inherit; }
+    button { cursor: pointer; }
+
+    .app-shell {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 14px 14px 112px;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      background: rgba(248,250,252,.94);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(226,232,240,.9);
+      margin: 0 -14px 14px;
+      padding: calc(10px + env(safe-area-inset-top)) 14px 10px;
+    }
+
+    .title-row {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand h1 {
+      margin: 0;
+      font-size: clamp(1.08rem, 4vw, 1.45rem);
+      line-height: 1.15;
+      letter-spacing: -.02em;
+    }
+
+    .brand p {
+      margin: 4px 0 0;
+      color: var(--muted);
+      font-size: .82rem;
+    }
+
+    .completion-pill {
+      min-width: 88px;
+      text-align: center;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 8px 9px;
+      box-shadow: 0 4px 14px rgba(15,23,42,.05);
+    }
+    .completion-pill strong { display:block; font-size:1rem; }
+    .completion-pill span { color:var(--muted); font-size:.7rem; font-weight:800; text-transform:uppercase; letter-spacing:.06em; }
+
+    .progress-wrap { margin-top: 10px; }
+    .progress-track {
+      height: 5px;
+      background: #e2e8f0;
+      border-radius: 999px;
+      overflow: hidden;
+    }
+    .progress-bar {
+      height: 100%;
+      width: 0;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      transition: width .25s ease;
+    }
+
+    .section-tabs {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding: 10px 0 2px;
+      scrollbar-width: none;
+    }
+    .section-tabs::-webkit-scrollbar { display:none; }
+    .tab {
+      white-space: nowrap;
+      border: 1px solid var(--line);
+      background: var(--panel);
+      color: #334155;
+      border-radius: 999px;
+      padding: 8px 12px;
+      font-size: .78rem;
+      font-weight: 800;
+      position: relative;
+    }
+    .tab.active { color:white; background:var(--accent); border-color:var(--accent); }
+    .tab.done:not(.active)::after {
+      content: '✓';
+      margin-left: 6px;
+      color: var(--green);
+      font-weight: 900;
+    }
+
+    .slide { display:none; animation:fade .18s ease; }
+    .slide.active { display:block; }
+    @keyframes fade { from { opacity:.4; transform:translateY(6px); } to { opacity:1; transform:translateY(0); } }
+
+    .hero, .card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      border-radius: var(--radius);
+    }
+    .hero {
+      padding: 22px;
+      margin-bottom: 14px;
+      background: linear-gradient(135deg, #fff 0%, #eef2ff 100%);
+    }
+    .eyebrow {
+      color: var(--accent);
+      font-size:.75rem;
+      font-weight:900;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+    }
+    .hero h2 {
+      font-size: clamp(1.65rem, 6vw, 2.55rem);
+      line-height:1.05;
+      margin:10px 0;
+      letter-spacing:-.035em;
+    }
+    .hero .lead { margin:0; color:#475569; font-size:1rem; line-height:1.55; }
+
+    .toolbar { display:flex; flex-wrap:wrap; gap:8px; margin-top:14px; }
+    .tool-btn {
+      border:1px solid var(--line);
+      background:#fff;
+      border-radius:12px;
+      padding:8px 10px;
+      font-size:.78rem;
+      font-weight:800;
+      color:#334155;
+    }
+
+    .grid { display:grid; gap:14px; grid-template-columns:1fr; }
+    .card { padding:18px; }
+    .card h3 { margin:0 0 10px; font-size:1rem; letter-spacing:-.01em; }
+    .card p { color:#475569; line-height:1.6; }
+
+    .bullets { margin:0; padding-left:1.15rem; color:#334155; line-height:1.55; }
+    .bullets li { margin:7px 0; }
+    .bullets li::marker { color:var(--accent); }
+
+    .big-idea {
+      border-left:4px solid var(--accent);
+      background:var(--accent-soft);
+      border-radius:0 14px 14px 0;
+      padding:13px 14px;
+      line-height:1.48;
+      font-weight:800;
+    }
+
+    .remember {
+      background:var(--green-soft);
+      border-color:#a7f3d0;
+    }
+    .remember h3 { color:var(--green); }
+
+    .question-card {
+      background:var(--gold-soft);
+      border-color:#fde68a;
+    }
+    .question-card h3 { color:var(--gold); }
+
+    .verse {
+      background:#0f172a;
+      color:white;
+      border:0;
+    }
+    .verse p { color:#e2e8f0; }
+    .verse .ref {
+      color:#c7d2fe;
+      font-size:.78rem;
+      font-weight:900;
+      text-transform:uppercase;
+      letter-spacing:.08em;
+      margin-bottom:8px;
+    }
+    .verse blockquote {
+      margin:0;
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:1.06rem;
+      line-height:1.58;
+    }
+
+    .accordion { margin-top:14px; }
+    details {
+      border:1px solid var(--line);
+      background:#fff;
+      border-radius:14px;
+      padding:12px 14px;
+    }
+    details + details { margin-top:9px; }
+    summary {
+      font-weight:850;
+      color:#334155;
+      cursor:pointer;
+      list-style:none;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:12px;
+    }
+    summary::-webkit-details-marker { display:none; }
+    summary::after { content:'+'; color:var(--accent); font-size:1.2rem; font-weight:900; }
+    details[open] summary::after { content:'−'; }
+    .details-body { padding-top:9px; color:#475569; line-height:1.55; font-size:.95rem; }
+    .details-body .bullets { color:#475569; }
+
+    .notes-wrap { margin-top:14px; }
+    .notes-label {
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      margin-bottom:8px;
+    }
+    .notes-label strong { font-size:.95rem; }
+    .saved { font-size:.75rem; color:var(--green); font-weight:800; opacity:0; transition:opacity .2s ease; }
+    .saved.show { opacity:1; }
+    textarea {
+      width:100%;
+      min-height:104px;
+      resize:vertical;
+      border:1px solid var(--line);
+      border-radius:14px;
+      padding:12px;
+      background:#fff;
+      color:var(--ink);
+      line-height:1.5;
+      outline:none;
+    }
+    textarea:focus { border-color:#a5b4fc; box-shadow:0 0 0 3px rgba(99,102,241,.12); }
+
+    .complete-row {
+      display:flex;
+      justify-content:flex-end;
+      margin-top:12px;
+    }
+    .complete-btn {
+      border:1px solid #a7f3d0;
+      color:var(--green);
+      background:var(--green-soft);
+      border-radius:12px;
+      padding:9px 12px;
+      font-size:.8rem;
+      font-weight:850;
+    }
+    .complete-btn.completed { background:var(--green); color:white; border-color:var(--green); }
+
+    .bottom-nav {
+      position:fixed;
+      left:50%;
+      bottom:0;
+      transform:translateX(-50%);
+      width:min(980px,100%);
+      z-index:40;
+      padding:10px 14px calc(10px + env(safe-area-inset-bottom));
+      background:rgba(248,250,252,.95);
+      backdrop-filter:blur(14px);
+      border-top:1px solid rgba(226,232,240,.9);
+      display:grid;
+      grid-template-columns:1fr auto 1fr;
+      gap:10px;
+      align-items:center;
+    }
+    .nav-btn {
+      border:0;
+      border-radius:14px;
+      padding:12px 14px;
+      font-weight:850;
+      background:#e2e8f0;
+      color:#334155;
+    }
+    .nav-btn.primary { background:var(--accent); color:white; }
+    .nav-btn:disabled { opacity:.4; cursor:not-allowed; }
+    .slide-count { min-width:64px; text-align:center; font-size:.8rem; color:var(--muted); font-weight:850; }
+
+    .source-note { color:var(--muted); font-size:.78rem; line-height:1.45; }
+    .mini-tag {
+      display:inline-flex;
+      border-radius:999px;
+      background:#f1f5f9;
+      color:#475569;
+      padding:5px 8px;
+      font-size:.72rem;
+      font-weight:850;
+      margin:2px 4px 2px 0;
+    }
+
+    body.large-text .lead,
+    body.large-text .bullets,
+    body.large-text .details-body,
+    body.large-text textarea { font-size:1.08rem; }
+    body.large-text .card h3 { font-size:1.16rem; }
+    body.large-text .verse blockquote { font-size:1.22rem; }
+
+    @media (min-width:760px) {
+      .app-shell { padding:20px 24px 112px; }
+      .topbar { margin:0 -24px 18px; padding-left:24px; padding-right:24px; }
+      .grid.two { grid-template-columns:1.12fr .88fr; }
+      .hero { padding:28px; }
+      .card { padding:22px; }
+      .bottom-nav { padding-left:24px; padding-right:24px; }
+    }
+
+    @media print {
+      .topbar, .bottom-nav, .toolbar, .complete-row, .notes-wrap { display:none !important; }
+      body { background:white; }
+      .app-shell { max-width:none; padding:0; }
+      .slide { display:block !important; page-break-after:always; }
+      .hero, .card { box-shadow:none; }
+      details { break-inside:avoid; }
+      details > * { display:block !important; }
+    }
+  </style>
+</head>
+<body>
+<div class="app-shell">
+  <header class="topbar">
+    <div class="title-row">
+      <div class="brand">
+        <h1>Sacred Ceremonies</h1>
+        <p>Interactive discipleship class listener guide</p>
+      </div>
+      <div class="completion-pill" aria-label="lesson completion">
+        <strong id="completionText">0 / 9</strong>
+        <span>Reviewed</span>
+      </div>
+    </div>
+    <div class="progress-wrap"><div class="progress-track"><div id="progressBar" class="progress-bar"></div></div></div>
+    <nav id="sectionTabs" class="section-tabs" aria-label="Lesson sections"></nav>
+  </header>
+
+  <main id="slides">
+    <section class="slide active" data-title="Intro">
+      <div class="hero">
+        <div class="eyebrow">Introduction</div>
+        <h2>Sacred moments in the life of the church</h2>
+        <p class="lead">Seventh-day Adventist church life includes ceremonies that mark commitment, worship, service, family life, sickness, death and marriage. They are meaningful because each one points beyond the ceremony to a biblical truth.</p>
+        <div class="toolbar">
+          <button class="tool-btn" data-action="largeText">Aa Bigger text</button>
+          <button class="tool-btn" data-action="expandAll">Expand all</button>
+          <button class="tool-btn" onclick="window.print()">Print / Save PDF</button>
+        </div>
+      </div>
+
+      <div class="grid two">
+        <div class="card">
+          <h3>Why these ceremonies matter</h3>
+          <ul class="bullets">
+            <li>Church members share both joy and suffering as one body in Christ.</li>
+            <li>Sacred ceremonies create moments for spiritual reflection.</li>
+            <li>They acknowledge our dependence on God at important stages of life.</li>
+            <li>They help the church express faith together, not only individually.</li>
+            <li>The seven ceremonies in this lesson are baptism, communion, child dedication, ordination, anointing of the sick, funerals and weddings.</li>
+          </ul>
+          <div class="big-idea" style="margin-top:12px">The important question is not only “What do Adventists do?” but “What biblical truth is being expressed through what we do?”</div>
+        </div>
+        <div class="card verse">
+          <div class="ref">1 Corinthians 12:26 · NKJV</div>
+          <blockquote>“And if one member suffers, all the members suffer with it; or if one member is honoured, all the members rejoice with it.”</blockquote>
+        </div>
+      </div>
+
+      <div class="accordion">
+        <details>
+          <summary>How to use this guide</summary>
+          <div class="details-body">
+            <ul class="bullets">
+              <li>Use the tabs at the top or the Previous / Next buttons.</li>
+              <li>Open the expandable sections when you want more detail.</li>
+              <li>Use the notes box on each page for questions or personal insights.</li>
+              <li>Tap “Mark as reviewed” when you feel you understand a section.</li>
+            </ul>
+          </div>
+        </details>
+      </div>
+      <div class="notes-wrap" data-notes="intro"></div>
+      <div class="complete-row"><button class="complete-btn" data-complete="0">Mark as reviewed</button></div>
+    </section>
+
+    <section class="slide" data-title="Baptism">
+      <div class="hero">
+        <div class="eyebrow">1 · Baptism</div>
+        <h2>Buried with Christ, raised to new life</h2>
+        <p class="lead">Baptism is the public expression of faith in Jesus and symbolises dying to the old life and beginning a new life of obedience to Christ.</p>
+      </div>
+      <div class="grid two">
+        <div class="card">
+          <h3>The big idea</h3>
+          <ul class="bullets">
+            <li>Jesus commanded believers to be baptised.</li>
+            <li>Baptism follows faith and a personal decision for Christ.</li>
+            <li>Full immersion best represents burial and resurrection.</li>
+            <li>For a new Adventist believer, baptism is also the normal doorway into church membership.</li>
+            <li>Baptism is a beginning, not a graduation from discipleship.</li>
+          </ul>
+          <div class="big-idea" style="margin-top:12px">Baptism says publicly: my old life belongs to the past, and I now intend to walk with Christ in newness of life.</div>
+        </div>
+        <div class="card verse">
+          <div class="ref">Romans 6:4 · NKJV</div>
+          <blockquote>“Therefore we were buried with Him through baptism into death, that just as Christ was raised from the dead by the glory of the Father, even so we also should walk in newness of life.”</blockquote>
+        </div>
+      </div>
+      <div class="accordion">
+        <details open>
+          <summary>What normally happens before and during baptism?</summary>
+          <div class="details-body">
+            <ul class="bullets">
+              <li>Candidates study the biblical beliefs and practices of the Seventh-day Adventist Church.</li>
+              <li>The pastor or elder reads the baptismal vows summarising the beliefs of the church.</li>
+              <li>The candidate publicly affirms those vows.</li>
+              <li>A brief personal testimony may be shared.</li>
+              <li>The congregation votes to receive the candidate into membership upon baptism.</li>
+              <li>The candidate is fully immersed in water.</li>
+              <li>A baptismal certificate is normally given afterwards.</li>
+            </ul>
+          </div>
+        </details>
+        <details>
+          <summary>Why not infant baptism?</summary>
+          <div class="details-body">
+            <ul class="bullets">
+              <li>Baptism is connected with personal faith, understanding and commitment.</li>
+              <li>Children are therefore baptised when they are able to understand the spiritual meaning of the decision.</li>
+            </ul>
+          </div>
+        </details>
+        <details>
+          <summary>What is Profession of Faith?</summary>
+          <div class="details-body">
+            <ul class="bullets">
+              <li>Someone already baptised by immersion in another Christian denomination may, in some circumstances, be received into Adventist membership by Profession of Faith.</li>
+              <li>The main difference is that the person is not immersed again.</li>
+            </ul>
+          </div>
+        </details>
+        <details>
+          <summary>Where can a baptism happen?</summary>
+          <div class="details-body">In a church baptistry, pool, lake or another suitable place where there is enough water for full immersion. It may take place during Sabbath worship or at another suitable time.</div>
+        </details>
+      </div>
+      <div class="card remember" style="margin-top:14px">
+        <h3>What should I remember?</h3>
+        <ul class="bullets">
+          <li>My baptism was a commitment to Christ, not merely to a ceremony.</li>
+          <li>Membership brings me into a local church family where discipleship continues.</li>
+          <li>The life after baptism should match the meaning of baptism: walking in newness of life.</li>
+        </ul>
+      </div>
+      <div class="notes-wrap" data-notes="baptism"></div>
+      <div class="complete-row"><button class="complete-btn" data-complete="1">Mark as reviewed</button></div>
+    </section>
+
+    <section class="slide" data-title="Communion">
+      <div class="hero">
+        <div class="eyebrow">2 · Communion</div>
+        <h2>Humility, remembrance and renewal</h2>
+        <p class="lead">The Lord’s Supper is the gospel expressed through symbols. Adventists also follow Christ’s example of foot-washing before the meal.</p>
+      </div>
+      <div class="grid two">
+        <div class="card">
+          <h3>The big idea</h3>
+          <ul class="bullets">
+            <li>Jesus instituted the Lord’s Supper.</li>
+            <li>Unleavened bread represents Christ’s body.</li>
+            <li>The pure juice of the grape represents Christ’s blood.</li>
+            <li>Communion remembers Christ’s sacrifice and the forgiveness it makes possible.</li>
+            <li>The service is solemn, but also joyful.</li>
+            <li>Foot-washing prepares the heart through humility, heart-searching and reconciliation.</li>
+          </ul>
+        </div>
+        <div class="card verse">
+          <div class="ref">John 13:14–15 · NKJV</div>
+          <blockquote>“If I then, your Lord and Teacher, have washed your feet, you also ought to wash one another’s feet. For I have given you an example, that you should do as I have done to you.”</blockquote>
+        </div>
+      </div>
+      <div class="accordion">
+        <details open>
+          <summary>What is the Ordinance of Humility?</summary>
+          <div class="details-body">
+            <ul class="bullets">
+              <li>This is the Adventist name for the foot-washing service.</li>
+              <li>It follows Jesus’ example in John 13.</li>
+              <li>Members find a partner, pray together and wash one another’s feet.</li>
+              <li>It expresses humility and willingness to serve.</li>
+              <li>It is also an opportunity for a fresh spiritual start and reconciliation where needed.</li>
+            </ul>
+          </div>
+        </details>
+        <details>
+          <summary>How is foot-washing normally organised?</summary>
+          <div class="details-body">
+            <ul class="bullets">
+              <li>Deacons and deaconesses prepare towels and wash basins.</li>
+              <li>Men and women commonly meet in separate rooms.</li>
+              <li>Some churches make provision for families to participate together.</li>
+              <li>Prayer and hymns often form part of the experience.</li>
+            </ul>
+          </div>
+        </details>
+        <details>
+          <summary>Who may participate in communion?</summary>
+          <div class="details-body">
+            <ul class="bullets">
+              <li>Seventh-day Adventists practise open communion.</li>
+              <li>Believing Christians from other denominations are welcome to participate.</li>
+              <li>Because it is a believer’s ordinance, children are normally encouraged to wait until after baptism.</li>
+            </ul>
+          </div>
+        </details>
+        <details>
+          <summary>How often is communion held?</summary>
+          <div class="details-body">
+            <ul class="bullets">
+              <li>As a general rule, Adventist congregations hold communion once a quarter.</li>
+              <li>Members are encouraged not to miss it simply because they feel unworthy or would rather observe.</li>
+              <li>Our need of grace is exactly why the service matters.</li>
+            </ul>
+          </div>
+        </details>
+      </div>
+      <div class="card remember" style="margin-top:14px">
+        <h3>What should I remember?</h3>
+        <ul class="bullets">
+          <li>Foot-washing is not a strange ritual to endure. It is a practical lesson in Christlike humility.</li>
+          <li>Communion directs attention away from my worthiness and towards Christ’s sacrifice.</li>
+          <li>It is a good time to examine my heart and repair relationships.</li>
+        </ul>
+      </div>
+      <div class="card question-card" style="margin-top:14px">
+        <h3>Think about it</h3>
+        <p>Is there anyone with whom I need reconciliation before the next communion service?</p>
+      </div>
+      <div class="notes-wrap" data-notes="communion"></div>
+      <div class="complete-row"><button class="complete-btn" data-complete="2">Mark as reviewed</button></div>
+    </section>
+
+    <section class="slide" data-title="Child Dedication">
+      <div class="hero">
+        <div class="eyebrow">3 · Child Dedication</div>
+        <h2>A family and a church make a commitment</h2>
+        <p class="lead">Adventists do not baptise infants, but we do dedicate children to the Lord and pray for God’s blessing upon their lives.</p>
+      </div>
+      <div class="grid two">
+        <div class="card">
+          <h3>The four commitments</h3>
+          <ul class="bullets">
+            <li><strong>Thanksgiving:</strong> recognising the child as a gift from God.</li>
+            <li><strong>Parents:</strong> committing to raise the child in the nurture and instruction of the Lord.</li>
+            <li><strong>Congregation:</strong> committing to support the parents and child.</li>
+            <li><strong>Prayer:</strong> asking for God’s blessing over the child’s life.</li>
+          </ul>
+          <div class="big-idea" style="margin-top:12px">The dedication is not primarily the child making a promise. It is the adults around the child making a promise before God.</div>
+        </div>
+        <div class="card">
+          <h3>Biblical examples</h3>
+          <span class="mini-tag">Luke 2:22</span>
+          <span class="mini-tag">1 Samuel 1:27–28</span>
+          <span class="mini-tag">Mark 10:16</span>
+          <p>Mary and Joseph presented Jesus in the Temple. Hannah dedicated Samuel to the Lord. Jesus welcomed and blessed little children.</p>
+        </div>
+      </div>
+      <div class="accordion">
+        <details open>
+          <summary>What normally happens in the service?</summary>
+          <div class="details-body">
+            <ul class="bullets">
+              <li>The parents, and sometimes other family members, are invited before the congregation.</li>
+              <li>The pastor or elder gives brief remarks about the purpose of dedication.</li>
+              <li>The parents agree to raise the child for God.</li>
+              <li>A prayer is offered, sometimes while the officiant holds the child or places a hand on the child’s head.</li>
+              <li>A certificate is normally given to the parents.</li>
+            </ul>
+          </div>
+        </details>
+        <details>
+          <summary>Is dedication the same as baptism?</summary>
+          <div class="details-body">
+            <ul class="bullets">
+              <li>No. Dedication does not save the child and does not replace a future personal decision for baptism.</li>
+              <li>Baptism comes later when the child can personally understand and respond to the gospel.</li>
+            </ul>
+          </div>
+        </details>
+        <details>
+          <summary>Is there an age limit?</summary>
+          <div class="details-body">The lesson notes no strict age limit, although children are most commonly dedicated when they are babies or very young.</div>
+        </details>
+      </div>
+      <div class="card remember" style="margin-top:14px">
+        <h3>What should I remember?</h3>
+        <ul class="bullets">
+          <li>The congregation has a role in helping children grow in faith.</li>
+          <li>A dedication should lead to continued support, example and encouragement from the church family.</li>
+        </ul>
+      </div>
+      <div class="notes-wrap" data-notes="child-dedication"></div>
+      <div class="complete-row"><button class="complete-btn" data-complete="3">Mark as reviewed</button></div>
+    </section>
+
+    <section class="slide" data-title="Ordination">
+      <div class="hero">
+        <div class="eyebrow">4 · Ordination</div>
+        <h2>Recognised and set apart for service</h2>
+        <p class="lead">All Christians are called to serve, while certain servant leaders are publicly set apart by prayer and the laying on of hands for particular responsibilities.</p>
+      </div>
+      <div class="grid two">
+        <div class="card">
+          <h3>The big idea</h3>
+          <ul class="bullets">
+            <li>The New Testament shows leaders being set apart by the laying on of hands.</li>
+            <li>Adventist ordination recognises calling and responsibility.</li>
+            <li>It does not create a spiritually superior class of Christians.</li>
+            <li>Leadership in the church is fundamentally service.</li>
+          </ul>
+          <div class="big-idea" style="margin-top:12px">Ordination is public recognition that a person has been entrusted with a particular ministry of service.</div>
+        </div>
+        <div class="card">
+          <h3>Who is ordained?</h3>
+          <ul class="bullets">
+            <li>Gospel ministers / pastors.</li>
+            <li>Local church elders.</li>
+            <li>Deacons.</li>
+            <li>Deaconesses may also be included in local ordination services.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="accordion">
+        <details open>
+          <summary>How are pastors ordained?</summary>
+          <div class="details-body">
+            <ul class="bullets">
+              <li>Pastors first serve for a period of active ministry so that their calling may be demonstrated.</li>
+              <li>The lesson describes a review after approximately four or five years of active service.</li>
+              <li>Approval is given through the relevant conference and union conference executive committees.</li>
+              <li>The ordination service includes the laying on of hands and a special prayer.</li>
+              <li>Once ordained, Adventist pastors are recognised worldwide as authorised to carry out the church’s rites and ceremonies and to organise churches.</li>
+            </ul>
+          </div>
+        </details>
+        <details>
+          <summary>How are local elders and deacons ordained?</summary>
+          <div class="details-body">
+            <ul class="bullets">
+              <li>The service is often held during Sabbath worship.</li>
+              <li>Previously ordained elders may kneel around those being ordained and lay hands on them while an ordained minister prays.</li>
+              <li>The lesson states that local elders and deacons should be ordained before participating in administering the ordinances of the church.</li>
+            </ul>
+          </div>
+        </details>
+      </div>
+      <div class="card remember" style="margin-top:14px">
+        <h3>What should I remember?</h3>
+        <ul class="bullets">
+          <li>Ordained office is responsibility, not status.</li>
+          <li>I should respect church leadership while remembering that Christ remains the Head of the church.</li>
+          <li>Every member still has a calling to serve, whether ordained or not.</li>
+        </ul>
+      </div>
+      <div class="notes-wrap" data-notes="ordination"></div>
+      <div class="complete-row"><button class="complete-btn" data-complete="4">Mark as reviewed</button></div>
+    </section>
+
+    <section class="slide" data-title="Anointing">
+      <div class="hero">
+        <div class="eyebrow">5 · Anointing of the Sick</div>
+        <h2>Praying in faith while surrendering to God</h2>
+        <p class="lead">Anointing is a personal, biblical ministry for those facing serious illness or injury. The church prays for healing while trusting the outcome to God.</p>
+      </div>
+      <div class="grid two">
+        <div class="card">
+          <h3>The big idea</h3>
+          <ul class="bullets">
+            <li>Those who are seriously ill may call for the elders of the church.</li>
+            <li>The service addresses spiritual as well as physical need.</li>
+            <li>It is a time for self-examination, surrender, forgiveness and peace.</li>
+            <li>The oil is a symbol; it does not possess mystical power.</li>
+            <li>The prayer is offered in faith and in submission to God’s will.</li>
+          </ul>
+        </div>
+        <div class="card verse">
+          <div class="ref">James 5:14–15 · NKJV</div>
+          <blockquote>“Is anyone among you sick? Let him call for the elders of the church, and let them pray over him, anointing him with oil in the name of the Lord. And the prayer of faith will save the sick, and the Lord will raise him up. And if he has committed sins, he will be forgiven.”</blockquote>
+        </div>
+      </div>
+      <div class="accordion">
+        <details open>
+          <summary>What normally happens in an anointing service?</summary>
+          <div class="details-body">
+            <ul class="bullets">
+              <li>The pastor usually officiates, assisted by local elders; in some circumstances an elder may lead.</li>
+              <li>Family, friends or other church members may be invited.</li>
+              <li>The purpose of the service is explained and Scripture is read.</li>
+              <li>Those present may share encouraging words.</li>
+              <li>The group gathers around the person and offers brief prayers.</li>
+              <li>The officiant concludes with prayer and places oil on the person’s forehead.</li>
+            </ul>
+          </div>
+        </details>
+        <details>
+          <summary>Is anointing a last rite for the dying?</summary>
+          <div class="details-body">No. The lesson explicitly describes it as an exercise of faith in Christ’s power to heal the living, not as a last rite reserved for the dying.</div>
+        </details>
+        <details>
+          <summary>Does anointing guarantee physical healing?</summary>
+          <div class="details-body">
+            <ul class="bullets">
+              <li>No. The church prays in faith, but the outcome is surrendered to God’s will.</li>
+              <li>Immediate physical healing may not occur.</li>
+              <li>The service may still bring spiritual peace, surrender and forgiveness.</li>
+            </ul>
+          </div>
+        </details>
+        <details>
+          <summary>Ellen G. White reading suggested in the lesson</summary>
+          <div class="details-body">The chapter “Prayer for the Sick” in <em>The Ministry of Healing</em> is recommended as spiritual preparation for anointing.</div>
+        </details>
+      </div>
+      <div class="card remember" style="margin-top:14px">
+        <h3>What should I remember?</h3>
+        <ul class="bullets">
+          <li>The oil points to the healing work of the Holy Spirit; it is not magical.</li>
+          <li>Faith trusts God’s power. Surrender trusts God’s wisdom.</li>
+          <li>Anointing is intentionally personal, not designed as a mass healing spectacle.</li>
+        </ul>
+      </div>
+      <div class="notes-wrap" data-notes="anointing"></div>
+      <div class="complete-row"><button class="complete-btn" data-complete="5">Mark as reviewed</button></div>
+    </section>
+
+    <section class="slide" data-title="Funeral">
+      <div class="hero">
+        <div class="eyebrow">6 · Funeral</div>
+        <h2>Grief shaped by resurrection hope</h2>
+        <p class="lead">Adventist funerals comfort the bereaved with the biblical promise of resurrection at Christ’s return and describe death as an unconscious sleep.</p>
+      </div>
+      <div class="grid two">
+        <div class="card">
+          <h3>The big idea</h3>
+          <ul class="bullets">
+            <li>Death is described as an unconscious sleep.</li>
+            <li>The dead await the resurrection at the second coming of Christ.</li>
+            <li>The Christian hope is not the denial of grief, but confidence in resurrection.</li>
+            <li>Adventist funerals are generally simple and respectful.</li>
+          </ul>
+        </div>
+        <div class="card verse">
+          <div class="ref">1 Thessalonians 4:16–18 · NKJV</div>
+          <blockquote>“For the Lord Himself will descend from heaven with a shout, with the voice of an archangel, and with the trumpet of God. And the dead in Christ will rise first. Then we who are alive and remain shall be caught up together with them in the clouds to meet the Lord in the air. And thus we shall always be with the Lord. Therefore comfort one another with these words.”</blockquote>
+        </div>
+      </div>
+      <div class="accordion">
+        <details open>
+          <summary>What makes Adventist funeral teaching distinctive?</summary>
+          <div class="details-body">
+            <ul class="bullets">
+              <li>The lesson cautions against telling mourners that the deceased is already consciously enjoying heaven.</li>
+              <li>Instead, comfort is centred on the promised resurrection.</li>
+              <li>Supporting references include Ecclesiastes 9:5–6, Psalm 13:3 and Acts 2:34.</li>
+            </ul>
+          </div>
+        </details>
+        <details>
+          <summary>What normally happens at an Adventist funeral?</summary>
+          <div class="details-body">
+            <ul class="bullets">
+              <li>Prayer and Scripture readings.</li>
+              <li>A eulogy or life sketch.</li>
+              <li>Memories shared by family and friends.</li>
+              <li>Musical selections and a short sermon.</li>
+              <li>A brief graveside service may follow.</li>
+              <li>A church meal may be provided afterwards if requested by the family.</li>
+            </ul>
+          </div>
+        </details>
+        <details>
+          <summary>What about cremation?</summary>
+          <div class="details-body">
+            <ul class="bullets">
+              <li>The lesson states that Scripture does not prescribe one required method for caring for the body, provided proper respect is shown.</li>
+              <li>Cremation therefore does not prevent resurrection.</li>
+              <li>God is not dependent on the original material of the earthly body in order to resurrect the dead.</li>
+            </ul>
+          </div>
+        </details>
+        <details>
+          <summary>Why simplicity?</summary>
+          <div class="details-body">Expensive arrangements are not necessary to honour the deceased. The emphasis is on respect, remembrance and Christian hope rather than display.</div>
+        </details>
+      </div>
+      <div class="card remember" style="margin-top:14px">
+        <h3>What should I remember?</h3>
+        <ul class="bullets">
+          <li>It is appropriate for Christians to grieve.</li>
+          <li>Our hope is anchored in Jesus’ return and resurrection.</li>
+          <li>When comforting others, use the promises Scripture itself gives.</li>
+        </ul>
+      </div>
+      <div class="notes-wrap" data-notes="funeral"></div>
+      <div class="complete-row"><button class="complete-btn" data-complete="6">Mark as reviewed</button></div>
+    </section>
+
+    <section class="slide" data-title="Wedding">
+      <div class="hero">
+        <div class="eyebrow">7 · Wedding</div>
+        <h2>A lifelong covenant before God</h2>
+        <p class="lead">Adventist weddings are intended to be joyful, spiritual occasions in which a man and a woman enter a lifelong marriage covenant before God and witnesses.</p>
+      </div>
+      <div class="grid two">
+        <div class="card">
+          <h3>The big idea</h3>
+          <ul class="bullets">
+            <li>Marriage is a sacred covenant, not merely a social celebration or legal arrangement.</li>
+            <li>Premarital counselling normally helps a couple prepare for married life.</li>
+            <li>The biblical principle of being equally yoked gives importance to shared faith.</li>
+            <li>Adventist ministers are strongly encouraged to officiate marriages where both partners share the same religious faith.</li>
+          </ul>
+          <div class="big-idea" style="margin-top:12px">The central question is not simply “What kind of wedding do we want?” but “Will this wedding and marriage honour Christ?”</div>
+        </div>
+        <div class="card">
+          <h3>Key biblical principle</h3>
+          <span class="mini-tag">2 Corinthians 6:14</span>
+          <p>The lesson applies the principle of being equally yoked to marriage, emphasising spiritual unity between husband and wife.</p>
+        </div>
+      </div>
+      <div class="accordion">
+        <details open>
+          <summary>What practical guidance does the lesson give?</summary>
+          <div class="details-body">
+            <ul class="bullets">
+              <li>Plan the wedding, rehearsal and reception outside Sabbath hours if the activities would conflict with Sabbath sacredness.</li>
+              <li>Many Adventist weddings are therefore held on Sundays.</li>
+              <li>Dress should reflect biblical modesty.</li>
+              <li>Avoid worldly music and dancing.</li>
+              <li>Do not provide alcohol, caffeinated beverages or unclean meats.</li>
+              <li>Avoid unnecessary extravagance and debt simply to keep up with modern wedding expectations.</li>
+            </ul>
+          </div>
+        </details>
+        <details>
+          <summary>Why is Sabbath planning mentioned?</summary>
+          <div class="details-body">Wedding preparation can involve decorating, photography, paid services, significant personal preparation and clean-up. The lesson encourages couples to avoid turning Sabbath into a day of ordinary wedding work.</div>
+        </details>
+        <details>
+          <summary>What should be the spiritual focus?</summary>
+          <div class="details-body">The lesson says the number one Guest to please at every wedding should be the Lord Jesus Christ. The celebration should bear witness that He has first place in the couple’s lives.</div>
+        </details>
+      </div>
+      <div class="card remember" style="margin-top:14px">
+        <h3>What should I remember?</h3>
+        <ul class="bullets">
+          <li>A Christian wedding should point towards a Christian marriage.</li>
+          <li>Shared faith matters beyond the ceremony because marriage joins two lives in everyday worship, values and decisions.</li>
+          <li>Keeping Christ central is more important than impressing guests.</li>
+        </ul>
+      </div>
+      <div class="notes-wrap" data-notes="wedding"></div>
+      <div class="complete-row"><button class="complete-btn" data-complete="7">Mark as reviewed</button></div>
+    </section>
+
+    <section class="slide" data-title="Closing">
+      <div class="hero">
+        <div class="eyebrow">Closing</div>
+        <h2>The ceremony points beyond itself</h2>
+        <p class="lead">These ceremonies are important moments in the life of the church, but their meaning comes from the spiritual realities they represent and the God to whom they point.</p>
+      </div>
+      <div class="grid two">
+        <div class="card">
+          <h3>One-line recap</h3>
+          <ul class="bullets">
+            <li><strong>Baptism:</strong> a new life with Christ.</li>
+            <li><strong>Communion:</strong> remember Christ’s sacrifice and receive renewal.</li>
+            <li><strong>Foot-washing:</strong> humility, service and reconciliation.</li>
+            <li><strong>Child dedication:</strong> a child, family and congregation entrusted to God.</li>
+            <li><strong>Ordination:</strong> a servant set apart for particular ministry.</li>
+            <li><strong>Anointing:</strong> faith, prayer and surrender in sickness.</li>
+            <li><strong>Funeral:</strong> grief held together with resurrection hope.</li>
+            <li><strong>Wedding:</strong> a lifelong covenant before God.</li>
+          </ul>
+        </div>
+        <div class="card remember">
+          <h3>The thread that joins them</h3>
+          <ul class="bullets">
+            <li>Christ is central.</li>
+            <li>Scripture gives the meaning.</li>
+            <li>The church family participates together.</li>
+            <li>The ceremony should lead to faithful Christian living afterwards.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="card question-card" style="margin-top:14px">
+        <h3>Discussion / reflection</h3>
+        <p>Which ceremony do you now understand differently, and what will you do differently the next time you participate in or attend it?</p>
+      </div>
+      <div class="accordion">
+        <details>
+          <summary>Source note</summary>
+          <div class="details-body">This listener guide is prepared from the supplied “Sacred Ceremonies” discipleship lesson. It follows the lesson’s terminology, practices and biblical framing, while reorganising the material for easier participation during class.</div>
+        </details>
+      </div>
+      <div class="notes-wrap" data-notes="closing"></div>
+      <div class="complete-row"><button class="complete-btn" data-complete="8">Mark as reviewed</button></div>
+    </section>
+  </main>
+</div>
+
+<footer class="bottom-nav">
+  <button id="prevBtn" class="nav-btn">← Previous</button>
+  <div id="slideCount" class="slide-count">1 / 9</div>
+  <button id="nextBtn" class="nav-btn primary">Next →</button>
+</footer>
+
+<script>
+  const slides = [...document.querySelectorAll('.slide')];
+  const tabsEl = document.getElementById('sectionTabs');
+  const progressBar = document.getElementById('progressBar');
+  const slideCount = document.getElementById('slideCount');
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  const completionText = document.getElementById('completionText');
+  const STORAGE_PREFIX = 'sacredCeremoniesListener:';
+  let current = 0;
+
+  function slugify(text) {
+    return text.toLowerCase().replaceAll(' ', '-');
+  }
+
+  // Build tabs
+  slides.forEach((slide, index) => {
+    const btn = document.createElement('button');
+    btn.className = 'tab' + (index === 0 ? ' active' : '');
+    btn.textContent = slide.dataset.title;
+    btn.addEventListener('click', () => showSlide(index));
+    tabsEl.appendChild(btn);
+  });
+  const tabs = [...document.querySelectorAll('.tab')];
+
+  // Notes boxes with local storage
+  document.querySelectorAll('.notes-wrap').forEach(wrap => {
+    const key = wrap.dataset.notes;
+    wrap.innerHTML = `
+      <div class="notes-label"><strong>My notes / questions</strong><span class="saved">Saved on this device ✓</span></div>
+      <textarea aria-label="Notes for ${key}" placeholder="Write a question, insight, or something you want to remember..."></textarea>`;
+    const area = wrap.querySelector('textarea');
+    const saved = wrap.querySelector('.saved');
+    area.value = localStorage.getItem(STORAGE_PREFIX + 'notes:' + key) || '';
+    let saveFlash;
+    area.addEventListener('input', () => {
+      localStorage.setItem(STORAGE_PREFIX + 'notes:' + key, area.value);
+      saved.classList.add('show');
+      clearTimeout(saveFlash);
+      saveFlash = setTimeout(() => saved.classList.remove('show'), 1200);
+    });
+  });
+
+  // Completion state
+  const completed = new Set(JSON.parse(localStorage.getItem(STORAGE_PREFIX + 'completed') || '[]'));
+  const completeBtns = [...document.querySelectorAll('.complete-btn')];
+
+  function saveCompleted() {
+    localStorage.setItem(STORAGE_PREFIX + 'completed', JSON.stringify([...completed]));
+  }
+
+  function renderCompletion() {
+    completionText.textContent = `${completed.size} / ${slides.length}`;
+    completeBtns.forEach((btn, i) => {
+      const isDone = completed.has(i);
+      btn.classList.toggle('completed', isDone);
+      btn.textContent = isDone ? 'Reviewed ✓' : 'Mark as reviewed';
+      tabs[i].classList.toggle('done', isDone);
+    });
+  }
+
+  completeBtns.forEach((btn, i) => {
+    btn.addEventListener('click', () => {
+      if (completed.has(i)) completed.delete(i); else completed.add(i);
+      saveCompleted();
+      renderCompletion();
+    });
+  });
+
+  function showSlide(index) {
+    current = Math.max(0, Math.min(index, slides.length - 1));
+    slides.forEach((s, i) => s.classList.toggle('active', i === current));
+    tabs.forEach((t, i) => t.classList.toggle('active', i === current));
+    prevBtn.disabled = current === 0;
+    nextBtn.disabled = current === slides.length - 1;
+    nextBtn.textContent = current === slides.length - 1 ? 'Finished ✓' : 'Next →';
+    slideCount.textContent = `${current + 1} / ${slides.length}`;
+    progressBar.style.width = `${((current + 1) / slides.length) * 100}%`;
+    tabs[current].scrollIntoView({behavior:'smooth', inline:'center', block:'nearest'});
+    window.scrollTo({top:0, behavior:'smooth'});
+    history.replaceState(null, '', `#${encodeURIComponent(slugify(slides[current].dataset.title))}`);
+  }
+
+  prevBtn.addEventListener('click', () => showSlide(current - 1));
+  nextBtn.addEventListener('click', () => showSlide(current + 1));
+
+  document.addEventListener('keydown', (e) => {
+    const tag = e.target.tagName;
+    if (tag === 'TEXTAREA' || tag === 'INPUT') return;
+    if (['ArrowRight','PageDown'].includes(e.key)) { e.preventDefault(); showSlide(current + 1); }
+    if (['ArrowLeft','PageUp'].includes(e.key)) { e.preventDefault(); showSlide(current - 1); }
+  });
+
+  let touchStartX = 0;
+  document.addEventListener('touchstart', e => touchStartX = e.changedTouches[0].screenX, {passive:true});
+  document.addEventListener('touchend', e => {
+    const touchEndX = e.changedTouches[0].screenX;
+    const delta = touchEndX - touchStartX;
+    if (Math.abs(delta) > 70) delta < 0 ? showSlide(current + 1) : showSlide(current - 1);
+  }, {passive:true});
+
+  document.querySelectorAll('[data-action="largeText"]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.body.classList.toggle('large-text');
+      btn.textContent = document.body.classList.contains('large-text') ? 'Aa Normal text' : 'Aa Bigger text';
+    });
+  });
+
+  document.querySelectorAll('[data-action="expandAll"]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const details = [...slides[current].querySelectorAll('details')];
+      const shouldOpen = details.some(d => !d.open);
+      details.forEach(d => d.open = shouldOpen);
+      btn.textContent = shouldOpen ? 'Collapse all' : 'Expand all';
+    });
+  });
+
+  const hash = decodeURIComponent(location.hash.replace('#',''));
+  if (hash) {
+    const idx = slides.findIndex(s => slugify(s.dataset.title) === hash);
+    if (idx >= 0) current = idx;
+  }
+
+  renderCompletion();
+  showSlide(current);
+</script>
+</body>
+</html>
