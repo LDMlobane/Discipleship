@@ -1,1077 +1,725 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <meta name="theme-color" content="#0f172a" />
-  <title>Sacred Ceremonies | Listener Guide</title>
-  <style>
-    :root {
-      --bg: #f8fafc;
-      --panel: #ffffff;
-      --ink: #0f172a;
-      --muted: #64748b;
-      --line: #e2e8f0;
-      --accent: #4f46e5;
-      --accent-2: #7c3aed;
-      --accent-soft: #eef2ff;
-      --green: #047857;
-      --green-soft: #ecfdf5;
-      --gold: #92400e;
-      --gold-soft: #fffbeb;
-      --shadow: 0 12px 30px rgba(15,23,42,.08);
-      --radius: 20px;
-    }
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#142d3d">
+<title>14. Something Better | Learner</title>
+<style>
+:root{
+  --navy:#142d3d;
+  --navy-2:#1d3b4d;
+  --ink:#1d2b34;
+  --muted:#667681;
+  --cream:#f5f1e8;
+  --paper:#fffdf8;
+  --gold:#c49a42;
+  --gold-soft:#f5ead0;
+  --sage:#dfe9e4;
+  --sage-ink:#315a4a;
+  --rose:#f3e4e0;
+  --rose-ink:#7a4038;
+  --line:#dfe2df;
+  --good:#2f6d4f;
+  --bad:#94453f;
+  --shadow:0 16px 42px rgba(20,45,61,.10);
+  --radius:22px;
+  --max:1120px;
+}
+*{box-sizing:border-box}
+html{scroll-behaviour:smooth;scroll-behavior:smooth}
+body{margin:0;background:var(--cream);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.62}
+button,input,textarea{font:inherit}
+button{cursor:pointer}
+a{color:inherit}
+.shell{width:min(var(--max),calc(100% - 34px));margin:0 auto}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: linear-gradient(180deg, #f8fafc 0%, #eef2ff 100%);
-      color: var(--ink);
-      min-height: 100vh;
-    }
+/* Course masthead */
+.mast{background:var(--navy);color:#fff;padding:max(18px,env(safe-area-inset-top)) 0 0;position:relative;overflow:hidden}
+.mast:after{content:"";position:absolute;right:-120px;top:-160px;width:360px;height:360px;border-radius:50%;border:1px solid rgba(255,255,255,.09);box-shadow:0 0 0 54px rgba(255,255,255,.025),0 0 0 108px rgba(255,255,255,.02);pointer-events:none}
+.coursebar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:0 0 26px;position:relative;z-index:2}
+.coursebrand{display:flex;align-items:center;gap:11px;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;font-weight:800;color:#dbe5ea}
+.brandmark{width:30px;height:30px;border:1px solid rgba(255,255,255,.34);border-radius:10px;display:grid;place-items:center;font-family:Georgia,serif;color:#fff}
+.lesson-count{font-size:.78rem;color:#b9c9d2;font-weight:700}
+.hero{position:relative;z-index:2;padding:8px 0 44px;display:grid;grid-template-columns:minmax(0,1fr) 250px;gap:36px;align-items:end}
+.kicker{display:flex;align-items:center;gap:10px;margin-bottom:14px;color:#dfc78e;text-transform:uppercase;letter-spacing:.13em;font-size:.76rem;font-weight:800}
+.kicker:before{content:"";width:34px;height:1px;background:var(--gold)}
+h1{font-family:Georgia,"Times New Roman",serif;font-size:clamp(2.7rem,6vw,5.2rem);line-height:.98;letter-spacing:-.04em;margin:0 0 16px;font-weight:500;max-width:760px}
+.hero-copy{max-width:730px;color:#d7e2e7;font-size:1.04rem;margin:0}
+.hero-verse{border-left:1px solid rgba(255,255,255,.2);padding-left:24px;color:#d7e2e7}
+.hero-verse .ref{display:block;color:#e4c77f;font-size:.78rem;text-transform:uppercase;letter-spacing:.08em;font-weight:800;margin-bottom:9px}
+.hero-verse p{margin:0;font-family:Georgia,serif;font-size:1.04rem;line-height:1.55}
 
-    button, textarea { font: inherit; }
-    button { cursor: pointer; }
+/* Progress */
+.progress-band{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:30;box-shadow:0 8px 28px rgba(20,45,61,.04)}
+.progress-inner{display:flex;align-items:center;gap:16px;min-height:58px}
+.progress-track{height:5px;background:#edf0ee;border-radius:999px;overflow:hidden;flex:1}
+.progress-fill{height:100%;width:0;background:var(--gold);transition:width .25s ease}
+.progress-label{font-size:.82rem;font-weight:800;color:var(--muted);white-space:nowrap}
 
-    .app-shell {
-      max-width: 980px;
-      margin: 0 auto;
-      padding: 14px 14px 112px;
-    }
+/* App layout */
+.app{display:grid;grid-template-columns:245px minmax(0,1fr);gap:38px;padding:34px 0 70px}
+.side{position:sticky;top:92px;align-self:start}
+.side-card{background:rgba(255,255,255,.72);border:1px solid rgba(216,220,217,.9);border-radius:20px;padding:12px;backdrop-filter:blur(8px)}
+.side-title{font-size:.73rem;text-transform:uppercase;letter-spacing:.11em;font-weight:850;color:#89949a;padding:7px 10px 11px}
+.stepnav{display:grid;gap:4px}
+.stepbtn{border:0;background:transparent;text-align:left;border-radius:14px;padding:11px 11px;display:grid;grid-template-columns:27px 1fr;gap:9px;align-items:center;color:#6c7880;font-size:.88rem;font-weight:730}
+.stepbtn .n{width:27px;height:27px;border:1px solid #ccd3d0;border-radius:9px;display:grid;place-items:center;font-size:.73rem;font-weight:850;color:#87938f;background:#fff}
+.stepbtn.active{background:var(--navy);color:#fff}
+.stepbtn.active .n{background:#fff;color:var(--navy);border-color:#fff}
+.stepbtn:focus-visible,.pill:focus-visible,.nextbtn:focus-visible,.answer:focus-visible,.acc-btn:focus-visible,.modal-close:focus-visible,.savebtn:focus-visible,.resetbtn:focus-visible{outline:3px solid rgba(196,154,66,.36);outline-offset:2px}
+.side-note{margin-top:14px;background:var(--gold-soft);border-radius:18px;padding:16px 17px;color:#5f4b21;font-size:.86rem}
+.side-note strong{display:block;color:#403516;margin-bottom:3px}
 
-    .topbar {
-      position: sticky;
-      top: 0;
-      z-index: 30;
-      background: rgba(248,250,252,.94);
-      backdrop-filter: blur(14px);
-      border-bottom: 1px solid rgba(226,232,240,.9);
-      margin: 0 -14px 14px;
-      padding: calc(10px + env(safe-area-inset-top)) 14px 10px;
-    }
+.main{min-width:0}
+.panel{display:none;animation:fade .22s ease}
+.panel.active{display:block}
+@keyframes fade{from{opacity:.35;transform:translateY(4px)}to{opacity:1;transform:none}}
+.eyebrow{color:#8f6c24;text-transform:uppercase;letter-spacing:.12em;font-size:.73rem;font-weight:850;margin-bottom:8px}
+h2{font-family:Georgia,"Times New Roman",serif;font-weight:500;font-size:clamp(2rem,4vw,3rem);line-height:1.1;letter-spacing:-.025em;margin:0 0 14px;color:var(--navy)}
+.lead{font-size:1.05rem;color:#52646f;max-width:810px;margin:0 0 24px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:24px;box-shadow:0 10px 30px rgba(20,45,61,.045)}
+.card h3{margin:0 0 9px;color:var(--navy);font-size:1.08rem}
+.card p{margin:0;color:#5c6d77}
+.card p+p{margin-top:10px}
+.stack{display:grid;gap:16px}
+.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
 
-    .title-row {
-      display: flex;
-      gap: 12px;
-      align-items: center;
-      justify-content: space-between;
-    }
+.big-idea{background:var(--navy);color:#fff;border-radius:26px;padding:27px 28px;margin:26px 0;position:relative;overflow:hidden}
+.big-idea:after{content:"14";position:absolute;right:18px;bottom:-31px;font-family:Georgia,serif;font-size:8.3rem;line-height:1;color:rgba(255,255,255,.055)}
+.big-idea .label{color:#e2c886;font-size:.72rem;text-transform:uppercase;letter-spacing:.13em;font-weight:850;margin-bottom:7px}
+.big-idea p{font-family:Georgia,serif;font-size:1.35rem;line-height:1.52;margin:0;max-width:820px;color:#f1f4f5;position:relative;z-index:1}
+.note{border-left:4px solid var(--gold);background:#fff9e9;border-radius:0 18px 18px 0;padding:17px 18px;color:#60512e;margin:20px 0}
+.note strong{color:#3d341f}
+.note p{margin:4px 0 0}
 
-    .brand h1 {
-      margin: 0;
-      font-size: clamp(1.08rem, 4vw, 1.45rem);
-      line-height: 1.15;
-      letter-spacing: -.02em;
-    }
+.scripture,.insight{display:inline-flex;align-items:center;gap:7px;border:0;border-radius:999px;background:#eef4f1;color:#315f50;font-weight:800;font-size:.79rem;padding:8px 11px;margin-top:13px}
+.scripture:before{content:"¶";font-family:Georgia,serif;font-size:1rem}
+.insight{background:var(--gold-soft);color:#6b5423}
+.insight:before{content:"“";font-family:Georgia,serif;font-size:1.2rem;line-height:0}
+.scripture:hover,.insight:hover{filter:brightness(.98)}
 
-    .brand p {
-      margin: 4px 0 0;
-      color: var(--muted);
-      font-size: .82rem;
-    }
+/* Intro map */
+.topic-map{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:8px;margin:24px 0}
+.topic{background:#fff;border:1px solid var(--line);border-radius:16px;padding:13px 8px;text-align:center;min-height:88px;display:grid;place-items:center;color:#53636d;font-size:.77rem;font-weight:800}
+.topic span{display:block;color:var(--gold);font-family:Georgia,serif;font-size:1.15rem;line-height:1;margin-bottom:5px}
 
-    .completion-pill {
-      min-width: 88px;
-      text-align: center;
-      background: var(--panel);
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      padding: 8px 9px;
-      box-shadow: 0 4px 14px rgba(15,23,42,.05);
-    }
-    .completion-pill strong { display:block; font-size:1rem; }
-    .completion-pill span { color:var(--muted); font-size:.7rem; font-weight:800; text-transform:uppercase; letter-spacing:.06em; }
+/* Grace pathway */
+.grace-path{display:grid;grid-template-columns:1fr 54px 1fr 54px 1fr;gap:8px;align-items:stretch;margin:24px 0}
+.path-card{background:var(--paper);border:1px solid var(--line);border-radius:21px;padding:23px}
+.path-card .num{display:inline-grid;place-items:center;width:34px;height:34px;border-radius:11px;background:var(--navy);color:#fff;font-size:.75rem;font-weight:900;margin-bottom:14px}
+.path-card h3{margin:0 0 7px;color:var(--navy);font-size:1.03rem}
+.path-card p{margin:0;color:#60707a;font-size:.94rem}
+.path-arrow{display:grid;place-items:center;color:#a98334;font-size:1.8rem;font-family:Georgia,serif}
 
-    .progress-wrap { margin-top: 10px; }
-    .progress-track {
-      height: 5px;
-      background: #e2e8f0;
-      border-radius: 999px;
-      overflow: hidden;
-    }
-    .progress-bar {
-      height: 100%;
-      width: 0;
-      background: linear-gradient(90deg, var(--accent), var(--accent-2));
-      transition: width .25s ease;
-    }
+.truth-pair{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:22px 0}
+.truth-card{border-radius:22px;padding:24px;border:1px solid var(--line)}
+.truth-card.cannot{background:var(--rose);color:var(--rose-ink);border-color:#e8cac4}
+.truth-card.produces{background:var(--sage);color:var(--sage-ink);border-color:#cbded5}
+.truth-card .tag{font-size:.71rem;text-transform:uppercase;letter-spacing:.11em;font-weight:900;opacity:.78;margin-bottom:8px}
+.truth-card h3{font-family:Georgia,serif;font-weight:500;font-size:1.45rem;line-height:1.2;margin:0 0 8px}
+.truth-card p{margin:0}
 
-    .section-tabs {
-      display: flex;
-      gap: 8px;
-      overflow-x: auto;
-      padding: 10px 0 2px;
-      scrollbar-width: none;
-    }
-    .section-tabs::-webkit-scrollbar { display:none; }
-    .tab {
-      white-space: nowrap;
-      border: 1px solid var(--line);
-      background: var(--panel);
-      color: #334155;
-      border-radius: 999px;
-      padding: 8px 12px;
-      font-size: .78rem;
-      font-weight: 800;
-      position: relative;
-    }
-    .tab.active { color:white; background:var(--accent); border-color:var(--accent); }
-    .tab.done:not(.active)::after {
-      content: '✓';
-      margin-left: 6px;
-      color: var(--green);
-      font-weight: 900;
-    }
+/* Relationship */
+.relationship-visual{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:24px 0}
+.marriage-card{background:var(--paper);border:1px solid var(--line);border-radius:22px;padding:24px}
+.marriage-card .mini{font-size:.71rem;text-transform:uppercase;letter-spacing:.1em;font-weight:900;color:#9a7429;margin-bottom:8px}
+.marriage-card h3{margin:0 0 8px;color:var(--navy);font-size:1.08rem}
+.marriage-card p{margin:0;color:#5b6b75}
+.balance{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:18px}
+.balance-card{border-radius:19px;padding:20px;border:1px solid var(--line);background:#fff}
+.balance-card h3{margin:0 0 7px;font-size:1rem;color:var(--navy)}
+.balance-card p{margin:0;color:#5f6f78;font-size:.91rem}
+.balance-card.warn{background:#fbf0ed;border-color:#efd4cf}
+.balance-card.center{background:var(--navy);border-color:var(--navy)}
+.balance-card.center h3{color:#fff}
+.balance-card.center p{color:#d8e3e8}
 
-    .slide { display:none; animation:fade .18s ease; }
-    .slide.active { display:block; }
-    @keyframes fade { from { opacity:.4; transform:translateY(6px); } to { opacity:1; transform:translateY(0); } }
+/* Better question */
+.question-shift{display:grid;grid-template-columns:1fr 64px 1fr;gap:12px;align-items:stretch;margin:24px 0}
+.question-card{border-radius:23px;padding:25px;border:1px solid var(--line)}
+.question-card.old{background:#f6e9e6;color:#6d3c36;border-color:#e9cbc5}
+.question-card.new{background:#e6efe9;color:#2f5a47;border-color:#cadfd2}
+.question-card .tag{font-size:.7rem;text-transform:uppercase;letter-spacing:.11em;font-weight:900;opacity:.75;margin-bottom:9px}
+.question-card blockquote{margin:0;font-family:Georgia,serif;font-size:1.34rem;line-height:1.42}
+.shift-arrow{display:grid;place-items:center;font-size:2rem;color:#a98334}
 
-    .hero, .card {
-      background: var(--panel);
-      border: 1px solid var(--line);
-      box-shadow: var(--shadow);
-      border-radius: var(--radius);
-    }
-    .hero {
-      padding: 22px;
-      margin-bottom: 14px;
-      background: linear-gradient(135deg, #fff 0%, #eef2ff 100%);
-    }
-    .eyebrow {
-      color: var(--accent);
-      font-size:.75rem;
-      font-weight:900;
-      letter-spacing:.08em;
-      text-transform:uppercase;
-    }
-    .hero h2 {
-      font-size: clamp(1.65rem, 6vw, 2.55rem);
-      line-height:1.05;
-      margin:10px 0;
-      letter-spacing:-.035em;
-    }
-    .hero .lead { margin:0; color:#475569; font-size:1rem; line-height:1.55; }
+/* Accordion */
+.acc{display:grid;gap:10px;margin-top:18px}
+.acc-item{background:var(--paper);border:1px solid var(--line);border-radius:18px;overflow:hidden}
+.acc-btn{width:100%;border:0;background:transparent;display:grid;grid-template-columns:42px 1fr auto;gap:13px;align-items:center;padding:16px 18px;text-align:left;color:var(--navy)}
+.acc-index{width:42px;height:42px;border-radius:13px;background:#eef1ef;color:#6e7b76;display:grid;place-items:center;font-size:.76rem;font-weight:900}
+.acc-btn strong{font-size:1rem}
+.acc-btn span.sub{display:block;color:#7b878c;font-size:.81rem;font-weight:600;margin-top:2px}
+.chev{font-size:1.2rem;color:#8a9692;transition:transform .2s ease}
+.acc-item.open .chev{transform:rotate(45deg)}
+.acc-body{display:none;padding:0 18px 18px 73px;color:#5e6d76}
+.acc-item.open .acc-body{display:block}
+.acc-body p{margin:0 0 10px}
+.acc-body p:last-child{margin-bottom:0}
 
-    .toolbar { display:flex; flex-wrap:wrap; gap:8px; margin-top:14px; }
-    .tool-btn {
-      border:1px solid var(--line);
-      background:#fff;
-      border-radius:12px;
-      padding:8px 10px;
-      font-size:.78rem;
-      font-weight:800;
-      color:#334155;
-    }
+/* Something better grid */
+.better-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:22px}
+.better-card{background:var(--paper);border:1px solid var(--line);border-radius:21px;padding:22px;position:relative;overflow:hidden}
+.better-card:after{content:"";position:absolute;width:90px;height:90px;border-radius:50%;background:rgba(196,154,66,.08);right:-32px;bottom:-36px}
+.better-card .label{font-size:.71rem;text-transform:uppercase;letter-spacing:.1em;font-weight:900;color:#9a7429;margin-bottom:7px}
+.better-card h3{margin:0 0 8px;color:var(--navy);font-size:1.06rem}
+.better-card p{margin:0;color:#5b6c75}
+.better-card .fromto{display:grid;grid-template-columns:auto 18px 1fr;gap:7px;margin-top:13px;align-items:start;font-size:.84rem;font-weight:760;color:#5f706e}
+.better-card .from{color:#87544a;text-decoration:line-through;text-decoration-thickness:1px}
+.better-card .to{color:#37644f}
 
-    .grid { display:grid; gap:14px; grid-template-columns:1fr; }
-    .card { padding:18px; }
-    .card h3 { margin:0 0 10px; font-size:1rem; letter-spacing:-.01em; }
-    .card p { color:#475569; line-height:1.6; }
+.quote-card{background:#edf3f0;border:1px solid #d9e4df;border-radius:22px;padding:24px;margin-top:20px}
+.quote-card blockquote{margin:0;font-family:Georgia,serif;font-size:1.22rem;line-height:1.55;color:#294b40}
+.quote-card cite{display:block;margin-top:12px;font-size:.78rem;font-style:normal;color:#72817b;font-weight:750}
 
-    .bullets { margin:0; padding-left:1.15rem; color:#334155; line-height:1.55; }
-    .bullets li { margin:7px 0; }
-    .bullets li::marker { color:var(--accent); }
+/* Reflection */
+.reflection{display:grid;grid-template-columns:1.08fr .92fr;gap:16px;margin-top:22px}
+.check-card label{display:flex;gap:11px;padding:11px 0;border-bottom:1px solid #eceeeb;align-items:flex-start;color:#485963}
+.check-card label:last-of-type{border-bottom:0}
+.check-card input{width:19px;height:19px;margin-top:3px;accent-color:var(--navy)}
+.prompt{background:var(--navy);color:#fff}
+.prompt h3{color:#fff}
+.prompt p{color:#dbe4e8}
+.prompt textarea{width:100%;min-height:132px;margin-top:14px;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.08);color:#fff;border-radius:15px;padding:13px;resize:vertical;outline:none}
+.prompt textarea::placeholder{color:#aec0ca}
+.save-row{display:flex;align-items:center;gap:10px;margin-top:10px;flex-wrap:wrap}
+.savebtn,.resetbtn{border:0;border-radius:999px;background:#fff;color:var(--navy);font-weight:850;font-size:.8rem;padding:9px 13px}
+.saved{font-size:.78rem;color:#bcd0d8;opacity:0;transition:opacity .2s}.saved.show{opacity:1}
+.prayer-panel{background:#fff9e9;border:1px solid #eadcaf;border-radius:22px;padding:22px;margin-top:16px;color:#5c4d29}
+.prayer-panel strong{color:#3e351f}
+.prayer-panel p{margin:5px 0 0;font-family:Georgia,serif;font-size:1.02rem;line-height:1.65}
 
-    .big-idea {
-      border-left:4px solid var(--accent);
-      background:var(--accent-soft);
-      border-radius:0 14px 14px 0;
-      padding:13px 14px;
-      line-height:1.48;
-      font-weight:800;
-    }
+/* Quiz */
+.quiz{display:grid;gap:14px;margin-top:22px}
+.q{background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:21px}
+.q h3{margin:0 0 13px;color:var(--navy);font-size:1rem}
+.answers{display:grid;gap:8px}
+.answer{width:100%;text-align:left;border:1px solid #d9dfdc;background:#fff;border-radius:14px;padding:11px 13px;color:#42535e}
+.answer:hover{border-color:#a8b5af}
+.answer.correct{background:#e7f1eb;border-color:#94baa3;color:#2b6045}
+.answer.wrong{background:#f6e9e7;border-color:#d4a09b;color:#7a3832}
+.answer:disabled{cursor:default}
+.feedback{display:none;margin-top:10px;border-radius:13px;padding:10px 12px;font-size:.89rem}
+.feedback.show{display:block}
+.feedback.ok{background:#e7f1eb;color:#2b6045}
+.feedback.no{background:#f6e9e7;color:#7a3832}
+.completion{display:none;margin-top:18px;background:var(--navy);color:#fff;border-radius:22px;padding:24px}
+.completion.show{display:block}
+.completion h3{color:#fff;margin:0 0 6px}
+.completion p{margin:0;color:#dce5e9}
+.quiz-tools{display:flex;justify-content:flex-end;margin-top:12px}
+.quiz-tools .resetbtn{background:#fff;border:1px solid #d5dad7}
 
-    .remember {
-      background:var(--green-soft);
-      border-color:#a7f3d0;
-    }
-    .remember h3 { color:var(--green); }
+/* Section controls */
+.controls{display:flex;justify-content:space-between;gap:10px;margin-top:28px;padding-top:20px;border-top:1px solid #d9dcda}
+.nextbtn{border:1px solid #d5dad7;background:#fff;color:var(--navy);border-radius:999px;padding:10px 15px;font-weight:850;font-size:.84rem}
+.nextbtn.primary{background:var(--navy);border-color:var(--navy);color:#fff}
+.nextbtn[disabled]{visibility:hidden}
 
-    .question-card {
-      background:var(--gold-soft);
-      border-color:#fde68a;
-    }
-    .question-card h3 { color:var(--gold); }
+/* Modal */
+.overlay{position:fixed;inset:0;background:rgba(9,23,31,.66);z-index:100;display:none;align-items:center;justify-content:center;padding:18px}
+.overlay.open{display:flex}
+.modal{width:min(650px,100%);max-height:min(82vh,720px);overflow:auto;background:var(--paper);border-radius:25px;box-shadow:0 30px 80px rgba(0,0,0,.24);padding:0}
+.modal-head{position:sticky;top:0;background:rgba(255,253,248,.97);backdrop-filter:blur(10px);display:flex;justify-content:space-between;gap:14px;align-items:flex-start;padding:20px 21px 15px;border-bottom:1px solid var(--line);z-index:2}
+.modal-head h3{font-family:Georgia,serif;color:var(--navy);font-size:1.45rem;font-weight:500;margin:0}
+.modal-source{color:#87918d;font-size:.77rem;font-weight:750;margin-top:2px}
+.modal-close{border:0;background:#edf0ee;color:#5a6a63;width:36px;height:36px;border-radius:50%;font-size:1.4rem;line-height:1;flex:0 0 auto}
+.modal-body{padding:21px}
+.verse-text{font-family:Georgia,serif;font-size:1.16rem;line-height:1.72;margin:0;color:#2f3f46}
+.modal-why{margin-top:18px;background:#eef4f1;border-radius:16px;padding:14px 15px;color:#496158;font-size:.91rem}
+.modal-why strong{display:block;color:#2f5447;margin-bottom:3px}
 
-    .verse {
-      background:#0f172a;
-      color:white;
-      border:0;
-    }
-    .verse p { color:#e2e8f0; }
-    .verse .ref {
-      color:#c7d2fe;
-      font-size:.78rem;
-      font-weight:900;
-      text-transform:uppercase;
-      letter-spacing:.08em;
-      margin-bottom:8px;
-    }
-    .verse blockquote {
-      margin:0;
-      font-family:Georgia, "Times New Roman", serif;
-      font-size:1.06rem;
-      line-height:1.58;
-    }
-
-    .accordion { margin-top:14px; }
-    details {
-      border:1px solid var(--line);
-      background:#fff;
-      border-radius:14px;
-      padding:12px 14px;
-    }
-    details + details { margin-top:9px; }
-    summary {
-      font-weight:850;
-      color:#334155;
-      cursor:pointer;
-      list-style:none;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap:12px;
-    }
-    summary::-webkit-details-marker { display:none; }
-    summary::after { content:'+'; color:var(--accent); font-size:1.2rem; font-weight:900; }
-    details[open] summary::after { content:'−'; }
-    .details-body { padding-top:9px; color:#475569; line-height:1.55; font-size:.95rem; }
-    .details-body .bullets { color:#475569; }
-
-    .notes-wrap { margin-top:14px; }
-    .notes-label {
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:10px;
-      margin-bottom:8px;
-    }
-    .notes-label strong { font-size:.95rem; }
-    .saved { font-size:.75rem; color:var(--green); font-weight:800; opacity:0; transition:opacity .2s ease; }
-    .saved.show { opacity:1; }
-    textarea {
-      width:100%;
-      min-height:104px;
-      resize:vertical;
-      border:1px solid var(--line);
-      border-radius:14px;
-      padding:12px;
-      background:#fff;
-      color:var(--ink);
-      line-height:1.5;
-      outline:none;
-    }
-    textarea:focus { border-color:#a5b4fc; box-shadow:0 0 0 3px rgba(99,102,241,.12); }
-
-    .complete-row {
-      display:flex;
-      justify-content:flex-end;
-      margin-top:12px;
-    }
-    .complete-btn {
-      border:1px solid #a7f3d0;
-      color:var(--green);
-      background:var(--green-soft);
-      border-radius:12px;
-      padding:9px 12px;
-      font-size:.8rem;
-      font-weight:850;
-    }
-    .complete-btn.completed { background:var(--green); color:white; border-color:var(--green); }
-
-    .bottom-nav {
-      position:fixed;
-      left:50%;
-      bottom:0;
-      transform:translateX(-50%);
-      width:min(980px,100%);
-      z-index:40;
-      padding:10px 14px calc(10px + env(safe-area-inset-bottom));
-      background:rgba(248,250,252,.95);
-      backdrop-filter:blur(14px);
-      border-top:1px solid rgba(226,232,240,.9);
-      display:grid;
-      grid-template-columns:1fr auto 1fr;
-      gap:10px;
-      align-items:center;
-    }
-    .nav-btn {
-      border:0;
-      border-radius:14px;
-      padding:12px 14px;
-      font-weight:850;
-      background:#e2e8f0;
-      color:#334155;
-    }
-    .nav-btn.primary { background:var(--accent); color:white; }
-    .nav-btn:disabled { opacity:.4; cursor:not-allowed; }
-    .slide-count { min-width:64px; text-align:center; font-size:.8rem; color:var(--muted); font-weight:850; }
-
-    .source-note { color:var(--muted); font-size:.78rem; line-height:1.45; }
-    .mini-tag {
-      display:inline-flex;
-      border-radius:999px;
-      background:#f1f5f9;
-      color:#475569;
-      padding:5px 8px;
-      font-size:.72rem;
-      font-weight:850;
-      margin:2px 4px 2px 0;
-    }
-
-    body.large-text .lead,
-    body.large-text .bullets,
-    body.large-text .details-body,
-    body.large-text textarea { font-size:1.08rem; }
-    body.large-text .card h3 { font-size:1.16rem; }
-    body.large-text .verse blockquote { font-size:1.22rem; }
-
-    @media (min-width:760px) {
-      .app-shell { padding:20px 24px 112px; }
-      .topbar { margin:0 -24px 18px; padding-left:24px; padding-right:24px; }
-      .grid.two { grid-template-columns:1.12fr .88fr; }
-      .hero { padding:28px; }
-      .card { padding:22px; }
-      .bottom-nav { padding-left:24px; padding-right:24px; }
-    }
-
-    @media print {
-      .topbar, .bottom-nav, .toolbar, .complete-row, .notes-wrap { display:none !important; }
-      body { background:white; }
-      .app-shell { max-width:none; padding:0; }
-      .slide { display:block !important; page-break-after:always; }
-      .hero, .card { box-shadow:none; }
-      details { break-inside:avoid; }
-      details > * { display:block !important; }
-    }
-  </style>
+.mobile-tabs{display:none}
+@media(max-width:900px){
+  .hero{grid-template-columns:1fr;gap:22px}.hero-verse{border-left:0;border-top:1px solid rgba(255,255,255,.18);padding:18px 0 0;max-width:680px}
+  .app{grid-template-columns:1fr;padding-top:22px}.side{display:none}
+  .mobile-tabs{display:flex;gap:7px;overflow-x:auto;padding:0 0 13px;margin-bottom:18px;scrollbar-width:none}.mobile-tabs::-webkit-scrollbar{display:none}
+  .pill{white-space:nowrap;border:1px solid #d3d9d6;background:#fff;color:#64726f;border-radius:999px;padding:8px 11px;font-size:.78rem;font-weight:850}.pill.active{background:var(--navy);color:#fff;border-color:var(--navy)}
+  .topic-map{grid-template-columns:repeat(4,minmax(0,1fr))}
+  .grace-path{grid-template-columns:1fr}.path-arrow{transform:rotate(90deg);min-height:25px}
+  .reflection{grid-template-columns:1fr}
+}
+@media(max-width:680px){
+  .shell{width:min(100% - 24px,var(--max))}.coursebar{padding-bottom:20px}.coursebrand{font-size:.68rem}.lesson-count{display:none}.hero{padding:3px 0 32px}h1{font-size:2.8rem}.hero-copy{font-size:.98rem}
+  .progress-inner{min-height:52px}.progress-label{font-size:.73rem}.grid2,.grid3,.truth-pair,.relationship-visual,.balance,.better-grid{grid-template-columns:1fr}.card{padding:20px}.big-idea{padding:22px}.big-idea p{font-size:1.15rem}
+  .topic-map{grid-template-columns:repeat(2,minmax(0,1fr))}.topic:last-child{grid-column:1/-1}
+  .question-shift{grid-template-columns:1fr}.shift-arrow{transform:rotate(90deg);min-height:34px}
+  .acc-btn{grid-template-columns:38px 1fr auto;padding:14px}.acc-index{width:38px;height:38px}.acc-body{padding:0 14px 15px 14px}
+  .controls{margin-top:22px}.nextbtn{padding:9px 12px}.overlay{align-items:flex-end;padding:8px}.modal{border-radius:24px 24px 12px 12px;max-height:86svh}.modal-head{padding:17px 18px 13px}.modal-body{padding:18px}
+}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
+</style>
 </head>
 <body>
-<div class="app-shell">
-  <header class="topbar">
-    <div class="title-row">
-      <div class="brand">
-        <h1>Sacred Ceremonies</h1>
-        <p>Interactive discipleship class listener guide</p>
-      </div>
-      <div class="completion-pill" aria-label="lesson completion">
-        <strong id="completionText">0 / 9</strong>
-        <span>Reviewed</span>
-      </div>
+<header class="mast">
+  <div class="shell">
+    <div class="coursebar">
+      <div class="coursebrand"><span class="brandmark">D</span><span>Discipleship Class 2026</span></div>
+      <div class="lesson-count">Lesson 14</div>
     </div>
-    <div class="progress-wrap"><div class="progress-track"><div id="progressBar" class="progress-bar"></div></div></div>
-    <nav id="sectionTabs" class="section-tabs" aria-label="Lesson sections"></nav>
-  </header>
+    <div class="hero">
+      <div>
+        <div class="kicker">Christian Lifestyle · The Foundation</div>
+        <h1>Something Better</h1>
+        <p class="hero-copy">Before you explore Sabbath-keeping, reverence, stewardship, health, modesty, entertainment and family life, begin with the right order: your behaviour cannot purchase salvation. Christian obedience grows from a heart that has received Christ as Saviour and Lord.</p>
+      </div>
+      <aside class="hero-verse" aria-label="Key verse">
+        <span class="ref">John 14:15</span>
+        <p>“If ye love me, keep my commandments.”</p>
+      </aside>
+    </div>
+  </div>
+</header>
 
-  <main id="slides">
-    <section class="slide active" data-title="Intro">
-      <div class="hero">
-        <div class="eyebrow">Introduction</div>
-        <h2>Sacred moments in the life of the church</h2>
-        <p class="lead">Seventh-day Adventist church life includes ceremonies that mark commitment, worship, service, family life, sickness, death and marriage. They are meaningful because each one points beyond the ceremony to a biblical truth.</p>
-        <div class="toolbar">
-          <button class="tool-btn" data-action="largeText">Aa Bigger text</button>
-          <button class="tool-btn" data-action="expandAll">Expand all</button>
-          <button class="tool-btn" onclick="window.print()">Print / Save PDF</button>
-        </div>
+<div class="progress-band">
+  <div class="shell progress-inner">
+    <div class="progress-track" aria-hidden="true"><div class="progress-fill" id="progressFill"></div></div>
+    <div class="progress-label" id="progressLabel">1 of 7 · Start Here</div>
+  </div>
+</div>
+
+<div class="shell app">
+  <aside class="side" aria-label="Lesson navigation">
+    <div class="side-card">
+      <div class="side-title">Your journey</div>
+      <nav class="stepnav" id="stepNav"></nav>
+    </div>
+    <div class="side-note"><strong>Keep the order clear</strong>Christ saves. Love awakens. Obedience follows. The fruit never becomes the price.</div>
+  </aside>
+
+  <main class="main" id="mainContent">
+    <nav class="mobile-tabs" id="mobileTabs" aria-label="Lesson sections"></nav>
+
+    <section class="panel active" data-title="Start Here">
+      <div class="eyebrow">Start in the right place</div>
+      <h2>Lifestyle begins with the gospel</h2>
+      <p class="lead">In the chapters that follow, you will explore practical and sometimes sensitive areas of Christian life. Before you consider any of them, hold firmly to this truth: changing your behaviour is never a way to earn God’s favour.</p>
+
+      <div class="topic-map" aria-label="Topics you will explore in the chapters ahead">
+        <div class="topic"><div><span>01</span>Sabbath-keeping</div></div>
+        <div class="topic"><div><span>02</span>Reverence</div></div>
+        <div class="topic"><div><span>03</span>Stewardship</div></div>
+        <div class="topic"><div><span>04</span>Health</div></div>
+        <div class="topic"><div><span>05</span>Modesty</div></div>
+        <div class="topic"><div><span>06</span>Entertainment</div></div>
+        <div class="topic"><div><span>07</span>Family life</div></div>
       </div>
 
-      <div class="grid two">
-        <div class="card">
-          <h3>Why these ceremonies matter</h3>
-          <ul class="bullets">
-            <li>Church members share both joy and suffering as one body in Christ.</li>
-            <li>Sacred ceremonies create moments for spiritual reflection.</li>
-            <li>They acknowledge our dependence on God at important stages of life.</li>
-            <li>They help the church express faith together, not only individually.</li>
-            <li>The seven ceremonies in this lesson are baptism, communion, child dedication, ordination, anointing of the sick, funerals and weddings.</li>
-          </ul>
-          <div class="big-idea" style="margin-top:12px">The important question is not only “What do Adventists do?” but “What biblical truth is being expressed through what we do?”</div>
-        </div>
-        <div class="card verse">
-          <div class="ref">1 Corinthians 12:26 · NKJV</div>
-          <blockquote>“And if one member suffers, all the members suffer with it; or if one member is honoured, all the members rejoice with it.”</blockquote>
-        </div>
+      <div class="big-idea">
+        <div class="label">Big idea</div>
+        <p>You are saved only through Christ. Yet the Christ who forgives you also awakens love, reshapes your desires and leads you into a life that increasingly reflects His character.</p>
       </div>
 
-      <div class="accordion">
-        <details>
-          <summary>How to use this guide</summary>
-          <div class="details-body">
-            <ul class="bullets">
-              <li>Use the tabs at the top or the Previous / Next buttons.</li>
-              <li>Open the expandable sections when you want more detail.</li>
-              <li>Use the notes box on each page for questions or personal insights.</li>
-              <li>Tap “Mark as reviewed” when you feel you understand a section.</li>
-            </ul>
-          </div>
-        </details>
-      </div>
-      <div class="notes-wrap" data-notes="intro"></div>
-      <div class="complete-row"><button class="complete-btn" data-complete="0">Mark as reviewed</button></div>
+      <div class="note"><strong>A necessary distinction:</strong><p>Biblical lifestyle instruction is not a ladder by which you climb into salvation. It is guidance for you after you have already been met by the grace of Jesus.</p></div>
+      <div class="controls"><button class="nextbtn" data-prev disabled>Previous</button><button class="nextbtn primary" data-next>Next: Grace First</button></div>
     </section>
 
-    <section class="slide" data-title="Baptism">
-      <div class="hero">
-        <div class="eyebrow">1 · Baptism</div>
-        <h2>Buried with Christ, raised to new life</h2>
-        <p class="lead">Baptism is the public expression of faith in Jesus and symbolises dying to the old life and beginning a new life of obedience to Christ.</p>
+    <section class="panel" data-title="Grace First">
+      <div class="eyebrow">Behaviour cannot merit salvation</div>
+      <h2>Christ alone is the basis of forgiveness</h2>
+      <p class="lead">Hold firmly to this truth: nothing you do, and nothing you abstain from doing, can purchase favour with God. Your salvation rests on the merits of Christ’s life and sacrifice.</p>
+
+      <div class="truth-pair">
+        <article class="truth-card cannot">
+          <div class="tag">What behaviour cannot do</div>
+          <h3>It cannot atone for sin</h3>
+          <p>Effort, zeal, tears and self-denial cannot become a substitute for the blood of Jesus. Human conduct is never the ground of acceptance with God.</p>
+        </article>
+        <article class="truth-card produces">
+          <div class="tag">What salvation produces</div>
+          <h3>It awakens love and holiness</h3>
+          <p>When Christ’s sacrifice is received by faith, love for Him springs up in the heart and gives birth to the pursuit of Christlikeness.</p>
+        </article>
       </div>
-      <div class="grid two">
-        <div class="card">
-          <h3>The big idea</h3>
-          <ul class="bullets">
-            <li>Jesus commanded believers to be baptised.</li>
-            <li>Baptism follows faith and a personal decision for Christ.</li>
-            <li>Full immersion best represents burial and resurrection.</li>
-            <li>For a new Adventist believer, baptism is also the normal doorway into church membership.</li>
-            <li>Baptism is a beginning, not a graduation from discipleship.</li>
-          </ul>
-          <div class="big-idea" style="margin-top:12px">Baptism says publicly: my old life belongs to the past, and I now intend to walk with Christ in newness of life.</div>
-        </div>
-        <div class="card verse">
-          <div class="ref">Romans 6:4 · NKJV</div>
-          <blockquote>“Therefore we were buried with Him through baptism into death, that just as Christ was raised from the dead by the glory of the Father, even so we also should walk in newness of life.”</blockquote>
-        </div>
+
+      <div class="grace-path" aria-label="The gospel order of grace, love and obedience">
+        <article class="path-card"><span class="num">01</span><h3>Christ saves</h3><p>Forgiveness rests on His life and sacrifice, not your performance.</p></article>
+        <div class="path-arrow" aria-hidden="true">→</div>
+        <article class="path-card"><span class="num">02</span><h3>Love springs up</h3><p>Grace does not leave the heart untouched. Gratitude and trust begin to grow.</p></article>
+        <div class="path-arrow" aria-hidden="true">→</div>
+        <article class="path-card"><span class="num">03</span><h3>Obedience follows</h3><p>Jesus is received not only as Saviour, but also as Lord and Master.</p></article>
       </div>
-      <div class="accordion">
-        <details open>
-          <summary>What normally happens before and during baptism?</summary>
-          <div class="details-body">
-            <ul class="bullets">
-              <li>Candidates study the biblical beliefs and practices of the Seventh-day Adventist Church.</li>
-              <li>The pastor or elder reads the baptismal vows summarising the beliefs of the church.</li>
-              <li>The candidate publicly affirms those vows.</li>
-              <li>A brief personal testimony may be shared.</li>
-              <li>The congregation votes to receive the candidate into membership upon baptism.</li>
-              <li>The candidate is fully immersed in water.</li>
-              <li>A baptismal certificate is normally given afterwards.</li>
-            </ul>
-          </div>
-        </details>
-        <details>
-          <summary>Why not infant baptism?</summary>
-          <div class="details-body">
-            <ul class="bullets">
-              <li>Baptism is connected with personal faith, understanding and commitment.</li>
-              <li>Children are therefore baptised when they are able to understand the spiritual meaning of the decision.</li>
-            </ul>
-          </div>
-        </details>
-        <details>
-          <summary>What is Profession of Faith?</summary>
-          <div class="details-body">
-            <ul class="bullets">
-              <li>Someone already baptised by immersion in another Christian denomination may, in some circumstances, be received into Adventist membership by Profession of Faith.</li>
-              <li>The main difference is that the person is not immersed again.</li>
-            </ul>
-          </div>
-        </details>
-        <details>
-          <summary>Where can a baptism happen?</summary>
-          <div class="details-body">In a church baptistry, pool, lake or another suitable place where there is enough water for full immersion. It may take place during Sabbath worship or at another suitable time.</div>
-        </details>
-      </div>
-      <div class="card remember" style="margin-top:14px">
-        <h3>What should I remember?</h3>
-        <ul class="bullets">
-          <li>My baptism was a commitment to Christ, not merely to a ceremony.</li>
-          <li>Membership brings me into a local church family where discipleship continues.</li>
-          <li>The life after baptism should match the meaning of baptism: walking in newness of life.</li>
-        </ul>
-      </div>
-      <div class="notes-wrap" data-notes="baptism"></div>
-      <div class="complete-row"><button class="complete-btn" data-complete="1">Mark as reviewed</button></div>
+
+      <button class="insight" data-insight="rock">Rock of Ages: “Thou must save, and Thou alone”</button>
+      <div class="controls"><button class="nextbtn" data-prev>Previous</button><button class="nextbtn primary" data-next>Next: Relationship &amp; Obedience</button></div>
     </section>
 
-    <section class="slide" data-title="Communion">
-      <div class="hero">
-        <div class="eyebrow">2 · Communion</div>
-        <h2>Humility, remembrance and renewal</h2>
-        <p class="lead">The Lord’s Supper is the gospel expressed through symbols. Adventists also follow Christ’s example of foot-washing before the meal.</p>
+    <section class="panel" data-title="Relationship & Obedience">
+      <div class="eyebrow">Rules or relationship?</div>
+      <h2>Love and behaviour are not rivals</h2>
+      <p class="lead">Do not place relationship and obedience in opposition. In every healthy relationship, love naturally affects conduct. The same is true in your walk with Jesus.</p>
+
+      <div class="relationship-visual">
+        <article class="marriage-card">
+          <div class="mini">An everyday illustration</div>
+          <h3>Love changes how a spouse behaves</h3>
+          <p>A husband who wants a stronger marriage stops actions that create conflict and does more of what blesses his wife. His changed behaviour makes love visible.</p>
+        </article>
+        <article class="marriage-card">
+          <div class="mini">The spiritual application</div>
+          <h3>Love for Christ changes how you live</h3>
+          <p>When the Holy Spirit shows you that a behaviour is separating you from Christ, repentance and change express your love, trust and desire for deeper fellowship.</p>
+          <button class="scripture" data-ref="John 14:15">John 14:15</button>
+          <button class="scripture" data-ref="John 15:10">John 15:10</button>
+        </article>
       </div>
-      <div class="grid two">
-        <div class="card">
-          <h3>The big idea</h3>
-          <ul class="bullets">
-            <li>Jesus instituted the Lord’s Supper.</li>
-            <li>Unleavened bread represents Christ’s body.</li>
-            <li>The pure juice of the grape represents Christ’s blood.</li>
-            <li>Communion remembers Christ’s sacrifice and the forgiveness it makes possible.</li>
-            <li>The service is solemn, but also joyful.</li>
-            <li>Foot-washing prepares the heart through humility, heart-searching and reconciliation.</li>
-          </ul>
-        </div>
-        <div class="card verse">
-          <div class="ref">John 13:14–15 · NKJV</div>
-          <blockquote>“If I then, your Lord and Teacher, have washed your feet, you also ought to wash one another’s feet. For I have given you an example, that you should do as I have done to you.”</blockquote>
-        </div>
+
+      <div class="balance">
+        <article class="balance-card warn"><h3>Behaviour without relationship</h3><p>Can become cold formalism: outward correctness without living love for Christ.</p></article>
+        <article class="balance-card center"><h3>Christ-centred obedience</h3><p>Love receives Jesus, trusts His wisdom and submits practical life to His will.</p></article>
+        <article class="balance-card warn"><h3>Relationship talk without behaviour</h3><p>Can become a way of protecting cherished sin while claiming closeness to Christ.</p></article>
       </div>
-      <div class="accordion">
-        <details open>
-          <summary>What is the Ordinance of Humility?</summary>
-          <div class="details-body">
-            <ul class="bullets">
-              <li>This is the Adventist name for the foot-washing service.</li>
-              <li>It follows Jesus’ example in John 13.</li>
-              <li>Members find a partner, pray together and wash one another’s feet.</li>
-              <li>It expresses humility and willingness to serve.</li>
-              <li>It is also an opportunity for a fresh spiritual start and reconciliation where needed.</li>
-            </ul>
-          </div>
-        </details>
-        <details>
-          <summary>How is foot-washing normally organised?</summary>
-          <div class="details-body">
-            <ul class="bullets">
-              <li>Deacons and deaconesses prepare towels and wash basins.</li>
-              <li>Men and women commonly meet in separate rooms.</li>
-              <li>Some churches make provision for families to participate together.</li>
-              <li>Prayer and hymns often form part of the experience.</li>
-            </ul>
-          </div>
-        </details>
-        <details>
-          <summary>Who may participate in communion?</summary>
-          <div class="details-body">
-            <ul class="bullets">
-              <li>Seventh-day Adventists practise open communion.</li>
-              <li>Believing Christians from other denominations are welcome to participate.</li>
-              <li>Because it is a believer’s ordinance, children are normally encouraged to wait until after baptism.</li>
-            </ul>
-          </div>
-        </details>
-        <details>
-          <summary>How often is communion held?</summary>
-          <div class="details-body">
-            <ul class="bullets">
-              <li>As a general rule, Adventist congregations hold communion once a quarter.</li>
-              <li>Members are encouraged not to miss it simply because they feel unworthy or would rather observe.</li>
-              <li>Our need of grace is exactly why the service matters.</li>
-            </ul>
-          </div>
-        </details>
-      </div>
-      <div class="card remember" style="margin-top:14px">
-        <h3>What should I remember?</h3>
-        <ul class="bullets">
-          <li>Foot-washing is not a strange ritual to endure. It is a practical lesson in Christlike humility.</li>
-          <li>Communion directs attention away from my worthiness and towards Christ’s sacrifice.</li>
-          <li>It is a good time to examine my heart and repair relationships.</li>
-        </ul>
-      </div>
-      <div class="card question-card" style="margin-top:14px">
-        <h3>Think about it</h3>
-        <p>Is there anyone with whom I need reconciliation before the next communion service?</p>
-      </div>
-      <div class="notes-wrap" data-notes="communion"></div>
-      <div class="complete-row"><button class="complete-btn" data-complete="2">Mark as reviewed</button></div>
+
+      <div class="note"><strong>Keep the order clear:</strong><p>Your obedience does not create the relationship or earn salvation. It protects and deepens your fellowship with Christ as you respond to His love.</p></div>
+      <div class="controls"><button class="nextbtn" data-prev>Previous</button><button class="nextbtn primary" data-next>Next: The Better Question</button></div>
     </section>
 
-    <section class="slide" data-title="Child Dedication">
-      <div class="hero">
-        <div class="eyebrow">3 · Child Dedication</div>
-        <h2>A family and a church make a commitment</h2>
-        <p class="lead">Adventists do not baptise infants, but we do dedicate children to the Lord and pray for God’s blessing upon their lives.</p>
+    <section class="panel" data-title="The Better Question">
+      <div class="eyebrow">“Is this a salvation issue?”</div>
+      <h2>The question beneath the question</h2>
+      <p class="lead">Scripture recognises that some sins carry greater weight than others. Yet you should never use that truth to dismiss any clear biblical instruction as unimportant.</p>
+
+      <button class="scripture" data-ref="Matthew 23:23">Matthew 23:23</button>
+      <button class="insight" data-insight="small">No sin is small in the sight of God</button>
+
+      <div class="question-shift">
+        <article class="question-card old">
+          <div class="tag">A lowest-standard question</div>
+          <blockquote>“How far can I digress and yet be saved?”</blockquote>
+        </article>
+        <div class="shift-arrow" aria-hidden="true">→</div>
+        <article class="question-card new">
+          <div class="tag">A love-shaped question</div>
+          <blockquote>“How can I please God and more fully conform to His will?”</blockquote>
+        </article>
       </div>
-      <div class="grid two">
-        <div class="card">
-          <h3>The four commitments</h3>
-          <ul class="bullets">
-            <li><strong>Thanksgiving:</strong> recognising the child as a gift from God.</li>
-            <li><strong>Parents:</strong> committing to raise the child in the nurture and instruction of the Lord.</li>
-            <li><strong>Congregation:</strong> committing to support the parents and child.</li>
-            <li><strong>Prayer:</strong> asking for God’s blessing over the child’s life.</li>
-          </ul>
-          <div class="big-idea" style="margin-top:12px">The dedication is not primarily the child making a promise. It is the adults around the child making a promise before God.</div>
+
+      <p class="lead" style="margin-top:28px">Consider three biblical examples. In each case, the outward act may appear small, but it reveals a deeper issue of trust and submission.</p>
+      <div class="acc" id="exampleAccordion">
+        <div class="acc-item open">
+          <button class="acc-btn" aria-expanded="true"><span class="acc-index">01</span><span><strong>Adam and Eve</strong><span class="sub">A piece of fruit, but a crisis of trust</span></span><span class="chev">+</span></button>
+          <div class="acc-body"><p>The outward action may appear slight. The deeper reality was choosing another voice over God’s clear command.</p><button class="scripture" data-ref="Genesis 3:6">Genesis 3:6</button></div>
         </div>
-        <div class="card">
-          <h3>Biblical examples</h3>
-          <span class="mini-tag">Luke 2:22</span>
-          <span class="mini-tag">1 Samuel 1:27–28</span>
-          <span class="mini-tag">Mark 10:16</span>
-          <p>Mary and Joseph presented Jesus in the Temple. Hannah dedicated Samuel to the Lord. Jesus welcomed and blessed little children.</p>
+        <div class="acc-item">
+          <button class="acc-btn" aria-expanded="false"><span class="acc-index">02</span><span><strong>Cain</strong><span class="sub">An altered act of worship</span></span><span class="chev">+</span></button>
+          <div class="acc-body"><p>Cain modified what God had asked him to bring. The issue was not creative preference, but resistance to divine instruction.</p><button class="scripture" data-ref="Genesis 4:3-7">Genesis 4:3–7</button></div>
+        </div>
+        <div class="acc-item">
+          <button class="acc-btn" aria-expanded="false"><span class="acc-index">03</span><span><strong>Uzzah</strong><span class="sub">A moment that looked practical</span></span><span class="chev">+</span></button>
+          <div class="acc-body"><p>Reaching out to steady the ark appeared helpful, but it disregarded God’s explicit instructions concerning sacred things.</p><button class="scripture" data-ref="2 Samuel 6:6-7">2 Samuel 6:6–7</button></div>
         </div>
       </div>
-      <div class="accordion">
-        <details open>
-          <summary>What normally happens in the service?</summary>
-          <div class="details-body">
-            <ul class="bullets">
-              <li>The parents, and sometimes other family members, are invited before the congregation.</li>
-              <li>The pastor or elder gives brief remarks about the purpose of dedication.</li>
-              <li>The parents agree to raise the child for God.</li>
-              <li>A prayer is offered, sometimes while the officiant holds the child or places a hand on the child’s head.</li>
-              <li>A certificate is normally given to the parents.</li>
-            </ul>
-          </div>
-        </details>
-        <details>
-          <summary>Is dedication the same as baptism?</summary>
-          <div class="details-body">
-            <ul class="bullets">
-              <li>No. Dedication does not save the child and does not replace a future personal decision for baptism.</li>
-              <li>Baptism comes later when the child can personally understand and respond to the gospel.</li>
-            </ul>
-          </div>
-        </details>
-        <details>
-          <summary>Is there an age limit?</summary>
-          <div class="details-body">The lesson notes no strict age limit, although children are most commonly dedicated when they are babies or very young.</div>
-        </details>
-      </div>
-      <div class="card remember" style="margin-top:14px">
-        <h3>What should I remember?</h3>
-        <ul class="bullets">
-          <li>The congregation has a role in helping children grow in faith.</li>
-          <li>A dedication should lead to continued support, example and encouragement from the church family.</li>
-        </ul>
-      </div>
-      <div class="notes-wrap" data-notes="child-dedication"></div>
-      <div class="complete-row"><button class="complete-btn" data-complete="3">Mark as reviewed</button></div>
+
+      <div class="note"><strong>Watch the rationalisation:</strong><p>The habits you call “little things” may be the very things with the tightest grip on you. Choose honest surrender rather than minimum compliance.</p></div>
+      <div class="controls"><button class="nextbtn" data-prev>Previous</button><button class="nextbtn primary" data-next>Next: Something Better</button></div>
     </section>
 
-    <section class="slide" data-title="Ordination">
-      <div class="hero">
-        <div class="eyebrow">4 · Ordination</div>
-        <h2>Recognised and set apart for service</h2>
-        <p class="lead">All Christians are called to serve, while certain servant leaders are publicly set apart by prayer and the laying on of hands for particular responsibilities.</p>
+    <section class="panel" data-title="Something Better">
+      <div class="eyebrow">God’s purpose in practical counsel</div>
+      <h2>God is not trying to take joy away</h2>
+      <p class="lead">When Scripture confronts one of your habits or choices, surrender can feel like loss. See God’s instruction for what it is: the counsel of a wise Creator who has your well-being in view.</p>
+
+      <div class="better-grid">
+        <article class="better-card">
+          <div class="label">Stewardship</div>
+          <h3>God forms generosity in you</h3>
+          <p>As you return tithe and give offerings, God builds faith and benevolence in you while loosening the grip of selfishness and greed.</p>
+          <div class="fromto"><span class="from">selfishness</span><span>→</span><span class="to">faithful generosity</span></div>
+        </article>
+        <article class="better-card">
+          <div class="label">Health</div>
+          <h3>God protects your clarity and life</h3>
+          <p>God’s health counsel supports your clarity of mind and quality of life, and seeks to spare you suffering from disease and addiction.</p>
+          <div class="fromto"><span class="from">bondage</span><span>→</span><span class="to">freedom and wholeness</span></div>
+        </article>
+        <article class="better-card">
+          <div class="label">Modesty</div>
+          <h3>God frees you from anxious display</h3>
+          <p>Modesty nurtures meekness and humility and releases you from the pressure of pride and insecurity.</p>
+          <div class="fromto"><span class="from">self-display</span><span>→</span><span class="to">quiet security</span></div>
+        </article>
+        <article class="better-card">
+          <div class="label">Recreation &amp; entertainment</div>
+          <h3>God guards your inner life</h3>
+          <p>Healthful recreation refreshes you, while limits on sinful entertainment protect your mind from moral corruption.</p>
+          <div class="fromto"><span class="from">corruption</span><span>→</span><span class="to">a guarded mind</span></div>
+        </article>
       </div>
-      <div class="grid two">
-        <div class="card">
-          <h3>The big idea</h3>
-          <ul class="bullets">
-            <li>The New Testament shows leaders being set apart by the laying on of hands.</li>
-            <li>Adventist ordination recognises calling and responsibility.</li>
-            <li>It does not create a spiritually superior class of Christians.</li>
-            <li>Leadership in the church is fundamentally service.</li>
-          </ul>
-          <div class="big-idea" style="margin-top:12px">Ordination is public recognition that a person has been entrusted with a particular ministry of service.</div>
-        </div>
-        <div class="card">
-          <h3>Who is ordained?</h3>
-          <ul class="bullets">
-            <li>Gospel ministers / pastors.</li>
-            <li>Local church elders.</li>
-            <li>Deacons.</li>
-            <li>Deaconesses may also be included in local ordination services.</li>
-          </ul>
-        </div>
+
+      <aside class="quote-card">
+        <blockquote>“Would that all … might realise that He has something vastly better to offer them than they are seeking for themselves.”</blockquote>
+        <cite>Steps to Christ, p. 46</cite>
+      </aside>
+      <button class="insight" data-insight="wellbeing">God has the well-being of His children in view</button>
+
+      <div class="big-idea">
+        <div class="label">Reframe the command</div>
+        <p>God’s practical counsel is not arbitrary restriction. Receive it as mercy expressed through guidance, protection and an invitation into something better.</p>
       </div>
-      <div class="accordion">
-        <details open>
-          <summary>How are pastors ordained?</summary>
-          <div class="details-body">
-            <ul class="bullets">
-              <li>Pastors first serve for a period of active ministry so that their calling may be demonstrated.</li>
-              <li>The lesson describes a review after approximately four or five years of active service.</li>
-              <li>Approval is given through the relevant conference and union conference executive committees.</li>
-              <li>The ordination service includes the laying on of hands and a special prayer.</li>
-              <li>Once ordained, Adventist pastors are recognised worldwide as authorised to carry out the church’s rites and ceremonies and to organise churches.</li>
-            </ul>
-          </div>
-        </details>
-        <details>
-          <summary>How are local elders and deacons ordained?</summary>
-          <div class="details-body">
-            <ul class="bullets">
-              <li>The service is often held during Sabbath worship.</li>
-              <li>Previously ordained elders may kneel around those being ordained and lay hands on them while an ordained minister prays.</li>
-              <li>The lesson states that local elders and deacons should be ordained before participating in administering the ordinances of the church.</li>
-            </ul>
-          </div>
-        </details>
-      </div>
-      <div class="card remember" style="margin-top:14px">
-        <h3>What should I remember?</h3>
-        <ul class="bullets">
-          <li>Ordained office is responsibility, not status.</li>
-          <li>I should respect church leadership while remembering that Christ remains the Head of the church.</li>
-          <li>Every member still has a calling to serve, whether ordained or not.</li>
-        </ul>
-      </div>
-      <div class="notes-wrap" data-notes="ordination"></div>
-      <div class="complete-row"><button class="complete-btn" data-complete="4">Mark as reviewed</button></div>
+      <div class="controls"><button class="nextbtn" data-prev>Previous</button><button class="nextbtn primary" data-next>Next: Respond in Trust</button></div>
     </section>
 
-    <section class="slide" data-title="Anointing">
-      <div class="hero">
-        <div class="eyebrow">5 · Anointing of the Sick</div>
-        <h2>Praying in faith while surrendering to God</h2>
-        <p class="lead">Anointing is a personal, biblical ministry for those facing serious illness or injury. The church prays for healing while trusting the outcome to God.</p>
+    <section class="panel" data-title="Respond in Trust">
+      <div class="eyebrow">Practical application</div>
+      <h2>Come to Jesus honestly, not hopelessly</h2>
+      <p class="lead">Your struggle with practical obedience is not a reason to despair. Come to the sympathetic and forgiving Saviour. He receives you as you are, cleanses you and leads you forward.</p>
+
+      <div class="reflection">
+        <article class="card check-card">
+          <h3>My honest response</h3>
+          <p style="margin-bottom:10px">Mark the statements that express what God may be inviting you to do.</p>
+          <label><input class="response-check" type="checkbox" value="humility"><span>Ask for a humble spirit before studying the lifestyle chapters that follow.</span></label>
+          <label><input class="response-check" type="checkbox" value="honesty"><span>Stop labelling a clear biblical instruction as a “little thing” simply because surrender feels difficult.</span></label>
+          <label><input class="response-check" type="checkbox" value="trust"><span>Trust that God’s counsel is for my good, even before I fully understand every reason.</span></label>
+          <label><input class="response-check" type="checkbox" value="grace"><span>Return to Jesus for forgiveness and strength rather than trying to change through guilt alone.</span></label>
+        </article>
+
+        <article class="card prompt">
+          <h3>My prayer of trust</h3>
+          <p>Write one area in which you want Christ to help you move from resistance to willing obedience.</p>
+          <textarea id="responseNote" aria-label="Personal prayer note" placeholder="Lord Jesus, help me to trust You with…"></textarea>
+          <div class="save-row"><button class="savebtn" id="saveResponse">Save on this device</button><span class="saved" id="savedMsg" aria-live="polite">Saved</span></div>
+        </article>
       </div>
-      <div class="grid two">
-        <div class="card">
-          <h3>The big idea</h3>
-          <ul class="bullets">
-            <li>Those who are seriously ill may call for the elders of the church.</li>
-            <li>The service addresses spiritual as well as physical need.</li>
-            <li>It is a time for self-examination, surrender, forgiveness and peace.</li>
-            <li>The oil is a symbol; it does not possess mystical power.</li>
-            <li>The prayer is offered in faith and in submission to God’s will.</li>
-          </ul>
-        </div>
-        <div class="card verse">
-          <div class="ref">James 5:14–15 · NKJV</div>
-          <blockquote>“Is anyone among you sick? Let him call for the elders of the church, and let them pray over him, anointing him with oil in the name of the Lord. And the prayer of faith will save the sick, and the Lord will raise him up. And if he has committed sins, he will be forgiven.”</blockquote>
-        </div>
-      </div>
-      <div class="accordion">
-        <details open>
-          <summary>What normally happens in an anointing service?</summary>
-          <div class="details-body">
-            <ul class="bullets">
-              <li>The pastor usually officiates, assisted by local elders; in some circumstances an elder may lead.</li>
-              <li>Family, friends or other church members may be invited.</li>
-              <li>The purpose of the service is explained and Scripture is read.</li>
-              <li>Those present may share encouraging words.</li>
-              <li>The group gathers around the person and offers brief prayers.</li>
-              <li>The officiant concludes with prayer and places oil on the person’s forehead.</li>
-            </ul>
-          </div>
-        </details>
-        <details>
-          <summary>Is anointing a last rite for the dying?</summary>
-          <div class="details-body">No. The lesson explicitly describes it as an exercise of faith in Christ’s power to heal the living, not as a last rite reserved for the dying.</div>
-        </details>
-        <details>
-          <summary>Does anointing guarantee physical healing?</summary>
-          <div class="details-body">
-            <ul class="bullets">
-              <li>No. The church prays in faith, but the outcome is surrendered to God’s will.</li>
-              <li>Immediate physical healing may not occur.</li>
-              <li>The service may still bring spiritual peace, surrender and forgiveness.</li>
-            </ul>
-          </div>
-        </details>
-        <details>
-          <summary>Ellen G. White reading suggested in the lesson</summary>
-          <div class="details-body">The chapter “Prayer for the Sick” in <em>The Ministry of Healing</em> is recommended as spiritual preparation for anointing.</div>
-        </details>
-      </div>
-      <div class="card remember" style="margin-top:14px">
-        <h3>What should I remember?</h3>
-        <ul class="bullets">
-          <li>The oil points to the healing work of the Holy Spirit; it is not magical.</li>
-          <li>Faith trusts God’s power. Surrender trusts God’s wisdom.</li>
-          <li>Anointing is intentionally personal, not designed as a mass healing spectacle.</li>
-        </ul>
-      </div>
-      <div class="notes-wrap" data-notes="anointing"></div>
-      <div class="complete-row"><button class="complete-btn" data-complete="5">Mark as reviewed</button></div>
+
+      <div class="prayer-panel"><strong>A prayer to carry forward</strong><p>“Lord, give me a humble spirit and an honest desire to follow truth. Help me receive Your counsel as the wisdom of One who loves me, and shape my life into the likeness of Jesus.”</p></div>
+
+      <button class="insight" data-insight="come">Jesus loves to have us come just as we are</button>
+      <button class="scripture" data-ref="Deuteronomy 28:2">Deuteronomy 28:2</button>
+      <div class="controls"><button class="nextbtn" data-prev>Previous</button><button class="nextbtn primary" data-next>Next: Knowledge Check</button></div>
     </section>
 
-    <section class="slide" data-title="Funeral">
-      <div class="hero">
-        <div class="eyebrow">6 · Funeral</div>
-        <h2>Grief shaped by resurrection hope</h2>
-        <p class="lead">Adventist funerals comfort the bereaved with the biblical promise of resurrection at Christ’s return and describe death as an unconscious sleep.</p>
-      </div>
-      <div class="grid two">
-        <div class="card">
-          <h3>The big idea</h3>
-          <ul class="bullets">
-            <li>Death is described as an unconscious sleep.</li>
-            <li>The dead await the resurrection at the second coming of Christ.</li>
-            <li>The Christian hope is not the denial of grief, but confidence in resurrection.</li>
-            <li>Adventist funerals are generally simple and respectful.</li>
-          </ul>
-        </div>
-        <div class="card verse">
-          <div class="ref">1 Thessalonians 4:16–18 · NKJV</div>
-          <blockquote>“For the Lord Himself will descend from heaven with a shout, with the voice of an archangel, and with the trumpet of God. And the dead in Christ will rise first. Then we who are alive and remain shall be caught up together with them in the clouds to meet the Lord in the air. And thus we shall always be with the Lord. Therefore comfort one another with these words.”</blockquote>
-        </div>
-      </div>
-      <div class="accordion">
-        <details open>
-          <summary>What makes Adventist funeral teaching distinctive?</summary>
-          <div class="details-body">
-            <ul class="bullets">
-              <li>The lesson cautions against telling mourners that the deceased is already consciously enjoying heaven.</li>
-              <li>Instead, comfort is centred on the promised resurrection.</li>
-              <li>Supporting references include Ecclesiastes 9:5–6, Psalm 13:3 and Acts 2:34.</li>
-            </ul>
-          </div>
-        </details>
-        <details>
-          <summary>What normally happens at an Adventist funeral?</summary>
-          <div class="details-body">
-            <ul class="bullets">
-              <li>Prayer and Scripture readings.</li>
-              <li>A eulogy or life sketch.</li>
-              <li>Memories shared by family and friends.</li>
-              <li>Musical selections and a short sermon.</li>
-              <li>A brief graveside service may follow.</li>
-              <li>A church meal may be provided afterwards if requested by the family.</li>
-            </ul>
-          </div>
-        </details>
-        <details>
-          <summary>What about cremation?</summary>
-          <div class="details-body">
-            <ul class="bullets">
-              <li>The lesson states that Scripture does not prescribe one required method for caring for the body, provided proper respect is shown.</li>
-              <li>Cremation therefore does not prevent resurrection.</li>
-              <li>God is not dependent on the original material of the earthly body in order to resurrect the dead.</li>
-            </ul>
-          </div>
-        </details>
-        <details>
-          <summary>Why simplicity?</summary>
-          <div class="details-body">Expensive arrangements are not necessary to honour the deceased. The emphasis is on respect, remembrance and Christian hope rather than display.</div>
-        </details>
-      </div>
-      <div class="card remember" style="margin-top:14px">
-        <h3>What should I remember?</h3>
-        <ul class="bullets">
-          <li>It is appropriate for Christians to grieve.</li>
-          <li>Our hope is anchored in Jesus’ return and resurrection.</li>
-          <li>When comforting others, use the promises Scripture itself gives.</li>
-        </ul>
-      </div>
-      <div class="notes-wrap" data-notes="funeral"></div>
-      <div class="complete-row"><button class="complete-btn" data-complete="6">Mark as reviewed</button></div>
-    </section>
-
-    <section class="slide" data-title="Wedding">
-      <div class="hero">
-        <div class="eyebrow">7 · Wedding</div>
-        <h2>A lifelong covenant before God</h2>
-        <p class="lead">Adventist weddings are intended to be joyful, spiritual occasions in which a man and a woman enter a lifelong marriage covenant before God and witnesses.</p>
-      </div>
-      <div class="grid two">
-        <div class="card">
-          <h3>The big idea</h3>
-          <ul class="bullets">
-            <li>Marriage is a sacred covenant, not merely a social celebration or legal arrangement.</li>
-            <li>Premarital counselling normally helps a couple prepare for married life.</li>
-            <li>The biblical principle of being equally yoked gives importance to shared faith.</li>
-            <li>Adventist ministers are strongly encouraged to officiate marriages where both partners share the same religious faith.</li>
-          </ul>
-          <div class="big-idea" style="margin-top:12px">The central question is not simply “What kind of wedding do we want?” but “Will this wedding and marriage honour Christ?”</div>
-        </div>
-        <div class="card">
-          <h3>Key biblical principle</h3>
-          <span class="mini-tag">2 Corinthians 6:14</span>
-          <p>The lesson applies the principle of being equally yoked to marriage, emphasising spiritual unity between husband and wife.</p>
-        </div>
-      </div>
-      <div class="accordion">
-        <details open>
-          <summary>What practical guidance does the lesson give?</summary>
-          <div class="details-body">
-            <ul class="bullets">
-              <li>Plan the wedding, rehearsal and reception outside Sabbath hours if the activities would conflict with Sabbath sacredness.</li>
-              <li>Many Adventist weddings are therefore held on Sundays.</li>
-              <li>Dress should reflect biblical modesty.</li>
-              <li>Avoid worldly music and dancing.</li>
-              <li>Do not provide alcohol, caffeinated beverages or unclean meats.</li>
-              <li>Avoid unnecessary extravagance and debt simply to keep up with modern wedding expectations.</li>
-            </ul>
-          </div>
-        </details>
-        <details>
-          <summary>Why is Sabbath planning mentioned?</summary>
-          <div class="details-body">Wedding preparation can involve decorating, photography, paid services, significant personal preparation and clean-up. The lesson encourages couples to avoid turning Sabbath into a day of ordinary wedding work.</div>
-        </details>
-        <details>
-          <summary>What should be the spiritual focus?</summary>
-          <div class="details-body">The lesson says the number one Guest to please at every wedding should be the Lord Jesus Christ. The celebration should bear witness that He has first place in the couple’s lives.</div>
-        </details>
-      </div>
-      <div class="card remember" style="margin-top:14px">
-        <h3>What should I remember?</h3>
-        <ul class="bullets">
-          <li>A Christian wedding should point towards a Christian marriage.</li>
-          <li>Shared faith matters beyond the ceremony because marriage joins two lives in everyday worship, values and decisions.</li>
-          <li>Keeping Christ central is more important than impressing guests.</li>
-        </ul>
-      </div>
-      <div class="notes-wrap" data-notes="wedding"></div>
-      <div class="complete-row"><button class="complete-btn" data-complete="7">Mark as reviewed</button></div>
-    </section>
-
-    <section class="slide" data-title="Closing">
-      <div class="hero">
-        <div class="eyebrow">Closing</div>
-        <h2>The ceremony points beyond itself</h2>
-        <p class="lead">These ceremonies are important moments in the life of the church, but their meaning comes from the spiritual realities they represent and the God to whom they point.</p>
-      </div>
-      <div class="grid two">
-        <div class="card">
-          <h3>One-line recap</h3>
-          <ul class="bullets">
-            <li><strong>Baptism:</strong> a new life with Christ.</li>
-            <li><strong>Communion:</strong> remember Christ’s sacrifice and receive renewal.</li>
-            <li><strong>Foot-washing:</strong> humility, service and reconciliation.</li>
-            <li><strong>Child dedication:</strong> a child, family and congregation entrusted to God.</li>
-            <li><strong>Ordination:</strong> a servant set apart for particular ministry.</li>
-            <li><strong>Anointing:</strong> faith, prayer and surrender in sickness.</li>
-            <li><strong>Funeral:</strong> grief held together with resurrection hope.</li>
-            <li><strong>Wedding:</strong> a lifelong covenant before God.</li>
-          </ul>
-        </div>
-        <div class="card remember">
-          <h3>The thread that joins them</h3>
-          <ul class="bullets">
-            <li>Christ is central.</li>
-            <li>Scripture gives the meaning.</li>
-            <li>The church family participates together.</li>
-            <li>The ceremony should lead to faithful Christian living afterwards.</li>
-          </ul>
-        </div>
-      </div>
-      <div class="card question-card" style="margin-top:14px">
-        <h3>Discussion / reflection</h3>
-        <p>Which ceremony do you now understand differently, and what will you do differently the next time you participate in or attend it?</p>
-      </div>
-      <div class="accordion">
-        <details>
-          <summary>Source note</summary>
-          <div class="details-body">This listener guide is prepared from the supplied “Sacred Ceremonies” discipleship lesson. It follows the lesson’s terminology, practices and biblical framing, while reorganising the material for easier participation during class.</div>
-        </details>
-      </div>
-      <div class="notes-wrap" data-notes="closing"></div>
-      <div class="complete-row"><button class="complete-btn" data-complete="8">Mark as reviewed</button></div>
+    <section class="panel" data-title="Knowledge Check">
+      <div class="eyebrow">Review what you have learned</div>
+      <h2>What should stay with you?</h2>
+      <p class="lead">Choose the best answer for each question. Feedback appears immediately so the quiz reinforces what you have learned rather than merely scoring you.</p>
+      <div class="quiz" id="quiz"></div>
+      <div class="completion" id="completion" aria-live="polite"><h3>Lesson complete</h3><p id="completionText"></p></div>
+      <div class="quiz-tools"><button class="resetbtn" id="resetQuiz">Reset quiz</button></div>
+      <div class="controls"><button class="nextbtn" data-prev>Previous</button><button class="nextbtn primary" data-next disabled>Finished</button></div>
     </section>
   </main>
 </div>
 
-<footer class="bottom-nav">
-  <button id="prevBtn" class="nav-btn">← Previous</button>
-  <div id="slideCount" class="slide-count">1 / 9</div>
-  <button id="nextBtn" class="nav-btn primary">Next →</button>
-</footer>
+<div class="overlay" id="overlay" aria-hidden="true">
+  <section class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <header class="modal-head">
+      <div><h3 id="modalTitle"></h3><div class="modal-source" id="modalSource"></div></div>
+      <button class="modal-close" id="modalClose" aria-label="Close">×</button>
+    </header>
+    <div class="modal-body" id="modalBody"></div>
+  </section>
+</div>
 
 <script>
-  const slides = [...document.querySelectorAll('.slide')];
-  const tabsEl = document.getElementById('sectionTabs');
-  const progressBar = document.getElementById('progressBar');
-  const slideCount = document.getElementById('slideCount');
-  const prevBtn = document.getElementById('prevBtn');
-  const nextBtn = document.getElementById('nextBtn');
-  const completionText = document.getElementById('completionText');
-  const STORAGE_PREFIX = 'sacredCeremoniesListener:';
-  let current = 0;
+/* Section navigation */
+const panels=[...document.querySelectorAll('.panel')];
+const stepNav=document.getElementById('stepNav');
+const mobileTabs=document.getElementById('mobileTabs');
+const progressFill=document.getElementById('progressFill');
+const progressLabel=document.getElementById('progressLabel');
+let current=0;
 
-  function slugify(text) {
-    return text.toLowerCase().replaceAll(' ', '-');
+function makeNav(){
+  stepNav.innerHTML='';
+  mobileTabs.innerHTML='';
+  panels.forEach((panel,i)=>{
+    const title=panel.dataset.title;
+    const side=document.createElement('button');
+    side.className='stepbtn';
+    side.innerHTML=`<span class="n">${String(i+1).padStart(2,'0')}</span><span>${title}</span>`;
+    side.addEventListener('click',()=>showPanel(i));
+    stepNav.appendChild(side);
+
+    const mobile=document.createElement('button');
+    mobile.className='pill';
+    mobile.textContent=`${i+1}. ${title}`;
+    mobile.addEventListener('click',()=>showPanel(i));
+    mobileTabs.appendChild(mobile);
+  });
+}
+function showPanel(index,scroll=true){
+  current=Math.max(0,Math.min(index,panels.length-1));
+  panels.forEach((panel,i)=>panel.classList.toggle('active',i===current));
+  [...stepNav.children].forEach((button,i)=>button.classList.toggle('active',i===current));
+  [...mobileTabs.children].forEach((button,i)=>{
+    button.classList.toggle('active',i===current);
+    button.setAttribute('aria-current',i===current?'step':'false');
+  });
+  const title=panels[current].dataset.title;
+  progressFill.style.width=`${((current+1)/panels.length)*100}%`;
+  progressLabel.textContent=`${current+1} of ${panels.length} · ${title}`;
+  try{localStorage.setItem('lesson14-section',String(current));}catch(e){}
+  if(scroll){window.scrollTo({top:document.querySelector('.progress-band').offsetTop,behaviour:'smooth',behavior:'smooth'});}
+}
+makeNav();
+let savedSection=0;
+try{savedSection=Number(localStorage.getItem('lesson14-section')||0);}catch(e){}
+showPanel(Number.isFinite(savedSection)?savedSection:0,false);
+
+document.addEventListener('click',e=>{
+  const next=e.target.closest('[data-next]');
+  const prev=e.target.closest('[data-prev]');
+  if(next&&!next.disabled)showPanel(current+1);
+  if(prev&&!prev.disabled)showPanel(current-1);
+});
+
+/* Accordions */
+document.querySelectorAll('.acc-btn').forEach(button=>{
+  button.addEventListener('click',()=>{
+    const item=button.closest('.acc-item');
+    const isOpen=item.classList.toggle('open');
+    button.setAttribute('aria-expanded',String(isOpen));
+  });
+});
+
+/* Scripture and insight overlays */
+const verses={
+  'John 14:15':`If ye love me, keep my commandments.`,
+  'John 15:10':`If ye keep my commandments, ye shall abide in my love; even as I have kept my Father’s commandments, and abide in his love.`,
+  'Matthew 23:23':`Woe unto you, scribes and Pharisees, hypocrites! for ye pay tithe of mint and anise and cummin, and have omitted the weightier matters of the law, judgment, mercy, and faith: these ought ye to have done, and not to leave the other undone.`,
+  'Genesis 3:6':`And when the woman saw that the tree was good for food, and that it was pleasant to the eyes, and a tree to be desired to make one wise, she took of the fruit thereof, and did eat, and gave also unto her husband with her; and he did eat.`,
+  'Genesis 4:3-7':`And in process of time it came to pass, that Cain brought of the fruit of the ground an offering unto the Lord. And Abel, he also brought of the firstlings of his flock and of the fat thereof. And the Lord had respect unto Abel and to his offering: but unto Cain and to his offering he had not respect... If thou doest well, shalt thou not be accepted?`,
+  '2 Samuel 6:6-7':`And when they came to Nachon’s threshingfloor, Uzzah put forth his hand to the ark of God, and took hold of it; for the oxen shook it. And the anger of the Lord was kindled against Uzzah; and God smote him there for his error; and there he died by the ark of God.`,
+  'Deuteronomy 28:2':`And all these blessings shall come on thee, and overtake thee, if thou shalt hearken unto the voice of the Lord thy God.`
+};
+const verseNotes={
+  'John 14:15':'Jesus joins love and obedience. The sequence matters: love is the source, and obedience is its expression.',
+  'John 15:10':'Abiding in Christ’s love is not passive. Willing submission to His commands belongs to living fellowship with Him.',
+  'Matthew 23:23':'Jesus recognised “weightier matters” while still saying the others should not be left undone. Greater weight does not make the rest irrelevant.',
+  'Genesis 3:6':'The visible act was eating fruit. The deeper issue was distrusting God’s word and choosing another voice.',
+  'Genesis 4:3-7':'Cain’s choice shows that worship is not ours to reshape in resistance to what God has made clear.',
+  '2 Samuel 6:6-7':'The account is sobering because an apparently practical action crossed a boundary God had placed around the sacred.',
+  'Deuteronomy 28:2':'God connects obedience to His voice with blessing, not deprivation.'
+};
+const insights={
+  rock:{title:'Christ alone saves',source:'Rock of Ages, quoted in Lesson 14',quote:'“Not the labour of my hands can fulfil Thy law’s demands … Thou must save, and Thou alone.”',why:'The hymn captures the foundation of your faith: no human effort can atone for sin. Forgiveness rests entirely on Christ.'},
+  small:{title:'No sin is small in God’s sight',source:'Ellen G. White, Steps to Christ, p. 30',quote:'“However trifling this or that wrong act may seem in the eyes of men, no sin is small in the sight of God.”',why:'The point is not that every sin has identical consequences. It is that human judgement is too partial to dismiss clear instruction as unimportant.'},
+  wellbeing:{title:'God has our good in view',source:'Ellen G. White, Steps to Christ, p. 46',quote:'“God does not require us to give up anything that it is for our best interest to retain.”',why:'Interpret practical counsel through God’s character. His guidance aims at your freedom, protection and growth into mature Christlikeness.'},
+  come:{title:'Come just as you are',source:'Ellen G. White, Steps to Christ, p. 52',quote:'“Jesus loves to have us come to Him just as we are, sinful, helpless, dependent.”',why:'Lifestyle instruction is not meant to drive you away from Christ when you struggle. It sends you to Him for forgiveness, cleansing and strength.'}
+};
+const overlay=document.getElementById('overlay');
+const modalTitle=document.getElementById('modalTitle');
+const modalSource=document.getElementById('modalSource');
+const modalBody=document.getElementById('modalBody');
+const modalClose=document.getElementById('modalClose');
+let previousFocus=null;
+function openModal(title,source,html){
+  previousFocus=document.activeElement;
+  modalTitle.textContent=title;
+  modalSource.textContent=source;
+  modalBody.innerHTML=html;
+  overlay.classList.add('open');
+  overlay.setAttribute('aria-hidden','false');
+  document.body.style.overflow='hidden';
+  modalClose.focus();
+}
+function closeModal(){
+  overlay.classList.remove('open');
+  overlay.setAttribute('aria-hidden','true');
+  document.body.style.overflow='';
+  if(previousFocus&&typeof previousFocus.focus==='function')previousFocus.focus();
+}
+document.addEventListener('click',e=>{
+  const scripture=e.target.closest('.scripture');
+  if(scripture){
+    const ref=scripture.dataset.ref;
+    openModal(ref,'King James Version',`<p class="verse-text">${verses[ref]||'Passage text unavailable.'}</p><div class="modal-why"><strong>Why it matters here</strong>${verseNotes[ref]||'Read the passage in context and ask what it reveals about trusting Christ.'}</div>`);
   }
-
-  // Build tabs
-  slides.forEach((slide, index) => {
-    const btn = document.createElement('button');
-    btn.className = 'tab' + (index === 0 ? ' active' : '');
-    btn.textContent = slide.dataset.title;
-    btn.addEventListener('click', () => showSlide(index));
-    tabsEl.appendChild(btn);
-  });
-  const tabs = [...document.querySelectorAll('.tab')];
-
-  // Notes boxes with local storage
-  document.querySelectorAll('.notes-wrap').forEach(wrap => {
-    const key = wrap.dataset.notes;
-    wrap.innerHTML = `
-      <div class="notes-label"><strong>My notes / questions</strong><span class="saved">Saved on this device ✓</span></div>
-      <textarea aria-label="Notes for ${key}" placeholder="Write a question, insight, or something you want to remember..."></textarea>`;
-    const area = wrap.querySelector('textarea');
-    const saved = wrap.querySelector('.saved');
-    area.value = localStorage.getItem(STORAGE_PREFIX + 'notes:' + key) || '';
-    let saveFlash;
-    area.addEventListener('input', () => {
-      localStorage.setItem(STORAGE_PREFIX + 'notes:' + key, area.value);
-      saved.classList.add('show');
-      clearTimeout(saveFlash);
-      saveFlash = setTimeout(() => saved.classList.remove('show'), 1200);
-    });
-  });
-
-  // Completion state
-  const completed = new Set(JSON.parse(localStorage.getItem(STORAGE_PREFIX + 'completed') || '[]'));
-  const completeBtns = [...document.querySelectorAll('.complete-btn')];
-
-  function saveCompleted() {
-    localStorage.setItem(STORAGE_PREFIX + 'completed', JSON.stringify([...completed]));
+  const insightButton=e.target.closest('.insight');
+  if(insightButton){
+    const item=insights[insightButton.dataset.insight];
+    if(item)openModal(item.title,item.source,`<p class="verse-text">${item.quote}</p><div class="modal-why"><strong>Why it matters</strong>${item.why}</div>`);
   }
+});
+modalClose.addEventListener('click',closeModal);
+overlay.addEventListener('click',e=>{if(e.target===overlay)closeModal();});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&overlay.classList.contains('open'))closeModal();});
 
-  function renderCompletion() {
-    completionText.textContent = `${completed.size} / ${slides.length}`;
-    completeBtns.forEach((btn, i) => {
-      const isDone = completed.has(i);
-      btn.classList.toggle('completed', isDone);
-      btn.textContent = isDone ? 'Reviewed ✓' : 'Mark as reviewed';
-      tabs[i].classList.toggle('done', isDone);
-    });
+/* Reflection persistence */
+const responseNote=document.getElementById('responseNote');
+const responseChecks=[...document.querySelectorAll('.response-check')];
+try{
+  responseNote.value=localStorage.getItem('lesson14-note')||'';
+  const savedChecks=JSON.parse(localStorage.getItem('lesson14-checks')||'[]');
+  responseChecks.forEach(check=>check.checked=savedChecks.includes(check.value));
+}catch(e){}
+responseChecks.forEach(check=>check.addEventListener('change',()=>{
+  try{localStorage.setItem('lesson14-checks',JSON.stringify(responseChecks.filter(item=>item.checked).map(item=>item.value)));}catch(e){}
+}));
+document.getElementById('saveResponse').addEventListener('click',()=>{
+  try{localStorage.setItem('lesson14-note',responseNote.value);}catch(e){}
+  const message=document.getElementById('savedMsg');
+  message.classList.add('show');
+  setTimeout(()=>message.classList.remove('show'),1600);
+});
+
+/* Knowledge check */
+const quizData=[
+  {q:'What is the only basis for forgiveness and salvation?',a:['Improved behaviour','Christ’s life and sacrifice','Avoiding every external mistake'],c:1,x:'Your behaviour cannot earn God’s favour. Salvation rests on Christ, not on what you do or abstain from doing.'},
+  {q:'Which sequence best reflects the gospel order?',a:['Obedience earns grace, then love begins','Christ saves, love awakens, obedience follows','Rules replace the need for relationship'],c:1,x:'Grace comes first. When you receive Christ by faith, love springs up and produces willing obedience.'},
+  {q:'Why does Christian behaviour still matter if it cannot earn salvation?',a:['It expresses love and trust and affects fellowship with Christ','It allows us to compare our worth with other believers','It gives God a reason to forgive us'],c:0,x:'Your behaviour affects your relationship with Christ. Obedience is not payment for grace; it is a response to His love and lordship.'},
+  {q:'What danger can come from focusing on behaviour without relationship?',a:['Cold formalism','Too much dependence on grace','An inability to notice any command'],c:0,x:'Outward conformity without a living relationship with Jesus can become dry, mechanical and loveless.'},
+  {q:'What danger can come from speaking of relationship while dismissing behaviour?',a:['Excessive reverence','Failure to acknowledge cherished sin','Too much concern for Scripture'],c:1,x:'“Relationship” language can become a way of protecting habits that the Holy Spirit is asking you to surrender.'},
+  {q:'What is the better question than “How far can I digress and yet be saved?”',a:['How can I please God and more fully conform to His will?','Which instructions can safely be ignored?','How can I appear stricter than others?'],c:0,x:'Born-again love seeks God’s will rather than the lowest possible standard.'},
+  {q:'How should you understand biblical counsel on stewardship, health, modesty and entertainment?',a:['As arbitrary restrictions','As merciful blessings from a wise Creator','As ways to prove that we deserve salvation'],c:1,x:'God offers you something better, protecting you from greed, bondage, insecurity and corruption.'},
+  {q:'What should you do when you struggle with practical obedience?',a:['Wait until every desire changes before approaching Jesus','Hide the struggle to avoid condemnation','Come honestly to a sympathetic Saviour for forgiveness and strength'],c:2,x:'Come to Jesus honestly. He receives you as you are and leads you into cleansing, healing and faithful growth.'}
+];
+let answered={};
+try{answered=JSON.parse(localStorage.getItem('lesson14-quiz')||'{}')||{};}catch(e){answered={};}
+const quiz=document.getElementById('quiz');
+const completion=document.getElementById('completion');
+const completionText=document.getElementById('completionText');
+function renderQuiz(){
+  quiz.innerHTML='';
+  quizData.forEach((item,questionIndex)=>{
+    const card=document.createElement('article');
+    card.className='q';
+    card.innerHTML=`<h3>${questionIndex+1}. ${item.q}</h3><div class="answers">${item.a.map((answer,answerIndex)=>`<button class="answer" data-q="${questionIndex}" data-a="${answerIndex}">${answer}</button>`).join('')}</div><div class="feedback" id="fb-${questionIndex}"></div>`;
+    quiz.appendChild(card);
+    if(answered[questionIndex]!==undefined)applyAnswer(card,questionIndex,Number(answered[questionIndex]),false);
+  });
+  updateCompletion();
+}
+function applyAnswer(card,questionIndex,answerIndex,save=true){
+  const item=quizData[questionIndex];
+  card.querySelectorAll('.answer').forEach((button,index)=>{
+    button.disabled=true;
+    if(index===item.c)button.classList.add('correct');
+    else if(index===answerIndex)button.classList.add('wrong');
+  });
+  const feedback=card.querySelector('.feedback');
+  const correct=answerIndex===item.c;
+  feedback.className='feedback show '+(correct?'ok':'no');
+  feedback.innerHTML=`<strong>${correct?'Correct.':'Not quite.'}</strong> ${item.x}`;
+  if(save){
+    answered[questionIndex]=answerIndex;
+    try{localStorage.setItem('lesson14-quiz',JSON.stringify(answered));}catch(e){}
+    updateCompletion();
   }
-
-  completeBtns.forEach((btn, i) => {
-    btn.addEventListener('click', () => {
-      if (completed.has(i)) completed.delete(i); else completed.add(i);
-      saveCompleted();
-      renderCompletion();
-    });
-  });
-
-  function showSlide(index) {
-    current = Math.max(0, Math.min(index, slides.length - 1));
-    slides.forEach((s, i) => s.classList.toggle('active', i === current));
-    tabs.forEach((t, i) => t.classList.toggle('active', i === current));
-    prevBtn.disabled = current === 0;
-    nextBtn.disabled = current === slides.length - 1;
-    nextBtn.textContent = current === slides.length - 1 ? 'Finished ✓' : 'Next →';
-    slideCount.textContent = `${current + 1} / ${slides.length}`;
-    progressBar.style.width = `${((current + 1) / slides.length) * 100}%`;
-    tabs[current].scrollIntoView({behavior:'smooth', inline:'center', block:'nearest'});
-    window.scrollTo({top:0, behavior:'smooth'});
-    history.replaceState(null, '', `#${encodeURIComponent(slugify(slides[current].dataset.title))}`);
-  }
-
-  prevBtn.addEventListener('click', () => showSlide(current - 1));
-  nextBtn.addEventListener('click', () => showSlide(current + 1));
-
-  document.addEventListener('keydown', (e) => {
-    const tag = e.target.tagName;
-    if (tag === 'TEXTAREA' || tag === 'INPUT') return;
-    if (['ArrowRight','PageDown'].includes(e.key)) { e.preventDefault(); showSlide(current + 1); }
-    if (['ArrowLeft','PageUp'].includes(e.key)) { e.preventDefault(); showSlide(current - 1); }
-  });
-
-  let touchStartX = 0;
-  document.addEventListener('touchstart', e => touchStartX = e.changedTouches[0].screenX, {passive:true});
-  document.addEventListener('touchend', e => {
-    const touchEndX = e.changedTouches[0].screenX;
-    const delta = touchEndX - touchStartX;
-    if (Math.abs(delta) > 70) delta < 0 ? showSlide(current + 1) : showSlide(current - 1);
-  }, {passive:true});
-
-  document.querySelectorAll('[data-action="largeText"]').forEach(btn => {
-    btn.addEventListener('click', () => {
-      document.body.classList.toggle('large-text');
-      btn.textContent = document.body.classList.contains('large-text') ? 'Aa Normal text' : 'Aa Bigger text';
-    });
-  });
-
-  document.querySelectorAll('[data-action="expandAll"]').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const details = [...slides[current].querySelectorAll('details')];
-      const shouldOpen = details.some(d => !d.open);
-      details.forEach(d => d.open = shouldOpen);
-      btn.textContent = shouldOpen ? 'Collapse all' : 'Expand all';
-    });
-  });
-
-  const hash = decodeURIComponent(location.hash.replace('#',''));
-  if (hash) {
-    const idx = slides.findIndex(s => slugify(s.dataset.title) === hash);
-    if (idx >= 0) current = idx;
-  }
-
-  renderCompletion();
-  showSlide(current);
+}
+quiz.addEventListener('click',e=>{
+  const button=e.target.closest('.answer');
+  if(!button||button.disabled)return;
+  applyAnswer(button.closest('.q'),Number(button.dataset.q),Number(button.dataset.a),true);
+});
+function updateCompletion(){
+  const done=Object.keys(answered).length===quizData.length;
+  if(!done){completion.classList.remove('show');return;}
+  let score=0;
+  Object.keys(answered).forEach(key=>{if(Number(answered[key])===quizData[key].c)score++;});
+  completionText.textContent=`You answered ${score} of ${quizData.length} correctly. Remember the order: Christ alone saves; His love awakens trust; and your obedience becomes a grateful response as you believe God has something better for you.`;
+  completion.classList.add('show');
+}
+document.getElementById('resetQuiz').addEventListener('click',()=>{
+  answered={};
+  try{localStorage.removeItem('lesson14-quiz');}catch(e){}
+  renderQuiz();
+});
+renderQuiz();
 </script>
 </body>
 </html>
