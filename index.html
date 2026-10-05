@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#142d3d">
-<title>14. Something Better | Learner</title>
+<title>16. Fear God | Learner</title>
 <style>
 :root{
   --navy:#142d3d;
@@ -17,8 +17,6 @@
   --gold-soft:#f5ead0;
   --sage:#dfe9e4;
   --sage-ink:#315a4a;
-  --rose:#f3e4e0;
-  --rose-ink:#7a4038;
   --line:#dfe2df;
   --good:#2f6d4f;
   --bad:#94453f;
@@ -27,7 +25,7 @@
   --max:1120px;
 }
 *{box-sizing:border-box}
-html{scroll-behaviour:smooth;scroll-behavior:smooth}
+html{scroll-behavior:smooth}
 body{margin:0;background:var(--cream);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.62}
 button,input,textarea{font:inherit}
 button{cursor:pointer}
@@ -35,7 +33,7 @@ a{color:inherit}
 .shell{width:min(var(--max),calc(100% - 34px));margin:0 auto}
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 
-/* Course masthead */
+/* course masthead */
 .mast{background:var(--navy);color:#fff;padding:max(18px,env(safe-area-inset-top)) 0 0;position:relative;overflow:hidden}
 .mast:after{content:"";position:absolute;right:-120px;top:-160px;width:360px;height:360px;border-radius:50%;border:1px solid rgba(255,255,255,.09);box-shadow:0 0 0 54px rgba(255,255,255,.025),0 0 0 108px rgba(255,255,255,.02);pointer-events:none}
 .coursebar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:0 0 26px;position:relative;z-index:2}
@@ -49,26 +47,26 @@ h1{font-family:Georgia,"Times New Roman",serif;font-size:clamp(2.7rem,6vw,5.2rem
 .hero-copy{max-width:730px;color:#d7e2e7;font-size:1.04rem;margin:0}
 .hero-verse{border-left:1px solid rgba(255,255,255,.2);padding-left:24px;color:#d7e2e7}
 .hero-verse .ref{display:block;color:#e4c77f;font-size:.78rem;text-transform:uppercase;letter-spacing:.08em;font-weight:800;margin-bottom:9px}
-.hero-verse p{margin:0;font-family:Georgia,serif;font-size:1.04rem;line-height:1.55}
+.hero-verse p{margin:0;font-family:Georgia,serif;font-size:1.02rem;line-height:1.55}
 
-/* Progress */
+/* progress */
 .progress-band{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:30;box-shadow:0 8px 28px rgba(20,45,61,.04)}
 .progress-inner{display:flex;align-items:center;gap:16px;min-height:58px}
 .progress-track{height:5px;background:#edf0ee;border-radius:999px;overflow:hidden;flex:1}
 .progress-fill{height:100%;width:0;background:var(--gold);transition:width .25s ease}
 .progress-label{font-size:.82rem;font-weight:800;color:var(--muted);white-space:nowrap}
 
-/* App layout */
+/* app layout */
 .app{display:grid;grid-template-columns:245px minmax(0,1fr);gap:38px;padding:34px 0 70px}
 .side{position:sticky;top:92px;align-self:start}
 .side-card{background:rgba(255,255,255,.72);border:1px solid rgba(216,220,217,.9);border-radius:20px;padding:12px;backdrop-filter:blur(8px)}
 .side-title{font-size:.73rem;text-transform:uppercase;letter-spacing:.11em;font-weight:850;color:#89949a;padding:7px 10px 11px}
 .stepnav{display:grid;gap:4px}
-.stepbtn{border:0;background:transparent;text-align:left;border-radius:14px;padding:11px 11px;display:grid;grid-template-columns:27px 1fr;gap:9px;align-items:center;color:#6c7880;font-size:.88rem;font-weight:730}
+.stepbtn{border:0;background:transparent;text-align:left;border-radius:14px;padding:11px;display:grid;grid-template-columns:27px 1fr;gap:9px;align-items:center;color:#6c7880;font-size:.88rem;font-weight:730}
 .stepbtn .n{width:27px;height:27px;border:1px solid #ccd3d0;border-radius:9px;display:grid;place-items:center;font-size:.73rem;font-weight:850;color:#87938f;background:#fff}
 .stepbtn.active{background:var(--navy);color:#fff}
 .stepbtn.active .n{background:#fff;color:var(--navy);border-color:#fff}
-.stepbtn:focus-visible,.pill:focus-visible,.nextbtn:focus-visible,.answer:focus-visible,.acc-btn:focus-visible,.modal-close:focus-visible,.savebtn:focus-visible,.resetbtn:focus-visible{outline:3px solid rgba(196,154,66,.36);outline-offset:2px}
+.stepbtn:focus-visible,.pill:focus-visible,.nextbtn:focus-visible,.answer:focus-visible,.acc-btn:focus-visible,.modal-close:focus-visible,.savebtn:focus-visible,.scripture:focus-visible,.insight:focus-visible{outline:3px solid rgba(196,154,66,.38);outline-offset:2px}
 .side-note{margin-top:14px;background:var(--gold-soft);border-radius:18px;padding:16px 17px;color:#5f4b21;font-size:.86rem}
 .side-note strong{display:block;color:#403516;margin-bottom:3px}
 
@@ -78,75 +76,55 @@ h1{font-family:Georgia,"Times New Roman",serif;font-size:clamp(2.7rem,6vw,5.2rem
 @keyframes fade{from{opacity:.35;transform:translateY(4px)}to{opacity:1;transform:none}}
 .eyebrow{color:#8f6c24;text-transform:uppercase;letter-spacing:.12em;font-size:.73rem;font-weight:850;margin-bottom:8px}
 h2{font-family:Georgia,"Times New Roman",serif;font-weight:500;font-size:clamp(2rem,4vw,3rem);line-height:1.1;letter-spacing:-.025em;margin:0 0 14px;color:var(--navy)}
-.lead{font-size:1.05rem;color:#52646f;max-width:810px;margin:0 0 24px}
+.lead{font-size:1.05rem;color:#52646f;max-width:790px;margin:0 0 24px}
+
 .card{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:24px;box-shadow:0 10px 30px rgba(20,45,61,.045)}
 .card h3{margin:0 0 9px;color:var(--navy);font-size:1.08rem}
 .card p{margin:0;color:#5c6d77}
-.card p+p{margin-top:10px}
 .stack{display:grid;gap:16px}
 .grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
 .grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
 
 .big-idea{background:var(--navy);color:#fff;border-radius:26px;padding:27px 28px;margin:26px 0;position:relative;overflow:hidden}
-.big-idea:after{content:"14";position:absolute;right:18px;bottom:-31px;font-family:Georgia,serif;font-size:8.3rem;line-height:1;color:rgba(255,255,255,.055)}
+.big-idea:after{content:"16";position:absolute;right:18px;bottom:-31px;font-family:Georgia,serif;font-size:8.3rem;line-height:1;color:rgba(255,255,255,.055)}
 .big-idea .label{color:#e2c886;font-size:.72rem;text-transform:uppercase;letter-spacing:.13em;font-weight:850;margin-bottom:7px}
-.big-idea p{font-family:Georgia,serif;font-size:1.35rem;line-height:1.52;margin:0;max-width:820px;color:#f1f4f5;position:relative;z-index:1}
+.big-idea p{font-family:Georgia,serif;font-size:1.35rem;line-height:1.52;margin:0;max-width:800px;color:#f1f4f5;position:relative;z-index:1}
+
+.scripture,.insight{display:inline-flex;align-items:center;gap:7px;border:0;border-radius:999px;background:#eef4f1;color:#315f50;font-weight:800;font-size:.79rem;padding:8px 11px;margin:13px 6px 0 0}
+.scripture:before{content:"\00B6";font-family:Georgia,serif;font-size:1rem}
+.insight{background:var(--gold-soft);color:#6b5423}
+.insight:before{content:"\201C";font-family:Georgia,serif;font-size:1.2rem;line-height:0}
+.scripture:hover,.insight:hover{filter:brightness(.98)}
+
 .note{border-left:4px solid var(--gold);background:#fff9e9;border-radius:0 18px 18px 0;padding:17px 18px;color:#60512e;margin:20px 0}
 .note strong{color:#3d341f}
 .note p{margin:4px 0 0}
+.note.sage{border-left-color:#6f9b87;background:#edf4f0;color:#466056}
+.note.sage strong{color:#294b3f}
 
-.scripture,.insight{display:inline-flex;align-items:center;gap:7px;border:0;border-radius:999px;background:#eef4f1;color:#315f50;font-weight:800;font-size:.79rem;padding:8px 11px;margin-top:13px}
-.scripture:before{content:"¶";font-family:Georgia,serif;font-size:1rem}
-.insight{background:var(--gold-soft);color:#6b5423}
-.insight:before{content:"“";font-family:Georgia,serif;font-size:1.2rem;line-height:0}
-.scripture:hover,.insight:hover{filter:brightness(.98)}
+/* fear contrast */
+.contrast{margin:24px 0;background:var(--paper);border:1px solid var(--line);border-radius:24px;overflow:hidden}
+.contrast-head{padding:18px 22px;background:#edf1ef;border-bottom:1px solid var(--line);display:flex;align-items:flex-start;justify-content:space-between;gap:16px}
+.contrast-head h3{margin:0;color:var(--navy);font-size:1.04rem}
+.contrast-head span{font-size:.78rem;color:#73817c;font-weight:750}
+.contrast-grid{display:grid;grid-template-columns:1fr 1fr}
+.contrast-side{padding:22px}
+.contrast-side+ .contrast-side{border-left:1px solid var(--line)}
+.contrast-side .tag{display:inline-block;border-radius:999px;padding:5px 9px;margin-bottom:10px;font-size:.72rem;text-transform:uppercase;letter-spacing:.08em;font-weight:850}
+.contrast-side.terror .tag{background:#f4e8e6;color:#7b403a}
+.contrast-side.awe .tag{background:#e6f0eb;color:#315f4d}
+.contrast-side h4{margin:0 0 7px;color:var(--navy);font-size:1.05rem}
+.contrast-side p{margin:0;color:#5d6d76}
 
-/* Intro map */
-.topic-map{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:8px;margin:24px 0}
-.topic{background:#fff;border:1px solid var(--line);border-radius:16px;padding:13px 8px;text-align:center;min-height:88px;display:grid;place-items:center;color:#53636d;font-size:.77rem;font-weight:800}
-.topic span{display:block;color:var(--gold);font-family:Georgia,serif;font-size:1.15rem;line-height:1;margin-bottom:5px}
+/* Isaiah movement */
+.flow{margin:24px 0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;position:relative}
+.flow-step{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:18px;position:relative;min-height:178px}
+.flow-step:not(:last-child):after{content:"";position:absolute;right:-11px;top:42px;width:11px;height:1px;background:#bfc8c3;z-index:2}
+.flow-n{width:36px;height:36px;border-radius:12px;background:var(--navy);color:#fff;display:grid;place-items:center;font-size:.76rem;font-weight:900;margin-bottom:12px}
+.flow-step h3{font-size:.98rem;margin:0 0 7px;color:var(--navy)}
+.flow-step p{font-size:.9rem;margin:0;color:#5c6d77}
 
-/* Grace pathway */
-.grace-path{display:grid;grid-template-columns:1fr 54px 1fr 54px 1fr;gap:8px;align-items:stretch;margin:24px 0}
-.path-card{background:var(--paper);border:1px solid var(--line);border-radius:21px;padding:23px}
-.path-card .num{display:inline-grid;place-items:center;width:34px;height:34px;border-radius:11px;background:var(--navy);color:#fff;font-size:.75rem;font-weight:900;margin-bottom:14px}
-.path-card h3{margin:0 0 7px;color:var(--navy);font-size:1.03rem}
-.path-card p{margin:0;color:#60707a;font-size:.94rem}
-.path-arrow{display:grid;place-items:center;color:#a98334;font-size:1.8rem;font-family:Georgia,serif}
-
-.truth-pair{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:22px 0}
-.truth-card{border-radius:22px;padding:24px;border:1px solid var(--line)}
-.truth-card.cannot{background:var(--rose);color:var(--rose-ink);border-color:#e8cac4}
-.truth-card.produces{background:var(--sage);color:var(--sage-ink);border-color:#cbded5}
-.truth-card .tag{font-size:.71rem;text-transform:uppercase;letter-spacing:.11em;font-weight:900;opacity:.78;margin-bottom:8px}
-.truth-card h3{font-family:Georgia,serif;font-weight:500;font-size:1.45rem;line-height:1.2;margin:0 0 8px}
-.truth-card p{margin:0}
-
-/* Relationship */
-.relationship-visual{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:24px 0}
-.marriage-card{background:var(--paper);border:1px solid var(--line);border-radius:22px;padding:24px}
-.marriage-card .mini{font-size:.71rem;text-transform:uppercase;letter-spacing:.1em;font-weight:900;color:#9a7429;margin-bottom:8px}
-.marriage-card h3{margin:0 0 8px;color:var(--navy);font-size:1.08rem}
-.marriage-card p{margin:0;color:#5b6b75}
-.balance{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:18px}
-.balance-card{border-radius:19px;padding:20px;border:1px solid var(--line);background:#fff}
-.balance-card h3{margin:0 0 7px;font-size:1rem;color:var(--navy)}
-.balance-card p{margin:0;color:#5f6f78;font-size:.91rem}
-.balance-card.warn{background:#fbf0ed;border-color:#efd4cf}
-.balance-card.center{background:var(--navy);border-color:var(--navy)}
-.balance-card.center h3{color:#fff}
-.balance-card.center p{color:#d8e3e8}
-
-/* Better question */
-.question-shift{display:grid;grid-template-columns:1fr 64px 1fr;gap:12px;align-items:stretch;margin:24px 0}
-.question-card{border-radius:23px;padding:25px;border:1px solid var(--line)}
-.question-card.old{background:#f6e9e6;color:#6d3c36;border-color:#e9cbc5}
-.question-card.new{background:#e6efe9;color:#2f5a47;border-color:#cadfd2}
-.question-card .tag{font-size:.7rem;text-transform:uppercase;letter-spacing:.11em;font-weight:900;opacity:.75;margin-bottom:9px}
-.question-card blockquote{margin:0;font-family:Georgia,serif;font-size:1.34rem;line-height:1.42}
-.shift-arrow{display:grid;place-items:center;font-size:2rem;color:#a98334}
-
-/* Accordion */
+/* accordions */
 .acc{display:grid;gap:10px;margin-top:18px}
 .acc-item{background:var(--paper);border:1px solid var(--line);border-radius:18px;overflow:hidden}
 .acc-btn{width:100%;border:0;background:transparent;display:grid;grid-template-columns:42px 1fr auto;gap:13px;align-items:center;padding:16px 18px;text-align:left;color:var(--navy)}
@@ -160,39 +138,38 @@ h2{font-family:Georgia,"Times New Roman",serif;font-weight:500;font-size:clamp(2
 .acc-body p{margin:0 0 10px}
 .acc-body p:last-child{margin-bottom:0}
 
-/* Something better grid */
-.better-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:22px}
-.better-card{background:var(--paper);border:1px solid var(--line);border-radius:21px;padding:22px;position:relative;overflow:hidden}
-.better-card:after{content:"";position:absolute;width:90px;height:90px;border-radius:50%;background:rgba(196,154,66,.08);right:-32px;bottom:-36px}
-.better-card .label{font-size:.71rem;text-transform:uppercase;letter-spacing:.1em;font-weight:900;color:#9a7429;margin-bottom:7px}
-.better-card h3{margin:0 0 8px;color:var(--navy);font-size:1.06rem}
-.better-card p{margin:0;color:#5b6c75}
-.better-card .fromto{display:grid;grid-template-columns:auto 18px 1fr;gap:7px;margin-top:13px;align-items:start;font-size:.84rem;font-weight:760;color:#5f706e}
-.better-card .from{color:#87544a;text-decoration:line-through;text-decoration-thickness:1px}
-.better-card .to{color:#37644f}
+/* worship */
+.practice-list{display:grid;gap:10px;margin-top:19px}
+.practice-row{display:grid;grid-template-columns:43px 1fr;gap:13px;align-items:start;background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:17px}
+.practice-icon{width:43px;height:43px;border-radius:14px;background:var(--gold-soft);display:grid;place-items:center;color:#725923;font-family:Georgia,serif;font-size:1.05rem;font-weight:700}
+.practice-row h3{margin:0 0 4px;color:var(--navy);font-size:1rem}
+.practice-row p{margin:0;color:#5e6e77}
+.balance{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:20px}
+.balance .card{position:relative;overflow:hidden}
+.balance .card:before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:var(--gold)}
+.balance .card:nth-child(2):before{background:#6f9b87}
 
-.quote-card{background:#edf3f0;border:1px solid #d9e4df;border-radius:22px;padding:24px;margin-top:20px}
-.quote-card blockquote{margin:0;font-family:Georgia,serif;font-size:1.22rem;line-height:1.55;color:#294b40}
-.quote-card cite{display:block;margin-top:12px;font-size:.78rem;font-style:normal;color:#72817b;font-weight:750}
+/* perspective panel */
+.perspective{background:#edf3f0;border:1px solid #d9e4df;border-radius:22px;padding:24px;margin:22px 0}
+.perspective .label{font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;color:#55766a;font-weight:850;margin-bottom:7px}
+.perspective h3{margin:0 0 9px;color:#294b40;font-size:1.12rem}
+.perspective p{margin:0;color:#526c62}
 
-/* Reflection */
-.reflection{display:grid;grid-template-columns:1.08fr .92fr;gap:16px;margin-top:22px}
+/* reflection */
+.reflection{display:grid;grid-template-columns:1.15fr .85fr;gap:16px;margin-top:22px}
 .check-card label{display:flex;gap:11px;padding:11px 0;border-bottom:1px solid #eceeeb;align-items:flex-start;color:#485963}
 .check-card label:last-of-type{border-bottom:0}
-.check-card input{width:19px;height:19px;margin-top:3px;accent-color:var(--navy)}
+.check-card input{width:19px;height:19px;margin-top:3px;accent-color:var(--navy);flex:0 0 auto}
 .prompt{background:var(--navy);color:#fff}
 .prompt h3{color:#fff}
 .prompt p{color:#dbe4e8}
-.prompt textarea{width:100%;min-height:132px;margin-top:14px;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.08);color:#fff;border-radius:15px;padding:13px;resize:vertical;outline:none}
+.prompt textarea{width:100%;min-height:155px;margin-top:14px;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.08);color:#fff;border-radius:15px;padding:13px;resize:vertical;outline:none}
 .prompt textarea::placeholder{color:#aec0ca}
-.save-row{display:flex;align-items:center;gap:10px;margin-top:10px;flex-wrap:wrap}
-.savebtn,.resetbtn{border:0;border-radius:999px;background:#fff;color:var(--navy);font-weight:850;font-size:.8rem;padding:9px 13px}
+.save-row{display:flex;align-items:center;gap:10px;margin-top:10px}
+.savebtn{border:0;border-radius:999px;background:#fff;color:var(--navy);font-weight:850;font-size:.8rem;padding:9px 13px}
 .saved{font-size:.78rem;color:#bcd0d8;opacity:0;transition:opacity .2s}.saved.show{opacity:1}
-.prayer-panel{background:#fff9e9;border:1px solid #eadcaf;border-radius:22px;padding:22px;margin-top:16px;color:#5c4d29}
-.prayer-panel strong{color:#3e351f}
-.prayer-panel p{margin:5px 0 0;font-family:Georgia,serif;font-size:1.02rem;line-height:1.65}
 
-/* Quiz */
+/* quiz */
 .quiz{display:grid;gap:14px;margin-top:22px}
 .q{background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:21px}
 .q h3{margin:0 0 13px;color:var(--navy);font-size:1rem}
@@ -210,45 +187,47 @@ h2{font-family:Georgia,"Times New Roman",serif;font-weight:500;font-size:clamp(2
 .completion.show{display:block}
 .completion h3{color:#fff;margin:0 0 6px}
 .completion p{margin:0;color:#dce5e9}
-.quiz-tools{display:flex;justify-content:flex-end;margin-top:12px}
-.quiz-tools .resetbtn{background:#fff;border:1px solid #d5dad7}
 
-/* Section controls */
+/* section controls */
 .controls{display:flex;justify-content:space-between;gap:10px;margin-top:28px;padding-top:20px;border-top:1px solid #d9dcda}
 .nextbtn{border:1px solid #d5dad7;background:#fff;color:var(--navy);border-radius:999px;padding:10px 15px;font-weight:850;font-size:.84rem}
 .nextbtn.primary{background:var(--navy);border-color:var(--navy);color:#fff}
 .nextbtn[disabled]{visibility:hidden}
 
-/* Modal */
+/* modal */
 .overlay{position:fixed;inset:0;background:rgba(9,23,31,.66);z-index:100;display:none;align-items:center;justify-content:center;padding:18px}
 .overlay.open{display:flex}
 .modal{width:min(650px,100%);max-height:min(82vh,720px);overflow:auto;background:var(--paper);border-radius:25px;box-shadow:0 30px 80px rgba(0,0,0,.24);padding:0}
 .modal-head{position:sticky;top:0;background:rgba(255,253,248,.97);backdrop-filter:blur(10px);display:flex;justify-content:space-between;gap:14px;align-items:flex-start;padding:20px 21px 15px;border-bottom:1px solid var(--line);z-index:2}
 .modal-head h3{font-family:Georgia,serif;color:var(--navy);font-size:1.45rem;font-weight:500;margin:0}
 .modal-source{color:#87918d;font-size:.77rem;font-weight:750;margin-top:2px}
-.modal-close{border:0;background:#edf0ee;color:#5a6a63;width:36px;height:36px;border-radius:50%;font-size:1.4rem;line-height:1;flex:0 0 auto}
+.modal-close{border:0;background:#edf0ee;color:#5a6a63;width:36px;height:36px;border-radius:50%;font-size:1.25rem;line-height:1}
 .modal-body{padding:21px}
 .verse-text{font-family:Georgia,serif;font-size:1.16rem;line-height:1.72;margin:0;color:#2f3f46}
 .modal-why{margin-top:18px;background:#eef4f1;border-radius:16px;padding:14px 15px;color:#496158;font-size:.91rem}
 .modal-why strong{display:block;color:#2f5447;margin-bottom:3px}
 
+.site-footer{border-top:1px solid #d8ddd9;padding:22px 0 calc(28px + env(safe-area-inset-bottom));color:#74817d;font-size:.78rem}
+.site-footer strong{color:#4b5c55}
 .mobile-tabs{display:none}
-@media(max-width:900px){
+
+@media(max-width:920px){
+  .flow{grid-template-columns:repeat(2,minmax(0,1fr))}.flow-step:not(:last-child):after{display:none}
+}
+@media(max-width:860px){
   .hero{grid-template-columns:1fr;gap:22px}.hero-verse{border-left:0;border-top:1px solid rgba(255,255,255,.18);padding:18px 0 0;max-width:680px}
   .app{grid-template-columns:1fr;padding-top:22px}.side{display:none}
   .mobile-tabs{display:flex;gap:7px;overflow-x:auto;padding:0 0 13px;margin-bottom:18px;scrollbar-width:none}.mobile-tabs::-webkit-scrollbar{display:none}
   .pill{white-space:nowrap;border:1px solid #d3d9d6;background:#fff;color:#64726f;border-radius:999px;padding:8px 11px;font-size:.78rem;font-weight:850}.pill.active{background:var(--navy);color:#fff;border-color:var(--navy)}
-  .topic-map{grid-template-columns:repeat(4,minmax(0,1fr))}
-  .grace-path{grid-template-columns:1fr}.path-arrow{transform:rotate(90deg);min-height:25px}
   .reflection{grid-template-columns:1fr}
 }
-@media(max-width:680px){
+@media(max-width:620px){
   .shell{width:min(100% - 24px,var(--max))}.coursebar{padding-bottom:20px}.coursebrand{font-size:.68rem}.lesson-count{display:none}.hero{padding:3px 0 32px}h1{font-size:2.8rem}.hero-copy{font-size:.98rem}
-  .progress-inner{min-height:52px}.progress-label{font-size:.73rem}.grid2,.grid3,.truth-pair,.relationship-visual,.balance,.better-grid{grid-template-columns:1fr}.card{padding:20px}.big-idea{padding:22px}.big-idea p{font-size:1.15rem}
-  .topic-map{grid-template-columns:repeat(2,minmax(0,1fr))}.topic:last-child{grid-column:1/-1}
-  .question-shift{grid-template-columns:1fr}.shift-arrow{transform:rotate(90deg);min-height:34px}
+  .progress-inner{min-height:52px}.progress-label{font-size:.73rem}.grid2,.grid3,.balance,.contrast-grid,.flow{grid-template-columns:1fr}.card{padding:20px}.big-idea{padding:22px}.big-idea p{font-size:1.15rem}
+  .contrast-side+ .contrast-side{border-left:0;border-top:1px solid var(--line)}.contrast-head{display:block}.contrast-head span{display:block;margin-top:4px}
   .acc-btn{grid-template-columns:38px 1fr auto;padding:14px}.acc-index{width:38px;height:38px}.acc-body{padding:0 14px 15px 14px}
   .controls{margin-top:22px}.nextbtn{padding:9px 12px}.overlay{align-items:flex-end;padding:8px}.modal{border-radius:24px 24px 12px 12px;max-height:86svh}.modal-head{padding:17px 18px 13px}.modal-body{padding:18px}
+  .practice-row{grid-template-columns:38px 1fr;padding:15px}.practice-icon{width:38px;height:38px}
 }
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
 </style>
@@ -258,17 +237,17 @@ h2{font-family:Georgia,"Times New Roman",serif;font-weight:500;font-size:clamp(2
   <div class="shell">
     <div class="coursebar">
       <div class="coursebrand"><span class="brandmark">D</span><span>Discipleship Class 2026</span></div>
-      <div class="lesson-count">Lesson 14</div>
+      <div class="lesson-count">Lesson 16</div>
     </div>
     <div class="hero">
       <div>
-        <div class="kicker">Christian Lifestyle · The Foundation</div>
-        <h1>Something Better</h1>
-        <p class="hero-copy">Before you explore Sabbath-keeping, reverence, stewardship, health, modesty, entertainment and family life, begin with the right order: your behaviour cannot purchase salvation. Christian obedience grows from a heart that has received Christ as Saviour and Lord.</p>
+        <div class="kicker">Christian Lifestyle &middot; Reverence</div>
+        <h1>Fear God</h1>
+        <p class="hero-copy">The Bible does not call you to shrink from a loving Father. It invites you to stand in awe of His holiness and mercy - then let that reverence shape your words, prayer, Scripture reading, worship and treatment of others.</p>
       </div>
       <aside class="hero-verse" aria-label="Key verse">
-        <span class="ref">John 14:15</span>
-        <p>“If ye love me, keep my commandments.”</p>
+        <span class="ref">Revelation 14:7</span>
+        <p>&ldquo;Fear God, and give glory to him; for the hour of his judgment is come.&rdquo;</p>
       </aside>
     </div>
   </div>
@@ -277,245 +256,253 @@ h2{font-family:Georgia,"Times New Roman",serif;font-weight:500;font-size:clamp(2
 <div class="progress-band">
   <div class="shell progress-inner">
     <div class="progress-track" aria-hidden="true"><div class="progress-fill" id="progressFill"></div></div>
-    <div class="progress-label" id="progressLabel">1 of 7 · Start Here</div>
+    <div class="progress-label" id="progressLabel">1 of 7 &middot; What Fear Means</div>
   </div>
 </div>
 
 <div class="shell app">
   <aside class="side" aria-label="Lesson navigation">
     <div class="side-card">
-      <div class="side-title">Your journey</div>
+      <div class="side-title">In this lesson</div>
       <nav class="stepnav" id="stepNav"></nav>
     </div>
-    <div class="side-note"><strong>Keep the order clear</strong>Christ saves. Love awakens. Obedience follows. The fruit never becomes the price.</div>
+    <div class="side-note"><strong>Keep the centre clear</strong>Reverence is not fear of rejection. It is love awakened to God&rsquo;s greatness, goodness and presence.</div>
   </aside>
 
   <main class="main" id="mainContent">
     <nav class="mobile-tabs" id="mobileTabs" aria-label="Lesson sections"></nav>
 
-    <section class="panel active" data-title="Start Here">
-      <div class="eyebrow">Start in the right place</div>
-      <h2>Lifestyle begins with the gospel</h2>
-      <p class="lead">In the chapters that follow, you will explore practical and sometimes sensitive areas of Christian life. Before you consider any of them, hold firmly to this truth: changing your behaviour is never a way to earn God’s favour.</p>
+    <section class="panel active" data-title="What Fear Means">
+      <div class="eyebrow">Start here</div>
+      <h2>Love removes terror, not reverence</h2>
+      <p class="lead">The first angel carries the <em>everlasting gospel</em> before calling the world to &ldquo;fear God.&rdquo; That order matters. Holy fear is your response to grace, not an attempt to persuade an unwilling God to love you.</p>
 
-      <div class="topic-map" aria-label="Topics you will explore in the chapters ahead">
-        <div class="topic"><div><span>01</span>Sabbath-keeping</div></div>
-        <div class="topic"><div><span>02</span>Reverence</div></div>
-        <div class="topic"><div><span>03</span>Stewardship</div></div>
-        <div class="topic"><div><span>04</span>Health</div></div>
-        <div class="topic"><div><span>05</span>Modesty</div></div>
-        <div class="topic"><div><span>06</span>Entertainment</div></div>
-        <div class="topic"><div><span>07</span>Family life</div></div>
+      <div class="grid2">
+        <article class="card">
+          <h3>God is love</h3>
+          <p>Perfect love casts out the tormenting fear that expects rejection or punishment. In Christ, you may come to God as a reconciled child, not as a fugitive.</p>
+          <button type="button" class="scripture" data-ref="1 John 4:8">1 John 4:8</button>
+          <button type="button" class="scripture" data-ref="1 John 4:18">1 John 4:18</button>
+        </article>
+        <article class="card">
+          <h3>Grace awakens awe</h3>
+          <p>Hebrews does not say, &ldquo;Be terrified so God will accept you.&rdquo; It says, &ldquo;Let us have grace,&rdquo; and then serve Him with reverence and godly fear.</p>
+          <button type="button" class="scripture" data-ref="Hebrews 12:28">Hebrews 12:28</button>
+          <button type="button" class="scripture" data-ref="Revelation 14:6-7">Revelation 14:6-7</button>
+        </article>
       </div>
+
+      <div class="contrast">
+        <div class="contrast-head">
+          <h3>One verse, two kinds of fear</h3>
+          <span>Exodus 20:20</span>
+        </div>
+        <div class="contrast-grid">
+          <div class="contrast-side terror">
+            <span class="tag">Fear not</span>
+            <h4>Do not flee from God in terror</h4>
+            <p>Moses reassured Israel that God had not appeared in order to destroy them. The fear that drives you away from God is not the goal.</p>
+          </div>
+          <div class="contrast-side awe">
+            <span class="tag">His fear before you</span>
+            <h4>Let holy awe guard your choices</h4>
+            <p>The same verse asks Israel to retain a serious regard for God that resists sin. Reverence draws you near and teaches you to listen.</p>
+          </div>
+        </div>
+      </div>
+      <button type="button" class="scripture" data-ref="Exodus 20:20">Read Exodus 20:20</button>
 
       <div class="big-idea">
         <div class="label">Big idea</div>
-        <p>You are saved only through Christ. Yet the Christ who forgives you also awakens love, reshapes your desires and leads you into a life that increasingly reflects His character.</p>
+        <p>To fear God is to know that you are loved, stand in awe of who He is, take His Word seriously, and gladly give Him the honour that belongs to Him.</p>
       </div>
 
-      <div class="note"><strong>A necessary distinction:</strong><p>Biblical lifestyle instruction is not a ladder by which you climb into salvation. It is guidance for you after you have already been met by the grace of Jesus.</p></div>
-      <div class="controls"><button class="nextbtn" data-prev disabled>Previous</button><button class="nextbtn primary" data-next>Next: Grace First</button></div>
+      <div class="controls"><button type="button" class="nextbtn" data-prev disabled>Previous</button><button type="button" class="nextbtn primary" data-next>Next: Solemn Joy</button></div>
     </section>
 
-    <section class="panel" data-title="Grace First">
-      <div class="eyebrow">Behaviour cannot merit salvation</div>
-      <h2>Christ alone is the basis of forgiveness</h2>
-      <p class="lead">Hold firmly to this truth: nothing you do, and nothing you abstain from doing, can purchase favour with God. Your salvation rests on the merits of Christ’s life and sacrifice.</p>
+    <section class="panel" data-title="Solemn Joy">
+      <div class="eyebrow">Awe and delight</div>
+      <h2>The nearer you come, the more clearly you see grace</h2>
+      <p class="lead">Isaiah&rsquo;s encounter with God shows the movement of true reverence. He sees holiness, recognises his need, receives cleansing, and then offers himself for service.</p>
 
-      <div class="truth-pair">
-        <article class="truth-card cannot">
-          <div class="tag">What behaviour cannot do</div>
-          <h3>It cannot atone for sin</h3>
-          <p>Effort, zeal, tears and self-denial cannot become a substitute for the blood of Jesus. Human conduct is never the ground of acceptance with God.</p>
-        </article>
-        <article class="truth-card produces">
-          <div class="tag">What salvation produces</div>
-          <h3>It awakens love and holiness</h3>
-          <p>When Christ’s sacrifice is received by faith, love for Him springs up in the heart and gives birth to the pursuit of Christlikeness.</p>
-        </article>
+      <div class="flow" aria-label="Isaiah's movement from awe to service">
+        <article class="flow-step"><div class="flow-n">01</div><h3>See the King</h3><p>God&rsquo;s greatness becomes more real than your own importance.</p></article>
+        <article class="flow-step"><div class="flow-n">02</div><h3>Admit your need</h3><p>Reverence makes you honest about sin instead of defensive or proud.</p></article>
+        <article class="flow-step"><div class="flow-n">03</div><h3>Receive cleansing</h3><p>Mercy, not shame, has the final word for the repentant heart.</p></article>
+        <article class="flow-step"><div class="flow-n">04</div><h3>Answer the call</h3><p>Grace turns awe into willing service: &ldquo;Here am I; send me.&rdquo;</p></article>
+      </div>
+      <button type="button" class="scripture" data-ref="Isaiah 6:5-8">Isaiah 6:5-8</button>
+
+      <div class="grid3" style="margin-top:20px">
+        <article class="card"><h3>Rejoice with trembling</h3><p>Biblical joy is not careless. It knows the majesty of the One who welcomes us.</p><button type="button" class="scripture" data-ref="Psalm 2:11">Psalm 2:11</button></article>
+        <article class="card"><h3>Awe at His goodness</h3><p>Jeremiah describes people trembling not only at power, but at the abundance of God&rsquo;s goodness.</p><button type="button" class="scripture" data-ref="Jeremiah 33:9">Jeremiah 33:9</button></article>
+        <article class="card"><h3>Fullness of joy</h3><p>The presence that humbles you is also the presence in which joy becomes full.</p><button type="button" class="scripture" data-ref="Psalm 16:11">Psalm 16:11</button></article>
       </div>
 
-      <div class="grace-path" aria-label="The gospel order of grace, love and obedience">
-        <article class="path-card"><span class="num">01</span><h3>Christ saves</h3><p>Forgiveness rests on His life and sacrifice, not your performance.</p></article>
-        <div class="path-arrow" aria-hidden="true">→</div>
-        <article class="path-card"><span class="num">02</span><h3>Love springs up</h3><p>Grace does not leave the heart untouched. Gratitude and trust begin to grow.</p></article>
-        <div class="path-arrow" aria-hidden="true">→</div>
-        <article class="path-card"><span class="num">03</span><h3>Obedience follows</h3><p>Jesus is received not only as Saviour, but also as Lord and Master.</p></article>
-      </div>
+      <div class="note"><strong>Reverence is not a gloomy mood.</strong><p>It is joy with weight: gratitude that knows mercy is undeserved, hope that knows God is holy, and love that refuses to treat Him as ordinary.</p></div>
+      <button type="button" class="insight" data-insight="presence">Ellen White: the source of true reverence</button>
 
-      <button class="insight" data-insight="rock">Rock of Ages: “Thou must save, and Thou alone”</button>
-      <div class="controls"><button class="nextbtn" data-prev>Previous</button><button class="nextbtn primary" data-next>Next: Relationship &amp; Obedience</button></div>
+      <div class="controls"><button type="button" class="nextbtn" data-prev>Previous</button><button type="button" class="nextbtn primary" data-next>Next: Sacred Things</button></div>
     </section>
 
-    <section class="panel" data-title="Relationship & Obedience">
-      <div class="eyebrow">Rules or relationship?</div>
-      <h2>Love and behaviour are not rivals</h2>
-      <p class="lead">Do not place relationship and obedience in opposition. In every healthy relationship, love naturally affects conduct. The same is true in your walk with Jesus.</p>
+    <section class="panel" data-title="Sacred Things">
+      <div class="eyebrow">Everyday habits</div>
+      <h2>Reverence becomes visible in ordinary choices</h2>
+      <p class="lead">An inward awareness of God naturally affects how you speak His name, approach prayer, and receive His Word. The outward practice is not the centre, but it can help train your attention toward the centre.</p>
 
-      <div class="relationship-visual">
-        <article class="marriage-card">
-          <div class="mini">An everyday illustration</div>
-          <h3>Love changes how a spouse behaves</h3>
-          <p>A husband who wants a stronger marriage stops actions that create conflict and does more of what blesses his wife. His changed behaviour makes love visible.</p>
-        </article>
-        <article class="marriage-card">
-          <div class="mini">The spiritual application</div>
-          <h3>Love for Christ changes how you live</h3>
-          <p>When the Holy Spirit shows you that a behaviour is separating you from Christ, repentance and change express your love, trust and desire for deeper fellowship.</p>
-          <button class="scripture" data-ref="John 14:15">John 14:15</button>
-          <button class="scripture" data-ref="John 15:10">John 15:10</button>
-        </article>
+      <div class="acc" id="sacredAccordion">
+        <div class="acc-item open">
+          <button type="button" class="acc-btn" aria-expanded="true"><span class="acc-index">01</span><span><strong>God&rsquo;s name</strong><span class="sub">Speak of Him as holy, not as an empty expression</span></span><span class="chev">+</span></button>
+          <div class="acc-body">
+            <p>God&rsquo;s name represents His person and character. Avoid using the names of God or Jesus as slang, filler or a casual exclamation. Pray instead, &ldquo;Hallowed be thy name.&rdquo;</p>
+            <p>Reverence is not a search for a magical Hebrew pronunciation. God is holy; no human language makes Him more or less holy.</p>
+            <button type="button" class="scripture" data-ref="Exodus 20:7">Exodus 20:7</button>
+            <button type="button" class="scripture" data-ref="Psalm 111:9">Psalm 111:9</button>
+            <button type="button" class="scripture" data-ref="Matthew 6:9">Matthew 6:9</button>
+          </div>
+        </div>
+        <div class="acc-item">
+          <button type="button" class="acc-btn" aria-expanded="false"><span class="acc-index">02</span><span><strong>Prayer</strong><span class="sub">Let posture support humility without becoming a test</span></span><span class="chev">+</span></button>
+          <div class="acc-body">
+            <p>Kneeling, bowing and quietness can impress submission upon your own heart. When you are physically able, these postures can be a meaningful gift.</p>
+            <p>Yet God is not limited by posture. You may pray while sitting, standing, walking, working, travelling or lying in a hospital bed. A humble heart matters more than a particular position.</p>
+            <button type="button" class="scripture" data-ref="Psalm 95:6">Psalm 95:6</button>
+            <button type="button" class="scripture" data-ref="1 Thessalonians 5:17">1 Thessalonians 5:17</button>
+          </div>
+        </div>
+        <div class="acc-item">
+          <button type="button" class="acc-btn" aria-expanded="false"><span class="acc-index">03</span><span><strong>God&rsquo;s Word</strong><span class="sub">Read ready to receive, trust and obey</span></span><span class="chev">+</span></button>
+          <div class="acc-body">
+            <p>To tremble at God&rsquo;s Word is not to be frightened of the Bible. It is to hear Scripture with a contrite spirit, expecting God to correct, comfort and direct you.</p>
+            <p>Treating a physical Bible with care can remind you to value its message, but reverence is not superstition about paper and ink. The deeper question is whether the Word is being heard and obeyed.</p>
+            <button type="button" class="scripture" data-ref="Isaiah 66:2">Isaiah 66:2</button>
+            <button type="button" class="scripture" data-ref="Philippians 2:12-13">Philippians 2:12-13</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="note sage"><strong>Grace keeps the order right.</strong><p>Reverent habits do not earn God&rsquo;s favour. They are ways of responding to the favour already given in Christ and of helping your heart remember whom you are addressing.</p></div>
+
+      <div class="controls"><button type="button" class="nextbtn" data-prev>Previous</button><button type="button" class="nextbtn primary" data-next>Next: Worship Together</button></div>
+    </section>
+
+    <section class="panel" data-title="Worship Together">
+      <div class="eyebrow">In the assembly</div>
+      <h2>Reverence listens, participates and makes room for others</h2>
+      <p class="lead">Corporate worship is not an audience watching a performance. You come into God&rsquo;s presence with His people to pray, sing, listen, respond and help one another attend to Him.</p>
+
+      <div class="practice-list">
+        <article class="practice-row"><div class="practice-icon">P</div><div><h3>Prepare your heart</h3><p>Arrive with enough margin to settle, pray and remember why you have come. Silence can be a form of welcome when it makes room for reflection.</p></div></article>
+        <article class="practice-row"><div class="practice-icon">L</div><div><h3>Listen attentively</h3><p>Mute avoidable distractions, follow the Scripture reading, and receive the preached Word with openness rather than passive habit.</p></div></article>
+        <article class="practice-row"><div class="practice-icon">J</div><div><h3>Join wholeheartedly</h3><p>Sing when it is time to sing, pray when it is time to pray, and respond sincerely. Reverence is not lifeless stillness.</p></div></article>
+        <article class="practice-row"><div class="practice-icon">C</div><div><h3>Care for the congregation</h3><p>Let your choices help others worship. Teach children patiently, welcome newcomers warmly, and respond to disruption with grace rather than public embarrassment.</p></div></article>
       </div>
 
       <div class="balance">
-        <article class="balance-card warn"><h3>Behaviour without relationship</h3><p>Can become cold formalism: outward correctness without living love for Christ.</p></article>
-        <article class="balance-card center"><h3>Christ-centred obedience</h3><p>Love receives Jesus, trusts His wisdom and submits practical life to His will.</p></article>
-        <article class="balance-card warn"><h3>Relationship talk without behaviour</h3><p>Can become a way of protecting cherished sin while claiming closeness to Christ.</p></article>
+        <article class="card"><h3>Order without coldness</h3><p>A worship service may be solemn, structured and quiet at appropriate moments while remaining warm, joyful and alive.</p><button type="button" class="scripture" data-ref="1 Corinthians 14:40">1 Corinthians 14:40</button></article>
+        <article class="card"><h3>Joy without spectacle</h3><p>Enthusiasm serves worship when it points to God. It becomes a distraction when entertainment, applause or personality replaces attention to Him.</p><button type="button" class="scripture" data-ref="Colossians 3:16">Colossians 3:16</button></article>
       </div>
 
-      <div class="note"><strong>Keep the order clear:</strong><p>Your obedience does not create the relationship or earn salvation. It protects and deepens your fellowship with Christ as you respond to His love.</p></div>
-      <div class="controls"><button class="nextbtn" data-prev>Previous</button><button class="nextbtn primary" data-next>Next: The Better Question</button></div>
-    </section>
-
-    <section class="panel" data-title="The Better Question">
-      <div class="eyebrow">“Is this a salvation issue?”</div>
-      <h2>The question beneath the question</h2>
-      <p class="lead">Scripture recognises that some sins carry greater weight than others. Yet you should never use that truth to dismiss any clear biblical instruction as unimportant.</p>
-
-      <button class="scripture" data-ref="Matthew 23:23">Matthew 23:23</button>
-      <button class="insight" data-insight="small">No sin is small in the sight of God</button>
-
-      <div class="question-shift">
-        <article class="question-card old">
-          <div class="tag">A lowest-standard question</div>
-          <blockquote>“How far can I digress and yet be saved?”</blockquote>
-        </article>
-        <div class="shift-arrow" aria-hidden="true">→</div>
-        <article class="question-card new">
-          <div class="tag">A love-shaped question</div>
-          <blockquote>“How can I please God and more fully conform to His will?”</blockquote>
-        </article>
-      </div>
-
-      <p class="lead" style="margin-top:28px">Consider three biblical examples. In each case, the outward act may appear small, but it reveals a deeper issue of trust and submission.</p>
-      <div class="acc" id="exampleAccordion">
-        <div class="acc-item open">
-          <button class="acc-btn" aria-expanded="true"><span class="acc-index">01</span><span><strong>Adam and Eve</strong><span class="sub">A piece of fruit, but a crisis of trust</span></span><span class="chev">+</span></button>
-          <div class="acc-body"><p>The outward action may appear slight. The deeper reality was choosing another voice over God’s clear command.</p><button class="scripture" data-ref="Genesis 3:6">Genesis 3:6</button></div>
-        </div>
-        <div class="acc-item">
-          <button class="acc-btn" aria-expanded="false"><span class="acc-index">02</span><span><strong>Cain</strong><span class="sub">An altered act of worship</span></span><span class="chev">+</span></button>
-          <div class="acc-body"><p>Cain modified what God had asked him to bring. The issue was not creative preference, but resistance to divine instruction.</p><button class="scripture" data-ref="Genesis 4:3-7">Genesis 4:3–7</button></div>
-        </div>
-        <div class="acc-item">
-          <button class="acc-btn" aria-expanded="false"><span class="acc-index">03</span><span><strong>Uzzah</strong><span class="sub">A moment that looked practical</span></span><span class="chev">+</span></button>
-          <div class="acc-body"><p>Reaching out to steady the ark appeared helpful, but it disregarded God’s explicit instructions concerning sacred things.</p><button class="scripture" data-ref="2 Samuel 6:6-7">2 Samuel 6:6–7</button></div>
-        </div>
-      </div>
-
-      <div class="note"><strong>Watch the rationalisation:</strong><p>The habits you call “little things” may be the very things with the tightest grip on you. Choose honest surrender rather than minimum compliance.</p></div>
-      <div class="controls"><button class="nextbtn" data-prev>Previous</button><button class="nextbtn primary" data-next>Next: Something Better</button></div>
-    </section>
-
-    <section class="panel" data-title="Something Better">
-      <div class="eyebrow">God’s purpose in practical counsel</div>
-      <h2>God is not trying to take joy away</h2>
-      <p class="lead">When Scripture confronts one of your habits or choices, surrender can feel like loss. See God’s instruction for what it is: the counsel of a wise Creator who has your well-being in view.</p>
-
-      <div class="better-grid">
-        <article class="better-card">
-          <div class="label">Stewardship</div>
-          <h3>God forms generosity in you</h3>
-          <p>As you return tithe and give offerings, God builds faith and benevolence in you while loosening the grip of selfishness and greed.</p>
-          <div class="fromto"><span class="from">selfishness</span><span>→</span><span class="to">faithful generosity</span></div>
-        </article>
-        <article class="better-card">
-          <div class="label">Health</div>
-          <h3>God protects your clarity and life</h3>
-          <p>God’s health counsel supports your clarity of mind and quality of life, and seeks to spare you suffering from disease and addiction.</p>
-          <div class="fromto"><span class="from">bondage</span><span>→</span><span class="to">freedom and wholeness</span></div>
-        </article>
-        <article class="better-card">
-          <div class="label">Modesty</div>
-          <h3>God frees you from anxious display</h3>
-          <p>Modesty nurtures meekness and humility and releases you from the pressure of pride and insecurity.</p>
-          <div class="fromto"><span class="from">self-display</span><span>→</span><span class="to">quiet security</span></div>
-        </article>
-        <article class="better-card">
-          <div class="label">Recreation &amp; entertainment</div>
-          <h3>God guards your inner life</h3>
-          <p>Healthful recreation refreshes you, while limits on sinful entertainment protect your mind from moral corruption.</p>
-          <div class="fromto"><span class="from">corruption</span><span>→</span><span class="to">a guarded mind</span></div>
-        </article>
-      </div>
-
-      <aside class="quote-card">
-        <blockquote>“Would that all … might realise that He has something vastly better to offer them than they are seeking for themselves.”</blockquote>
-        <cite>Steps to Christ, p. 46</cite>
-      </aside>
-      <button class="insight" data-insight="wellbeing">God has the well-being of His children in view</button>
+      <button type="button" class="scripture" data-ref="Psalm 89:7">Psalm 89:7</button>
+      <button type="button" class="scripture" data-ref="Leviticus 19:30">Leviticus 19:30</button>
 
       <div class="big-idea">
-        <div class="label">Reframe the command</div>
-        <p>God’s practical counsel is not arbitrary restriction. Receive it as mercy expressed through guidance, protection and an invitation into something better.</p>
+        <div class="label">The worship test</div>
+        <p>Ask not only, &ldquo;Was I quiet?&rdquo; Ask, &ldquo;Did I recognise God&rsquo;s presence, participate with my whole heart, and help others do the same?&rdquo;</p>
       </div>
-      <div class="controls"><button class="nextbtn" data-prev>Previous</button><button class="nextbtn primary" data-next>Next: Respond in Trust</button></div>
+
+      <div class="controls"><button type="button" class="nextbtn" data-prev>Previous</button><button type="button" class="nextbtn primary" data-next>Next: Heart and Appearance</button></div>
     </section>
 
-    <section class="panel" data-title="Respond in Trust">
+    <section class="panel" data-title="Heart and Appearance">
+      <div class="eyebrow">Outward signs, inward reality</div>
+      <h2>Let outward care express inward honour - not social rank</h2>
+      <p class="lead">How you present yourself can communicate care, modesty and the importance you attach to worship. Yet clothing must never become a gate through which people must pass before they are welcomed by Christ&rsquo;s church.</p>
+
+      <div class="grid2">
+        <article class="card">
+          <h3>Bring thoughtful care</h3>
+          <p>Choose what is clean, modest, neat and respectful within your culture, circumstances and means. &ldquo;Your best&rdquo; means sincere care with what you have - not imitating another person&rsquo;s income, style or tradition.</p>
+        </article>
+        <article class="card">
+          <h3>Reject partiality</h3>
+          <p>James directly warns a worshipping assembly not to honour the well-dressed while humiliating the poor. Reverence for God and contempt for people cannot live comfortably together.</p>
+          <button type="button" class="scripture" data-ref="James 2:1-4">James 2:1-4</button>
+        </article>
+      </div>
+
+      <div class="perspective">
+        <div class="label">Adventist perspective</div>
+        <h3>Principle without cultural uniformity</h3>
+        <p>Seventh-day Adventist Fundamental Belief 22 connects Christian behaviour with the Spirit forming Christ&rsquo;s character. It commends simple, modest and neat dress, explicitly recognises cultural differences, and places true beauty in the inner life rather than outward display.</p>
+        <button type="button" class="insight" data-insight="belief22">Fundamental Belief 22</button>
+      </div>
+
+      <div class="grid2">
+        <article class="card"><h3>God sees the heart</h3><p>Outward choices matter, but they are not an infallible measure of spiritual depth. God sees what no congregation can see.</p><button type="button" class="scripture" data-ref="1 Samuel 16:7">1 Samuel 16:7</button></article>
+        <article class="card"><h3>Begin with &ldquo;Woe is me&rdquo;</h3><p>Isaiah did not leave God&rsquo;s presence with a list of everyone else&rsquo;s failures. True reverence makes you humble, gracious and slow to police another person&rsquo;s conscience.</p><button type="button" class="scripture" data-ref="Isaiah 6:5">Isaiah 6:5</button></article>
+      </div>
+
+      <div class="note"><strong>A reverent church should feel both holy and hospitable.</strong><p>Apply the call to &ldquo;fear God&rdquo; first to your own heart. Encourage others patiently, honour genuine differences, and never use sacred standards as a reason for pride.</p></div>
+
+      <div class="controls"><button type="button" class="nextbtn" data-prev>Previous</button><button type="button" class="nextbtn primary" data-next>Next: Practise Reverence</button></div>
+    </section>
+
+    <section class="panel" data-title="Practise Reverence">
       <div class="eyebrow">Practical application</div>
-      <h2>Come to Jesus honestly, not hopelessly</h2>
-      <p class="lead">Your struggle with practical obedience is not a reason to despair. Come to the sympathetic and forgiving Saviour. He receives you as you are, cleanses you and leads you forward.</p>
+      <h2>Begin with your own response to God&rsquo;s presence</h2>
+      <p class="lead">Reverence grows as awareness becomes practice. Choose a small, concrete response that helps you honour God without becoming anxious, performative or critical of others.</p>
 
       <div class="reflection">
         <article class="card check-card">
-          <h3>My honest response</h3>
-          <p style="margin-bottom:10px">Mark the statements that express what God may be inviting you to do.</p>
-          <label><input class="response-check" type="checkbox" value="humility"><span>Ask for a humble spirit before studying the lifestyle chapters that follow.</span></label>
-          <label><input class="response-check" type="checkbox" value="honesty"><span>Stop labelling a clear biblical instruction as a “little thing” simply because surrender feels difficult.</span></label>
-          <label><input class="response-check" type="checkbox" value="trust"><span>Trust that God’s counsel is for my good, even before I fully understand every reason.</span></label>
-          <label><input class="response-check" type="checkbox" value="grace"><span>Return to Jesus for forgiveness and strength rather than trying to change through guilt alone.</span></label>
+          <h3>One grace-filled step this week</h3>
+          <p style="margin-bottom:10px">Select the habits you want to practise. Your choices are saved on this device.</p>
+          <label><input type="checkbox" class="reverence-check" value="name"><span>I will speak God&rsquo;s name thoughtfully rather than use it as an empty expression.</span></label>
+          <label><input type="checkbox" class="reverence-check" value="prayer"><span>I will use a prayer posture or rhythm that helps my heart submit to God.</span></label>
+          <label><input type="checkbox" class="reverence-check" value="word"><span>I will open Scripture ready to obey, not merely to collect information.</span></label>
+          <label><input type="checkbox" class="reverence-check" value="worship"><span>I will protect attention in worship and participate wholeheartedly.</span></label>
+          <label><input type="checkbox" class="reverence-check" value="grace"><span>I will refuse to measure another person&rsquo;s reverence by my preferences.</span></label>
         </article>
-
         <article class="card prompt">
-          <h3>My prayer of trust</h3>
-          <p>Write one area in which you want Christ to help you move from resistance to willing obedience.</p>
-          <textarea id="responseNote" aria-label="Personal prayer note" placeholder="Lord Jesus, help me to trust You with…"></textarea>
-          <div class="save-row"><button class="savebtn" id="saveResponse">Save on this device</button><span class="saved" id="savedMsg" aria-live="polite">Saved</span></div>
+          <h3>Where is God inviting change?</h3>
+          <p>Where has casualness, distraction or self-righteousness crept in? Name one response rooted in grace.</p>
+          <textarea id="reverenceNote" placeholder="My response to God this week..."></textarea>
+          <div class="save-row"><button type="button" class="savebtn" id="saveReflection">Save reflection</button><span class="saved" id="savedMsg" aria-live="polite">Saved on this device</span></div>
         </article>
       </div>
 
-      <div class="prayer-panel"><strong>A prayer to carry forward</strong><p>“Lord, give me a humble spirit and an honest desire to follow truth. Help me receive Your counsel as the wisdom of One who loves me, and shape my life into the likeness of Jesus.”</p></div>
+      <div class="note sage"><strong>A simple prayer</strong><p>Holy Father, let Your love cast out tormenting fear. Open my eyes to Your greatness and goodness. Teach me to listen, obey, worship with joy, and treat others with the grace You have shown me. Amen.</p></div>
+      <button type="button" class="scripture" data-ref="Proverbs 28:14">Proverbs 28:14</button>
 
-      <button class="insight" data-insight="come">Jesus loves to have us come just as we are</button>
-      <button class="scripture" data-ref="Deuteronomy 28:2">Deuteronomy 28:2</button>
-      <div class="controls"><button class="nextbtn" data-prev>Previous</button><button class="nextbtn primary" data-next>Next: Knowledge Check</button></div>
+      <div class="controls"><button type="button" class="nextbtn" data-prev>Previous</button><button type="button" class="nextbtn primary" data-next>Next: Knowledge Check</button></div>
     </section>
 
     <section class="panel" data-title="Knowledge Check">
-      <div class="eyebrow">Review what you have learned</div>
-      <h2>What should stay with you?</h2>
-      <p class="lead">Choose the best answer for each question. Feedback appears immediately so the quiz reinforces what you have learned rather than merely scoring you.</p>
+      <div class="eyebrow">Review</div>
+      <h2>Can you distinguish reverence from fearfulness?</h2>
+      <p class="lead">Answer each question. You will receive immediate feedback and a short explanation.</p>
       <div class="quiz" id="quiz"></div>
       <div class="completion" id="completion" aria-live="polite"><h3>Lesson complete</h3><p id="completionText"></p></div>
-      <div class="quiz-tools"><button class="resetbtn" id="resetQuiz">Reset quiz</button></div>
-      <div class="controls"><button class="nextbtn" data-prev>Previous</button><button class="nextbtn primary" data-next disabled>Finished</button></div>
+      <div class="controls"><button type="button" class="nextbtn" data-prev>Previous</button><button type="button" class="nextbtn primary" data-restart>Review from the beginning</button></div>
     </section>
   </main>
 </div>
 
+<footer class="site-footer">
+  <div class="shell"><strong>Study basis:</strong> Discipleship Handbook, chapter 16; Scripture text in pop-ups is from the King James Version. Ellen G. White and official Adventist material are included as supporting insight; Scripture remains foundational.</div>
+</footer>
+
 <div class="overlay" id="overlay" aria-hidden="true">
-  <section class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-    <header class="modal-head">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" tabindex="-1">
+    <div class="modal-head">
       <div><h3 id="modalTitle"></h3><div class="modal-source" id="modalSource"></div></div>
-      <button class="modal-close" id="modalClose" aria-label="Close">×</button>
-    </header>
+      <button type="button" class="modal-close" id="modalClose" aria-label="Close">x</button>
+    </div>
     <div class="modal-body" id="modalBody"></div>
-  </section>
+  </div>
 </div>
 
 <script>
-/* Section navigation */
 const panels=[...document.querySelectorAll('.panel')];
 const stepNav=document.getElementById('stepNav');
 const mobileTabs=document.getElementById('mobileTabs');
@@ -523,85 +510,87 @@ const progressFill=document.getElementById('progressFill');
 const progressLabel=document.getElementById('progressLabel');
 let current=0;
 
-function makeNav(){
-  stepNav.innerHTML='';
-  mobileTabs.innerHTML='';
-  panels.forEach((panel,i)=>{
-    const title=panel.dataset.title;
-    const side=document.createElement('button');
-    side.className='stepbtn';
-    side.innerHTML=`<span class="n">${String(i+1).padStart(2,'0')}</span><span>${title}</span>`;
-    side.addEventListener('click',()=>showPanel(i));
-    stepNav.appendChild(side);
-
-    const mobile=document.createElement('button');
-    mobile.className='pill';
-    mobile.textContent=`${i+1}. ${title}`;
-    mobile.addEventListener('click',()=>showPanel(i));
-    mobileTabs.appendChild(mobile);
+function buildNav(){
+  panels.forEach((p,i)=>{
+    const b=document.createElement('button');
+    b.type='button';
+    b.className='stepbtn'+(i===0?' active':'');
+    b.innerHTML=`<span class="n">${String(i+1).padStart(2,'0')}</span><span>${p.dataset.title}</span>`;
+    b.addEventListener('click',()=>showPanel(i));
+    stepNav.appendChild(b);
+    const m=document.createElement('button');
+    m.type='button';
+    m.className='pill'+(i===0?' active':'');
+    m.textContent=`${i+1}. ${p.dataset.title}`;
+    m.addEventListener('click',()=>showPanel(i));
+    mobileTabs.appendChild(m);
   });
 }
-function showPanel(index,scroll=true){
-  current=Math.max(0,Math.min(index,panels.length-1));
-  panels.forEach((panel,i)=>panel.classList.toggle('active',i===current));
-  [...stepNav.children].forEach((button,i)=>button.classList.toggle('active',i===current));
-  [...mobileTabs.children].forEach((button,i)=>{
-    button.classList.toggle('active',i===current);
-    button.setAttribute('aria-current',i===current?'step':'false');
-  });
-  const title=panels[current].dataset.title;
-  progressFill.style.width=`${((current+1)/panels.length)*100}%`;
-  progressLabel.textContent=`${current+1} of ${panels.length} · ${title}`;
-  try{localStorage.setItem('lesson14-section',String(current));}catch(e){}
-  if(scroll){window.scrollTo({top:document.querySelector('.progress-band').offsetTop,behaviour:'smooth',behavior:'smooth'});}
+function showPanel(i,scroll=true){
+  current=Math.max(0,Math.min(panels.length-1,i));
+  panels.forEach((p,j)=>p.classList.toggle('active',j===current));
+  [...stepNav.children].forEach((b,j)=>{b.classList.toggle('active',j===current);b.setAttribute('aria-current',j===current?'step':'false');});
+  [...mobileTabs.children].forEach((b,j)=>{b.classList.toggle('active',j===current);b.setAttribute('aria-current',j===current?'step':'false');});
+  const pct=((current+1)/panels.length)*100;
+  progressFill.style.width=pct+'%';
+  progressLabel.textContent=`${current+1} of ${panels.length} - ${panels[current].dataset.title}`;
+  mobileTabs.children[current]?.scrollIntoView({inline:'center',block:'nearest'});
+  try{localStorage.setItem('lesson16-panel',String(current));}catch(e){}
+  if(scroll){document.querySelector('.progress-band').scrollIntoView({block:'start',behavior:'smooth'});}
 }
-makeNav();
-let savedSection=0;
-try{savedSection=Number(localStorage.getItem('lesson14-section')||0);}catch(e){}
-showPanel(Number.isFinite(savedSection)?savedSection:0,false);
-
+buildNav();
 document.addEventListener('click',e=>{
-  const next=e.target.closest('[data-next]');
-  const prev=e.target.closest('[data-prev]');
-  if(next&&!next.disabled)showPanel(current+1);
-  if(prev&&!prev.disabled)showPanel(current-1);
+  if(e.target.closest('[data-next]')) showPanel(current+1);
+  if(e.target.closest('[data-prev]')) showPanel(current-1);
+  if(e.target.closest('[data-restart]')) showPanel(0);
 });
+try{const saved=Number(localStorage.getItem('lesson16-panel'));if(Number.isFinite(saved)&&saved>=0&&saved<panels.length)showPanel(saved,false);else showPanel(0,false);}catch(e){showPanel(0,false)}
 
-/* Accordions */
-document.querySelectorAll('.acc-btn').forEach(button=>{
-  button.addEventListener('click',()=>{
-    const item=button.closest('.acc-item');
-    const isOpen=item.classList.toggle('open');
-    button.setAttribute('aria-expanded',String(isOpen));
+/* accordions */
+document.querySelectorAll('.acc').forEach(acc=>{
+  acc.addEventListener('click',e=>{
+    const btn=e.target.closest('.acc-btn');
+    if(!btn)return;
+    const item=btn.closest('.acc-item');
+    const open=!item.classList.contains('open');
+    item.classList.toggle('open',open);
+    btn.setAttribute('aria-expanded',String(open));
   });
 });
 
-/* Scripture and insight overlays */
+/* in-app Scripture and insight reader */
 const verses={
-  'John 14:15':`If ye love me, keep my commandments.`,
-  'John 15:10':`If ye keep my commandments, ye shall abide in my love; even as I have kept my Father’s commandments, and abide in his love.`,
-  'Matthew 23:23':`Woe unto you, scribes and Pharisees, hypocrites! for ye pay tithe of mint and anise and cummin, and have omitted the weightier matters of the law, judgment, mercy, and faith: these ought ye to have done, and not to leave the other undone.`,
-  'Genesis 3:6':`And when the woman saw that the tree was good for food, and that it was pleasant to the eyes, and a tree to be desired to make one wise, she took of the fruit thereof, and did eat, and gave also unto her husband with her; and he did eat.`,
-  'Genesis 4:3-7':`And in process of time it came to pass, that Cain brought of the fruit of the ground an offering unto the Lord. And Abel, he also brought of the firstlings of his flock and of the fat thereof. And the Lord had respect unto Abel and to his offering: but unto Cain and to his offering he had not respect... If thou doest well, shalt thou not be accepted?`,
-  '2 Samuel 6:6-7':`And when they came to Nachon’s threshingfloor, Uzzah put forth his hand to the ark of God, and took hold of it; for the oxen shook it. And the anger of the Lord was kindled against Uzzah; and God smote him there for his error; and there he died by the ark of God.`,
-  'Deuteronomy 28:2':`And all these blessings shall come on thee, and overtake thee, if thou shalt hearken unto the voice of the Lord thy God.`
-};
-const verseNotes={
-  'John 14:15':'Jesus joins love and obedience. The sequence matters: love is the source, and obedience is its expression.',
-  'John 15:10':'Abiding in Christ’s love is not passive. Willing submission to His commands belongs to living fellowship with Him.',
-  'Matthew 23:23':'Jesus recognised “weightier matters” while still saying the others should not be left undone. Greater weight does not make the rest irrelevant.',
-  'Genesis 3:6':'The visible act was eating fruit. The deeper issue was distrusting God’s word and choosing another voice.',
-  'Genesis 4:3-7':'Cain’s choice shows that worship is not ours to reshape in resistance to what God has made clear.',
-  '2 Samuel 6:6-7':'The account is sobering because an apparently practical action crossed a boundary God had placed around the sacred.',
-  'Deuteronomy 28:2':'God connects obedience to His voice with blessing, not deprivation.'
+  'Revelation 14:6-7':{text:`And I saw another angel fly in the midst of heaven, having the everlasting gospel to preach unto them that dwell on the earth, and to every nation, and kindred, and tongue, and people, Saying with a loud voice, Fear God, and give glory to him; for the hour of his judgment is come: and worship him that made heaven, and earth, and the sea, and the fountains of waters.`,note:`The call to fear God is spoken inside the everlasting gospel. Reverence is a gospel response, not a substitute for grace.`},
+  '1 John 4:8':{text:`He that loveth not knoweth not God; for God is love.`,note:`God's character is the starting point. Holy fear never requires you to imagine that God is less loving than Jesus revealed Him to be.`},
+  '1 John 4:18':{text:`There is no fear in love; but perfect love casteth out fear: because fear hath torment. He that feareth is not made perfect in love.`,note:`John addresses tormenting fear. The love of God drives out the dread that keeps you hiding from Him.`},
+  'Hebrews 12:28':{text:`Wherefore we receiving a kingdom which cannot be moved, let us have grace, whereby we may serve God acceptably with reverence and godly fear.`,note:`Grace and reverence are partners. Grace does not make God ordinary; it enables grateful worship.`},
+  'Exodus 20:20':{text:`And Moses said unto the people, Fear not: for God is come to prove you, and that his fear may be before your faces, that ye sin not.`,note:`The verse itself distinguishes terror from moral awe: do not flee in panic, but let a serious regard for God shape your choices.`},
+  'Isaiah 6:5-8':{text:`Then said I, Woe is me! for I am undone; because I am a man of unclean lips, and I dwell in the midst of a people of unclean lips: for mine eyes have seen the King, the LORD of hosts. Then flew one of the seraphims unto me, having a live coal in his hand, which he had taken with the tongs from off the altar: And he laid it upon my mouth, and said, Lo, this hath touched thy lips; and thine iniquity is taken away, and thy sin purged. Also I heard the voice of the Lord, saying, Whom shall I send, and who will go for us? Then said I, Here am I; send me.`,note:`Awe exposes sin, grace cleanses it, and cleansing leads to willing service.`},
+  'Isaiah 6:5':{text:`Then said I, Woe is me! for I am undone; because I am a man of unclean lips, and I dwell in the midst of a people of unclean lips: for mine eyes have seen the King, the LORD of hosts.`,note:`Isaiah begins with self-examination. True reverence makes you humble before it makes you concerned about another person's conduct.`},
+  'Psalm 2:11':{text:`Serve the LORD with fear, and rejoice with trembling.`,note:`Scripture refuses the false choice between joy and reverence. Mature worship can hold both together.`},
+  'Jeremiah 33:9':{text:`And it shall be to me a name of joy, a praise and an honour before all the nations of the earth, which shall hear all the good that I do unto them: and they shall fear and tremble for all the goodness and for all the prosperity that I procure unto it.`,note:`God's goodness can overwhelm the heart with grateful awe.`},
+  'Psalm 16:11':{text:`Thou wilt shew me the path of life: in thy presence is fulness of joy; at thy right hand there are pleasures for evermore.`,note:`The presence of the Holy One is not the enemy of joy; it is joy's deepest home.`},
+  'Exodus 20:7':{text:`Thou shalt not take the name of the LORD thy God in vain; for the LORD will not hold him guiltless that taketh his name in vain.`,note:`To take God's name in vain is to empty it of weight. Speak of Him in ways that honour the Person His name represents.`},
+  'Psalm 111:9':{text:`He sent redemption unto his people: he hath commanded his covenant for ever: holy and reverend is his name.`,note:`The God whose name is holy is also the God who sends redemption. Holiness and saving grace belong together.`},
+  'Matthew 6:9':{text:`After this manner therefore pray ye: Our Father which art in heaven, Hallowed be thy name.`,note:`Jesus teaches intimacy and reverence in the same sentence: God is Father, and His name is hallowed.`},
+  'Psalm 95:6':{text:`O come, let us worship and bow down: let us kneel before the LORD our maker.`,note:`Bodily posture can help the heart remember dependence and submission.`},
+  '1 Thessalonians 5:17':{text:`Pray without ceasing.`,note:`Because prayer belongs throughout life, no single posture can be required in every circumstance.`},
+  'Isaiah 66:2':{text:`For all those things hath mine hand made, and all those things have been, saith the LORD: but to this man will I look, even to him that is poor and of a contrite spirit, and trembleth at my word.`,note:`God looks for a teachable heart that receives His Word with humility.`},
+  'Philippians 2:12-13':{text:`Wherefore, my beloved, as ye have always obeyed, not as in my presence only, but now much more in my absence, work out your own salvation with fear and trembling. For it is God which worketh in you both to will and to do of his good pleasure.`,note:`Serious obedience is held together with divine action. You respond faithfully because God is already at work within you.`},
+  '1 Corinthians 14:40':{text:`Let all things be done decently and in order.`,note:`Order is meant to serve the congregation's worship and understanding, not to suppress sincere joy.`},
+  'Colossians 3:16':{text:`Let the word of Christ dwell in you richly in all wisdom; teaching and admonishing one another in psalms and hymns and spiritual songs, singing with grace in your hearts to the Lord.`,note:`Corporate worship is participatory: the Word dwells among God's people as they teach, sing and give thanks together.`},
+  'Psalm 89:7':{text:`God is greatly to be feared in the assembly of the saints, and to be had in reverence of all them that are about him.`,note:`Gathered worship becomes different when the congregation remembers whose presence defines the meeting.`},
+  'Leviticus 19:30':{text:`Ye shall keep my sabbaths, and reverence my sanctuary: I am the LORD.`,note:`Sabbath and sanctuary reverence are responses to God's identity: 'I am the LORD.'`},
+  'James 2:1-4':{text:`My brethren, have not the faith of our Lord Jesus Christ, the Lord of glory, with respect of persons. For if there come unto your assembly a man with a gold ring, in goodly apparel, and there come in also a poor man in vile raiment; And ye have respect to him that weareth the gay clothing, and say unto him, Sit thou here in a good place; and say to the poor, Stand thou there, or sit here under my footstool: Are ye not then partial in yourselves, and are become judges of evil thoughts?`,note:`The assembly must not confuse expensive appearance with spiritual worth. The Lord of glory forbids class-based partiality.`},
+  '1 Samuel 16:7':{text:`But the LORD said unto Samuel, Look not on his countenance, or on the height of his stature; because I have refused him: for the LORD seeth not as man seeth; for man looketh on the outward appearance, but the LORD looketh on the heart.`,note:`Outward care can express reverence, but only God sees the heart accurately.`},
+  'Proverbs 28:14':{text:`Happy is the man that feareth alway: but he that hardeneth his heart shall fall into mischief.`,note:`Continual reverence keeps the heart responsive rather than hardened.`}
 };
 const insights={
-  rock:{title:'Christ alone saves',source:'Rock of Ages, quoted in Lesson 14',quote:'“Not the labour of my hands can fulfil Thy law’s demands … Thou must save, and Thou alone.”',why:'The hymn captures the foundation of your faith: no human effort can atone for sin. Forgiveness rests entirely on Christ.'},
-  small:{title:'No sin is small in God’s sight',source:'Ellen G. White, Steps to Christ, p. 30',quote:'“However trifling this or that wrong act may seem in the eyes of men, no sin is small in the sight of God.”',why:'The point is not that every sin has identical consequences. It is that human judgement is too partial to dismiss clear instruction as unimportant.'},
-  wellbeing:{title:'God has our good in view',source:'Ellen G. White, Steps to Christ, p. 46',quote:'“God does not require us to give up anything that it is for our best interest to retain.”',why:'Interpret practical counsel through God’s character. His guidance aims at your freedom, protection and growth into mature Christlikeness.'},
-  come:{title:'Come just as you are',source:'Ellen G. White, Steps to Christ, p. 52',quote:'“Jesus loves to have us come to Him just as we are, sinful, helpless, dependent.”',why:'Lifestyle instruction is not meant to drive you away from Christ when you struggle. It sends you to Him for forgiveness, cleansing and strength.'}
+  presence:{title:'The source of true reverence',source:'Ellen G. White, Counsels for the Church, p. 250',quote:'&ldquo;True reverence for God is inspired by a sense of His infinite greatness and a realization of His presence.&rdquo;',why:'Reverence begins with awareness, not etiquette. When you remember who is present, attention, posture and speech begin to follow.'},
+  belief22:{title:'Christian behaviour and culture',source:'Seventh-day Adventist Fundamental Belief 22',quote:'Adventists understand Christian behaviour as the Spirit forming Christlike purity, health and joy. Dress should be simple, modest and neat while cultural differences are recognised and inward character remains central.',why:'The principle invites thoughtful discipleship without making one culture, income level or clothing tradition the measure of holiness.'}
 };
 const overlay=document.getElementById('overlay');
+const modal=document.querySelector('.modal');
 const modalTitle=document.getElementById('modalTitle');
 const modalSource=document.getElementById('modalSource');
 const modalBody=document.getElementById('modalBody');
@@ -615,6 +604,7 @@ function openModal(title,source,html){
   overlay.classList.add('open');
   overlay.setAttribute('aria-hidden','false');
   document.body.style.overflow='hidden';
+  modal.scrollTop=0;
   modalClose.focus();
 }
 function closeModal(){
@@ -624,101 +614,99 @@ function closeModal(){
   if(previousFocus&&typeof previousFocus.focus==='function')previousFocus.focus();
 }
 document.addEventListener('click',e=>{
-  const scripture=e.target.closest('.scripture');
-  if(scripture){
-    const ref=scripture.dataset.ref;
-    openModal(ref,'King James Version',`<p class="verse-text">${verses[ref]||'Passage text unavailable.'}</p><div class="modal-why"><strong>Why it matters here</strong>${verseNotes[ref]||'Read the passage in context and ask what it reveals about trusting Christ.'}</div>`);
+  const s=e.target.closest('.scripture');
+  if(s){
+    const r=s.dataset.ref;
+    const v=verses[r];
+    openModal(r,'King James Version',`<p class="verse-text">${v?v.text:'Passage text unavailable.'}</p>${v?`<div class="modal-why"><strong>Notice</strong>${v.note}</div>`:''}`);
   }
-  const insightButton=e.target.closest('.insight');
-  if(insightButton){
-    const item=insights[insightButton.dataset.insight];
-    if(item)openModal(item.title,item.source,`<p class="verse-text">${item.quote}</p><div class="modal-why"><strong>Why it matters</strong>${item.why}</div>`);
+  const i=e.target.closest('.insight');
+  if(i){
+    const x=insights[i.dataset.insight];
+    if(x)openModal(x.title,x.source,`<p class="verse-text">${x.quote}</p><div class="modal-why"><strong>Why it matters</strong>${x.why}</div>`);
   }
 });
 modalClose.addEventListener('click',closeModal);
 overlay.addEventListener('click',e=>{if(e.target===overlay)closeModal();});
-document.addEventListener('keydown',e=>{if(e.key==='Escape'&&overlay.classList.contains('open'))closeModal();});
-
-/* Reflection persistence */
-const responseNote=document.getElementById('responseNote');
-const responseChecks=[...document.querySelectorAll('.response-check')];
-try{
-  responseNote.value=localStorage.getItem('lesson14-note')||'';
-  const savedChecks=JSON.parse(localStorage.getItem('lesson14-checks')||'[]');
-  responseChecks.forEach(check=>check.checked=savedChecks.includes(check.value));
-}catch(e){}
-responseChecks.forEach(check=>check.addEventListener('change',()=>{
-  try{localStorage.setItem('lesson14-checks',JSON.stringify(responseChecks.filter(item=>item.checked).map(item=>item.value)));}catch(e){}
-}));
-document.getElementById('saveResponse').addEventListener('click',()=>{
-  try{localStorage.setItem('lesson14-note',responseNote.value);}catch(e){}
-  const message=document.getElementById('savedMsg');
-  message.classList.add('show');
-  setTimeout(()=>message.classList.remove('show'),1600);
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape'&&overlay.classList.contains('open'))closeModal();
+  if(e.key==='Tab'&&overlay.classList.contains('open')){
+    const focusable=[...modal.querySelectorAll('button,[href],input,textarea,[tabindex]:not([tabindex="-1"])')].filter(el=>!el.disabled);
+    if(!focusable.length)return;
+    const first=focusable[0],last=focusable[focusable.length-1];
+    if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus();}
+    else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();}
+  }
 });
 
-/* Knowledge check */
+/* practical reflection persistence */
+const reverenceNote=document.getElementById('reverenceNote');
+const checks=[...document.querySelectorAll('.reverence-check')];
+try{
+  reverenceNote.value=localStorage.getItem('lesson16-note')||'';
+  const savedChecks=JSON.parse(localStorage.getItem('lesson16-checks')||'[]');
+  checks.forEach(c=>c.checked=savedChecks.includes(c.value));
+}catch(e){}
+checks.forEach(c=>c.addEventListener('change',()=>{
+  try{localStorage.setItem('lesson16-checks',JSON.stringify(checks.filter(x=>x.checked).map(x=>x.value)));}catch(e){}
+}));
+document.getElementById('saveReflection').addEventListener('click',()=>{
+  try{localStorage.setItem('lesson16-note',reverenceNote.value);}catch(e){}
+  const msg=document.getElementById('savedMsg');
+  msg.classList.add('show');
+  setTimeout(()=>msg.classList.remove('show'),1600);
+});
+
+/* quiz */
 const quizData=[
-  {q:'What is the only basis for forgiveness and salvation?',a:['Improved behaviour','Christ’s life and sacrifice','Avoiding every external mistake'],c:1,x:'Your behaviour cannot earn God’s favour. Salvation rests on Christ, not on what you do or abstain from doing.'},
-  {q:'Which sequence best reflects the gospel order?',a:['Obedience earns grace, then love begins','Christ saves, love awakens, obedience follows','Rules replace the need for relationship'],c:1,x:'Grace comes first. When you receive Christ by faith, love springs up and produces willing obedience.'},
-  {q:'Why does Christian behaviour still matter if it cannot earn salvation?',a:['It expresses love and trust and affects fellowship with Christ','It allows us to compare our worth with other believers','It gives God a reason to forgive us'],c:0,x:'Your behaviour affects your relationship with Christ. Obedience is not payment for grace; it is a response to His love and lordship.'},
-  {q:'What danger can come from focusing on behaviour without relationship?',a:['Cold formalism','Too much dependence on grace','An inability to notice any command'],c:0,x:'Outward conformity without a living relationship with Jesus can become dry, mechanical and loveless.'},
-  {q:'What danger can come from speaking of relationship while dismissing behaviour?',a:['Excessive reverence','Failure to acknowledge cherished sin','Too much concern for Scripture'],c:1,x:'“Relationship” language can become a way of protecting habits that the Holy Spirit is asking you to surrender.'},
-  {q:'What is the better question than “How far can I digress and yet be saved?”',a:['How can I please God and more fully conform to His will?','Which instructions can safely be ignored?','How can I appear stricter than others?'],c:0,x:'Born-again love seeks God’s will rather than the lowest possible standard.'},
-  {q:'How should you understand biblical counsel on stewardship, health, modesty and entertainment?',a:['As arbitrary restrictions','As merciful blessings from a wise Creator','As ways to prove that we deserve salvation'],c:1,x:'God offers you something better, protecting you from greed, bondage, insecurity and corruption.'},
-  {q:'What should you do when you struggle with practical obedience?',a:['Wait until every desire changes before approaching Jesus','Hide the struggle to avoid condemnation','Come honestly to a sympathetic Saviour for forgiveness and strength'],c:2,x:'Come to Jesus honestly. He receives you as you are and leads you into cleansing, healing and faithful growth.'}
+  {q:'In the biblical sense emphasised here, what does it mean to fear God?',a:['To expect rejection whenever you fail','To stand in loving awe, take God seriously and honour Him','To avoid coming near to God'],c:1,x:'Holy fear is reverent awe within a relationship of grace. It draws you toward God and gives weight to His Word.'},
+  {q:'Because perfect love casts out fear, reverence should disappear as your relationship with God grows.',a:['True','False'],c:1,x:'False. Perfect love casts out tormenting fear. Love deepens reverence because you know more clearly the greatness and goodness of the One who loves you.'},
+  {q:'What distinction appears in Exodus 20:20?',a:['Moses rejects every use of the word fear','Israel should avoid panic but retain a serious regard for God','Only leaders need to fear God'],c:1,x:'Moses says both "Fear not" and "that his fear may be before you." Terror is rejected; moral awe is retained.'},
+  {q:'What movement does Isaiah 6 show?',a:['Awe, self-exaltation, judgment of others, withdrawal','Holiness seen, sin confessed, cleansing received, service offered','Fear, hiding, silence, escape'],c:1,x:'Isaiah sees the King, admits his need, receives cleansing and answers, "Here am I; send me."'},
+  {q:'Which statement best expresses reverence in prayer?',a:['God hears only kneeling prayers','Posture can support humility, while the humble heart remains central','The body has no role at all in prayer'],c:1,x:'Kneeling and bowing can be meaningful when possible, but Scripture also calls us to pray throughout life and circumstance.'},
+  {q:'Which description best fits reverent corporate worship?',a:['Quietness alone, regardless of attention','Wholehearted, orderly participation that helps others attend to God','A performance designed mainly to impress the congregation'],c:1,x:'Reverence includes preparation, listening, singing, praying and caring about the congregation\'s ability to worship.'},
+  {q:'How should outward appearance relate to worship?',a:['One clothing style should be required in every culture','Care, modesty and neatness may express honour, but clothing must never become a basis for partiality','Appearance is a reliable measure of spiritual maturity'],c:1,x:'The principle is thoughtful, culturally aware care. James forbids treating people as more or less worthy because of clothing or wealth.'},
+  {q:'What does true reverence produce in your treatment of other people?',a:['A critical spirit that quickly corrects everyone','Humility, self-examination and gracious patience','Confidence that your preferences define holiness'],c:1,x:'Isaiah begins with "Woe is me." Awareness of God\'s holiness makes a disciple humble and gracious, not proud or controlling.'}
 ];
 let answered={};
-try{answered=JSON.parse(localStorage.getItem('lesson14-quiz')||'{}')||{};}catch(e){answered={};}
+try{answered=JSON.parse(localStorage.getItem('lesson16-quiz')||'{}')||{};}catch(e){answered={};}
 const quiz=document.getElementById('quiz');
 const completion=document.getElementById('completion');
 const completionText=document.getElementById('completionText');
 function renderQuiz(){
   quiz.innerHTML='';
-  quizData.forEach((item,questionIndex)=>{
-    const card=document.createElement('article');
-    card.className='q';
-    card.innerHTML=`<h3>${questionIndex+1}. ${item.q}</h3><div class="answers">${item.a.map((answer,answerIndex)=>`<button class="answer" data-q="${questionIndex}" data-a="${answerIndex}">${answer}</button>`).join('')}</div><div class="feedback" id="fb-${questionIndex}"></div>`;
-    quiz.appendChild(card);
-    if(answered[questionIndex]!==undefined)applyAnswer(card,questionIndex,Number(answered[questionIndex]),false);
+  quizData.forEach((item,qi)=>{
+    const q=document.createElement('article');
+    q.className='q';
+    q.innerHTML=`<h3>${qi+1}. ${item.q}</h3><div class="answers">${item.a.map((x,ai)=>`<button type="button" class="answer" data-q="${qi}" data-a="${ai}">${x}</button>`).join('')}</div><div class="feedback" id="fb-${qi}" aria-live="polite"></div>`;
+    quiz.appendChild(q);
+    if(answered[qi]!==undefined)applyAnswer(q,qi,Number(answered[qi]),false);
   });
   updateCompletion();
 }
-function applyAnswer(card,questionIndex,answerIndex,save=true){
-  const item=quizData[questionIndex];
-  card.querySelectorAll('.answer').forEach((button,index)=>{
-    button.disabled=true;
-    if(index===item.c)button.classList.add('correct');
-    else if(index===answerIndex)button.classList.add('wrong');
-  });
-  const feedback=card.querySelector('.feedback');
-  const correct=answerIndex===item.c;
-  feedback.className='feedback show '+(correct?'ok':'no');
-  feedback.innerHTML=`<strong>${correct?'Correct.':'Not quite.'}</strong> ${item.x}`;
-  if(save){
-    answered[questionIndex]=answerIndex;
-    try{localStorage.setItem('lesson14-quiz',JSON.stringify(answered));}catch(e){}
-    updateCompletion();
-  }
+function applyAnswer(card,qi,ai,save=true){
+  const item=quizData[qi];
+  card.querySelectorAll('.answer').forEach((b,j)=>{b.disabled=true;if(j===item.c)b.classList.add('correct');else if(j===ai)b.classList.add('wrong');});
+  const fb=card.querySelector('.feedback');
+  const ok=ai===item.c;
+  fb.className='feedback show '+(ok?'ok':'no');
+  fb.innerHTML=`<strong>${ok?'Correct.':'Not quite.'}</strong> ${item.x}`;
+  if(save){answered[qi]=ai;try{localStorage.setItem('lesson16-quiz',JSON.stringify(answered));}catch(e){}updateCompletion();}
 }
 quiz.addEventListener('click',e=>{
-  const button=e.target.closest('.answer');
-  if(!button||button.disabled)return;
-  applyAnswer(button.closest('.q'),Number(button.dataset.q),Number(button.dataset.a),true);
+  const b=e.target.closest('.answer');
+  if(!b||b.disabled)return;
+  const qi=Number(b.dataset.q),ai=Number(b.dataset.a);
+  applyAnswer(b.closest('.q'),qi,ai,true);
 });
 function updateCompletion(){
   const done=Object.keys(answered).length===quizData.length;
   if(!done){completion.classList.remove('show');return;}
   let score=0;
-  Object.keys(answered).forEach(key=>{if(Number(answered[key])===quizData[key].c)score++;});
-  completionText.textContent=`You answered ${score} of ${quizData.length} correctly. Remember the order: Christ alone saves; His love awakens trust; and your obedience becomes a grateful response as you believe God has something better for you.`;
+  Object.keys(answered).forEach(k=>{if(Number(answered[k])===quizData[k].c)score++;});
+  completionText.textContent=`You answered ${score} of ${quizData.length} correctly. Remember: the fear of God is not anxious distance. It is grace-awakened awe that brings joy, attentive obedience, wholehearted worship and humility toward others.`;
   completion.classList.add('show');
 }
-document.getElementById('resetQuiz').addEventListener('click',()=>{
-  answered={};
-  try{localStorage.removeItem('lesson14-quiz');}catch(e){}
-  renderQuiz();
-});
 renderQuiz();
 </script>
 </body>
